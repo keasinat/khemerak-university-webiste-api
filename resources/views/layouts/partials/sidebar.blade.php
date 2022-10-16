@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{ route('admin.activity.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'admin.activity') == 0) ? 'active' : '' }}">
               <i class="nav-icon far fa-newspaper"></i>
               <p>
                 {{ __('dashboard.business_management') }}
