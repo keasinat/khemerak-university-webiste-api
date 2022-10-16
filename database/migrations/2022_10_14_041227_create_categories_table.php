@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('code');
+            $table->integer('group');
+            $table->integer('sub_group');
+            $table->integer('code')->nullable();
             $table->string('name_km');
             $table->string('slug')->comment('ministry short name');
             $table->string('m_name_km')->nullable()->comment('ministry full name');
-            $table->integer('parent_id')->nullable();
+            // $table->integer('parent_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
