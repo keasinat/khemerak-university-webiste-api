@@ -1,10 +1,10 @@
 <div class="card">
     @if (isset($header))
     <div class="card-header">
-        {{ $header }}
+       <h2 class="card-title">{{ $header }}</h2> 
 
         @if (isset($headerAction))
-        <div class="card-header-action text-right">
+        <div class="card-tool text-right">
             {{ $headerAction }}
         </div>
         @endif

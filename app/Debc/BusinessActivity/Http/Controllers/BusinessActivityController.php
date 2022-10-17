@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Debc\BusinessActivity\Models\Category;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\CategoriesImport;
+use App\Debc\BusinessActivity\Http\Requests\StoreActivityRequest;
+use App\Debc\BusinessActivity\Services\ActivityService;
 
 class BusinessActivityController
 {
@@ -19,7 +21,7 @@ class BusinessActivityController
         return view('activity.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreActivityRequest $request)
     {
         Category::create($request->all());
         
