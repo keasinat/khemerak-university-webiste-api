@@ -11,22 +11,15 @@ class ActivityController extends Controller
 {
     public function getList(Request $request)
     {
-        $searchCode = $request->code;
         $searchTitle = $request->title;
 
         $activity = new Category;
 
-        if ($request->has('code') && !empty($searchCode)) {
-            $activity = $activity->where('code', 'LIKE', '%'. $searchCode .'%')
-                        ->orWhere('sub_group', 'LIKE', '%'. $searchCode .'%')
-                        ->paginate(12);
-            
-            return ActivityResource::collection($activity);
-        }
-
         if ($request->has('title') && !empty($searchTitle)) {
             $activity = $activity->where('name_km', 'LIKE', '%'.$searchTitle.'%')
                         ->orWhere('m_name_km', 'LIKE', '%'. $searchTitle.'%')
+                        ->orWhere('sub_group', 'LIKE', '%'. $searchTitle .'%')
+                        ->orWhere('code', 'LIKE', '%'. $searchTitle .'%')
                         ->paginate(12);
 
             return ActivityResource::collection($activity);
