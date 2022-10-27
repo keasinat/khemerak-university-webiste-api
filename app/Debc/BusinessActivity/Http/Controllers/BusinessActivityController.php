@@ -11,9 +11,19 @@ use App\Debc\BusinessActivity\Services\ActivityService;
 
 class BusinessActivityController
 {
+
+    protected $activityService;
+
+    public function __construct(ActivityService $activityService)
+    {
+        $this->activityService = $activityService;
+    }
+
     public function index()
     {
-        return view('activity.index');
+        $categories = $this->activityService->getList();
+
+        return view('activity.index', compact('categories'));
     }
 
     public function create()
@@ -37,5 +47,12 @@ class BusinessActivityController
     public function gimport()
     {
         return view('activity.import');
+    }
+
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+
+        return view('activity.edit', compact('category'));
     }
 }

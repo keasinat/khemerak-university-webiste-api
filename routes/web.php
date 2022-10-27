@@ -16,20 +16,15 @@ use App\Debc\BusinessActivity\Http\Controllers\BusinessActivityController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Auth::routes(['register' => false]);
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group([
     'prefix' => 'admin', 
     'as' => 'admin.', 
-    // 'middleware' => 'admin'
+    'middleware' => ['auth']
 ], function () {
-    // includeRouteFiles(__DIR__.'/backend/');
+    // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::group([
         'prefix' => 'activities',
         'as' => 'activity.'
@@ -42,7 +37,11 @@ Route::group([
             //     ->push(__('Create Activity'), route('admin.activity.create'));
             // });
         Route::post('/', [BusinessActivityController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [BusinessActivityController::class, 'edit'])->name('edit');
         Route::get('/import', [BusinessActivityController::class, 'gimport']);
         Route::post('/import', [BusinessActivityController::class, 'import'])->name('import');
+    });
+    Route::group(['prefix' => 'filemanager'], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 });

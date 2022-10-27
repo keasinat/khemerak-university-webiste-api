@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use HasFactory, SoftDeletes;
-
+    protected $guarded = ['id'];
+    protected $dateFormat = 'Y-m-d';
     protected $table = 'categories';
 
     protected $fillable = [
@@ -19,5 +20,10 @@ class Category extends Model
         'name_km',
         'slug',
         'm_name_km',
+    ];
+
+    public $dates = [
+        'deleted_at',
+        'created_at'
     ];
 }

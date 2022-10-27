@@ -22,7 +22,7 @@ class CategoriesImport implements ToModel
             'code' => $row[2] ?? 0,
             'name_km' => $row[3],
             'slug' => $row[4],
-            'm_name_km' =>1
+            'm_name_km' => $row[5]
         ]);
     }
 }

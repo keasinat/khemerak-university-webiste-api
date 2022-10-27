@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,23 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request)
+    {
+        $credentail = $request->only('email', 'password');
+
+        if (Auth::attempt($credentail)) {
+            return redirect()->route('home');
+        }
+
+        return redirect('login')->with('error', 'Please recheck your Email Password');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 }

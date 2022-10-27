@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([
     'prefix' => 'activities',
+    'middleware' => ['cors'],
 ], function () {
     Route::get('/', [ActivityController::class, 'getList']);
 });
