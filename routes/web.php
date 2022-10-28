@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 use Tabuna\Breadcrumbs\Breadcrumbs;
 use App\Debc\BusinessActivity\Http\Controllers\BusinessActivityController;
+use App\Debc\Pages\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,16 @@ Route::group([
         Route::get('/import', [BusinessActivityController::class, 'gimport']);
         Route::post('/import', [BusinessActivityController::class, 'import'])->name('import');
     });
+
     Route::group(['prefix' => 'filemanager'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
+
+    Route::group([
+        'prefix' => 'pages',
+        'as' => 'page.'
+    ], function() {
+        Route::get('/', [PageController::class, 'index'])->name('index');
+        Route::get('create', [PageController::class, 'create'])->name('create');
     });
 });
