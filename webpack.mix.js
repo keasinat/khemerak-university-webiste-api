@@ -15,7 +15,7 @@ mix.copy('resources/js/adminlte.min.js', 'public/js')
     .postCss('resources/css/adminlte.css', 'public/css')
     .copy('resources/plugins/fontawesome-free', 'public/plugins/fontawesome-free')
     .copy('resources/plugins/fontawesome-free/css/all.min.css', 'public/plugins/fontawesome-free/css/all.min.css')
-    .copy('resources/images/logo-round.svg', 'public/images')
+    .copy('resources/images', 'public/images')
     .copy('resources/plugins', 'public/plugins')
     .sourceMaps();
 

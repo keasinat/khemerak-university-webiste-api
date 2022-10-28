@@ -12,7 +12,7 @@
     </x-slot>
     <x-slot name="body">
         <div class="table-responsive p-3">
-            <table class="table table-bordered" id="category">
+            <table class="table table-bordered table-striped" id="category">
                 <thead>
                     <tr>
                         <th>{{ __('dashboard.group') }}</th>
@@ -32,7 +32,6 @@
                             <td>{{ $item->code }}</td>
                             <td>{{ $item->name_km }}</td>
                             <td>{{ $item->m_name_km }}</td>
-                            <td>{{ $item->sub_group }}</td>
                             <td></td>
                         </tr>
                         @endforeach
@@ -42,7 +41,6 @@
 
                 </tbody>
             </table>
-            
         </div>
     </x-slot>
 </x-card>
@@ -53,14 +51,11 @@
     @include('layouts.partials.script-data-table')
     <script>
         $(function () {
-        //   $("#category").DataTable({
-        //     "responsive": true, "lengthChange": false, "autoWidth": false,
-        //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        //   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
           $('#category').DataTable({
             "paging": true,
             "lengthChange": false,
-            "searching": false,
+            "searching": true,
             "ordering": true,
             "info": true,
             "autoWidth": false,

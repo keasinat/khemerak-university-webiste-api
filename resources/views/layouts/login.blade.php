@@ -16,7 +16,9 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>ថ្នាលធុរកិច្ច</b></a>
+    <a href="/">
+      <img src="{{ asset('images/logo.svg') }}" alt="">
+    </a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -30,11 +32,10 @@
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+@stack('before-scripts')
+<script src="{{ mix('plugins/jquery/jquery.min.js') }}"></script>
+{{-- <script src="{{ mix('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> --}}
+<script src="{{ mix('js/adminlte.min.js') }}"></script>
+@stack('after-scripts')
 </body>
 </html>

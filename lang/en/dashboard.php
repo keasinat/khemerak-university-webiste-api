@@ -25,5 +25,6 @@ return [
     'class_no' => 'លេខកូដថ្នាក់',
     'subclass_no' => 'លេខកូដថ្នាក់រង',
     'ministry_fullname' => 'ឈ្មោះក្រសួងពេញ',
-    'ministry_shortname' => 'ឈ្មោះក្រសួងជាពាក្យកាត់(អង់គ្លេស)'
+    'ministry_shortname' => 'ឈ្មោះក្រសួងជាពាក្យកាត់(អង់គ្លេស)',
+    'logout' => 'ចាកចេញ'
 ];
