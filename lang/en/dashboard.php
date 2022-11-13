@@ -37,4 +37,11 @@ return [
     '' => '',
     '' => '',
     '' => '',
+    'title' => 'ចំណងជើង',
+    'meta_keyword' => 'Meta keyword',
+    'meta_description' => 'Meta description',
+    'thumbnail' => 'Thumbnail',
+    'post_date' => 'ថ្ងៃចេញ',
+    'status' => 'status',
+    'action' => 'Action'
 ];

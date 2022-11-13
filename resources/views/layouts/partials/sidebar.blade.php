@@ -35,8 +35,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item d-none">
-            <a href="../widgets.html" class="nav-link">
+          <li class="nav-item">
+            <a href="{{ route('admin.news.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'news.activity') == 0) ? 'active' : '' }}">
               <i class="nav-icon far fa-newspaper"></i>
               <p>
                 {{ __('dashboard.blog_management') }}
