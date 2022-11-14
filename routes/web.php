@@ -54,6 +54,7 @@ Route::group([
     ], function() {
         Route::get('/', [PageController::class, 'index'])->name('index');
         Route::get('create', [PageController::class, 'create'])->name('create');
+        Route::post('/', [PageController::class, 'store'])->name('store');
     });
     Route::group([
         'prefix' => 'news',

@@ -14,7 +14,9 @@ class PageController
      */
     public function index()
     {
-        return view('pages.index');
+        $pages = Page::get();
+
+        return view('pages.index',compact('pages'));
     }
 
     /**
@@ -35,7 +37,9 @@ class PageController
      */
     public function store(Request $request)
     {
-        //
+        Page::create($request->all());
+
+        return redirect()->route('admin.page.index');
     }
 
     /**
