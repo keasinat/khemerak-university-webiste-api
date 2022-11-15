@@ -63,5 +63,6 @@
 
 @stack('after-scripts')
 <script src="{{ mix('js/adminlte.min.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

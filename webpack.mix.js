@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.copy('resources/js/adminlte.min.js', 'public/js')
+    .js('resources/js/app.js', 'js/app.js')
     .postCss('resources/css/adminlte.css', 'public/css')
     .copy('resources/plugins/fontawesome-free', 'public/plugins/fontawesome-free')
     .copy('resources/plugins/fontawesome-free/css/all.min.css', 'public/plugins/fontawesome-free/css/all.min.css')

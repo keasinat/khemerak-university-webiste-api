@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ActivityController;
+use App\Http\Controllers\API\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group([
-    'prefix' => 'activities',
-    'middleware' => ['cors'],
+    'prefix' => 'activities'
 ], function () {
     Route::get('/', [ActivityController::class, 'getList']);
 });
 
+Route::group([
+    'prefix' => 'pages'
+], function () {
+    Route::get('/', [PageController::class, 'index']);
+});

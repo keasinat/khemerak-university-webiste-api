@@ -3,10 +3,10 @@
 @section('content')
     <x-card>
         <x-slot name="header">
-
+            {{ __('dashboard.page_management') }}
         </x-slot>
         <x-slot name="headerAction">
-
+            <a href="{{ route('admin.page.create') }}" class="btn btn-primary">{{ __('dashboard.create_new') }}</a>
         </x-slot>
         <x-slot name="body">
             <div class="table-responsive p-3">
@@ -14,9 +14,8 @@
                     <thead>
                         <tr>
                             <th>{{ __('dashboard.page_name') }}</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>{{ __('dashboard.status') }}</th>
+                            <th>{{ __('dashboard.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,9 +23,17 @@
                         @foreach($pages as $page)
                         <tr>
                             <td>{{ $page->title_km }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                @foreach (pulishedOpt() as $k => $item)
+                                    @if ($page->is_published == $k)
+                                        <span class="badge">{{ $item }}</span>
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td>
+                                <x-utils.edit-button :href="route('admin.page.edit',  $page)" />
+                                <x-utils.delete-button :href="route('admin.page.destroy', $page->id)" />
+                            </td>
                         </tr>
                         @endforeach
                         {{-- @else
