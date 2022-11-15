@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Debc\Pages\Models\Page;
 use App\Http\Resources\PageResource;
 
+
 class PageController extends Controller
 {
     public function index()
