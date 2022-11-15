@@ -5,6 +5,7 @@ use Tabuna\Breadcrumbs\Trail;
 use Tabuna\Breadcrumbs\Breadcrumbs;
 use App\Debc\BusinessActivity\Http\Controllers\BusinessActivityController;
 use App\Debc\Pages\Http\Controllers\PageController;
+use App\Debc\News\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Debc\Pages\Http\Controllers\PageController;
 |
 */
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group([
@@ -58,4 +59,16 @@ Route::group([
         Route::patch('/{id}', [PageController::class, 'update'])->name('update');
         Route::delete('{page}',  [PageController::class, 'destroy'])->name('destroy');
     });
+    Route::group([
+        'prefix' => 'news',
+        'as' => 'news.'
+    ], function () {
+        Route::get('/', [NewsController::class, 'index'])->name('index');
+        Route::get('create', [NewsController::class, 'create'])->name('create');
+        Route::post('/', [NewsController::class, 'store'])->name('store');
+        Route::delete('/{id}', [NewsController::class, 'destroy'])->name('destroy');
+        Route::get('/{id}', [NewsController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [NewsController::class, 'update'])->name('update');
+    });
 });
+
