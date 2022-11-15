@@ -9,7 +9,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="title_km" class="form-label">{{ __('dashboard.page_name') }}</label>
-                                <input type="text" name="title_km" id="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}">
+                                <input type="text" name="title_km" id="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') }}">
                                 @if($errors->has('title_km'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('title_km') }}
@@ -78,13 +78,7 @@
         var route_prefix = "/filemanager";
     </script>
     <script>
-        $('#content_en').ckeditor({
-        height: 500,
-        filebrowserImageBrowseUrl: route_prefix + '?type=Images',
-        filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
-        filebrowserBrowseUrl: route_prefix + '?type=Files',
-        filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
-        });
+
         $('#content_km').ckeditor({
         height: 500,
         filebrowserImageBrowseUrl: route_prefix + '?type=Images',

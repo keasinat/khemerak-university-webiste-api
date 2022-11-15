@@ -54,5 +54,8 @@ Route::group([
         Route::get('/', [PageController::class, 'index'])->name('index');
         Route::get('create', [PageController::class, 'create'])->name('create');
         Route::post('/', [PageController::class, 'store'])->name('store');
+        Route::get('edit/{page}',  [PageController::class, 'edit'])->name('edit');
+        Route::patch('/{id}', [PageController::class, 'update'])->name('update');
+        Route::delete('{page}',  [PageController::class, 'destroy'])->name('destroy');
     });
 });

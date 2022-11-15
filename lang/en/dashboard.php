@@ -35,6 +35,6 @@ return [
     'meta_keyword' => 'Meta Keyword',
     'meta_description' => 'Meta Description',
     'slug' => 'slug',
-    '' => '',
-    '' => '',
+    'action' => 'Action',
+    'save' => 'រក្សាទុក',
 ];
