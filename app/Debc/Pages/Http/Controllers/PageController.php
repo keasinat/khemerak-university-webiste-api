@@ -14,7 +14,9 @@ class PageController
      */
     public function index()
     {
-        return view('pages.index');
+        $pages = Page::get();
+
+        return view('pages.index',compact('pages'));
     }
 
     /**
@@ -35,7 +37,9 @@ class PageController
      */
     public function store(Request $request)
     {
-        //
+        Page::create($request->all());
+
+        return redirect()->route('admin.page.index');
     }
 
     /**
@@ -46,7 +50,7 @@ class PageController
      */
     public function edit(Page $page)
     {
-        //
+        return view('pages.edit')->withPage($page);
     }
 
     /**
@@ -56,9 +60,13 @@ class PageController
      * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(Request $request, $page)
     {
-        //
+        $p = Page::findOrFail($page);
+
+        $p->update( $request->except(['_token', '_method']) );
+
+        return redirect()->route('admin.page.index')->withFlashSuccess(__('The page was successfully updated.'));
     }
 
     /**
@@ -69,6 +77,9 @@ class PageController
      */
     public function destroy(Page $page)
     {
-        //
+        $page->delete();
+
+        return redirect()->route('admin.page.index')
+            ->withFlashSuccess(__('The page was successfully deleted.'));
     }
 }

@@ -43,5 +43,13 @@ return [
     'thumbnail' => 'Thumbnail',
     'post_date' => 'ថ្ងៃចេញ',
     'status' => 'status',
-    'action' => 'Action'
+    'action' => 'Action',
+    'page_name' => 'ឈ្មោះផេក',
+    'title' => 'ចំណងជើង',
+    'status' => 'ស្ថានភាព',
+    'meta_keyword' => 'Meta Keyword',
+    'meta_description' => 'Meta Description',
+    'slug' => 'slug',
+    'action' => 'Action',
+    'save' => 'រក្សាទុក',
 ];
