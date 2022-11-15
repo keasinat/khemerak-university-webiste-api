@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@push('before-styles')
+@include('layouts.partials.style-data-table')
+@endpush
 @section('content')
     <x-card>
         <x-slot name="header">
@@ -19,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @if(count($pages) > 0) --}}
+                        @if(count($pages) > 0)
                         @foreach($pages as $page)
                         <tr>
                             <td>{{ $page->title_km }}</td>
@@ -36,12 +38,29 @@
                             </td>
                         </tr>
                         @endforeach
-                        {{-- @else
+                        @else
                         No Data
-                        @endif --}}
+                        @endif
                     </tbody>
                 </table>
             </div>
         </x-slot>
     </x-card>
 @endsection
+@push('after-scripts')
+@include('layouts.partials.script-data-table')
+<script>
+    $(function () {
+
+      $('#pages').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
+@endpush

@@ -30,4 +30,5 @@ Route::group([
     'prefix' => 'pages'
 ], function () {
     Route::get('/', [PageController::class, 'index']);
+    Route::get('{param}', [PageController::class, 'show']);
 });

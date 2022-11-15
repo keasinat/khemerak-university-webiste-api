@@ -3,6 +3,12 @@
 @section('content')
     <x-forms.post :action="route('admin.page.store')">
         <x-card>
+            <x-slot name="header">
+                {{ __('dashboard.create_new') }}
+            </x-slot>
+            <x-slot name="headerAction">
+                <a href="{{ route('admin.page.index') }}" class="btn btn-primary">{{ __('dashboard.cancel') }}</a>
+            </x-slot>
             <x-slot name="body">
                 <div class="container">
                     <div class="row">
@@ -46,7 +52,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="" class="form-label">{{ __('dashboard.slug') }}</label>
-                                <input type="text" name="slug" id="slug" class="form-control" value="{{ old('slug') }}">
+                                <input type="text" name="slug" id="slug" class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" value="{{ old('slug') }}">
                                 @if($errors->has('slug'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('slug') }}
@@ -63,7 +69,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
                     </div>
                 </div>
             </x-slot>
@@ -90,9 +96,15 @@
     <script>
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
     </script>
-    <script>
-        $('#lfm').filemanager('image', {prefix: route_prefix});
-        $('#lfmkm').filemanager('image', {prefix: route_prefix});
-    </script>
 
+    <script>
+        // $('#title_km').change(function(e) {
+        //     $.get('', 
+        //         { 'title_en': $(this).val() }, 
+        //         function( data ) {
+        //         $('#slug').val(data.slug);
+        //         }
+        //     );
+        // });
+    </script>
 @endpush
