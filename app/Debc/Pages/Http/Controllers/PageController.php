@@ -4,6 +4,8 @@ namespace App\Debc\Pages\Http\Controllers;
 
 use App\Debc\Pages\Models\Page;
 use Illuminate\Http\Request;
+use App\Debc\Pages\Http\Requests\StorePageRequest;
+use App\Debc\Pages\Http\Requests\UpdatePageRequest;
 
 class PageController 
 {
@@ -35,7 +37,7 @@ class PageController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePageRequest $request)
     {
         Page::create($request->all());
 
