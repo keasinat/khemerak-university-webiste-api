@@ -6,6 +6,8 @@ use Tabuna\Breadcrumbs\Breadcrumbs;
 use App\Debc\BusinessActivity\Http\Controllers\BusinessActivityController;
 use App\Debc\Pages\Http\Controllers\PageController;
 use App\Debc\News\Http\Controllers\NewsController;
+use App\Debc\Document\Http\Controllers\DocumentController;
+use App\Debc\Document\Http\Controllers\DcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +20,8 @@ use App\Debc\News\Http\Controllers\NewsController;
 |
 */
 
-Auth::routes(['register' => true]);
-
+Auth::routes(['register' => false]);
+// Route::redirect('/', '/admin/dashboard', 301);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group([
     'prefix' => 'admin', 
@@ -70,5 +72,33 @@ Route::group([
         Route::get('/{id}', [NewsController::class, 'edit'])->name('edit');
         Route::put('/{id}', [NewsController::class, 'update'])->name('update');
     });
+
+    
+Route::group([
+    'prefix' => 'documents',
+    'as' => 'document.',
+    //'middleware' => 'permission:admin.access.document.list|admin.access.document.create|admin.access.document.edit|admin.access.document.destroy',
+], function() {
+    Route::get('/', [DocumentController::class, 'index'])
+    ->name('index');
+    Route::get('create', [DocumentController::class, 'create'])->name('create');
+    Route::post('/', [DocumentController::class, 'store'])->name('store');
+    Route::get('edit/{document}', [DocumentController::class, 'edit'])->name('edit');
+    Route::patch('/{document}', [DocumentController::class, 'update'])->name('update');
+    Route::delete('/{document}', [DocumentController::class, 'destroy'])->name('destroy');
+    Route::group([
+        'prefix' => 'categories',
+        'as' => 'category.'
+    ], function() {
+        Route::get('/', [DcategoryController::class, 'index'])->name('index');
+        Route::get('create', [DcategoryController::class, 'create'])->name('create');
+        Route::post('/', [DcategoryController::class, 'store'])->name('store');
+        Route::get('edit/{dcategory}', [DcategoryController::class, 'edit'])->name('edit');
+        Route::patch('/{dcategory}', [DcategoryController::class, 'update'])->name('update');
+        Route::delete('{dcategory}', [DcategoryController::class, 'destroy'])->name('destroy');
+    });
+
+});
+
 });
 

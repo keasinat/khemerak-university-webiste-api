@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ActivityController;
 use App\Http\Controllers\API\PageController;
-
+use App\Http\Controllers\API\DocumentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,4 +31,12 @@ Route::group([
 ], function () {
     Route::get('/', [PageController::class, 'index']);
     Route::get('{param}', [PageController::class, 'show']);
+});
+
+
+Route::group([
+    'prefix' => 'documents',
+], function() {
+    Route::get('/', [DocumentController::class, 'index']);
+    Route::get('category', [DocumentController::class, 'category']);
 });

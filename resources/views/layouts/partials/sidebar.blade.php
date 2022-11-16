@@ -66,6 +66,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                {{ __('dashboard.document_management') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.document.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{ __('dashboard.document_management') }}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.document.category.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{ __('dashboard.document_category') }}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-header">Media</li>
 
           <li class="nav-item">
