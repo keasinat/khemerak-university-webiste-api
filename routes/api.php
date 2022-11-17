@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ActivityController;
 use App\Http\Controllers\API\PageController;
 use App\Http\Controllers\API\DocumentController;
+use App\Http\Controllers\API\NewsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -39,4 +40,11 @@ Route::group([
 ], function() {
     Route::get('/', [DocumentController::class, 'index']);
     Route::get('category', [DocumentController::class, 'category']);
+});
+
+Route::group([
+    'prefix' => 'news'
+], function() {
+    Route::get('/', [NewsController::class, 'index']);
+    Route::get('{id}', [PageController::class, 'show']);
 });
