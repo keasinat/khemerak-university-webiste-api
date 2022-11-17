@@ -8,6 +8,7 @@ use App\Debc\Pages\Http\Controllers\PageController;
 use App\Debc\News\Http\Controllers\NewsController;
 use App\Debc\Document\Http\Controllers\DocumentController;
 use App\Debc\Document\Http\Controllers\DcategoryController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +22,14 @@ use App\Debc\Document\Http\Controllers\DcategoryController;
 */
 
 Auth::routes(['register' => false]);
-// Route::redirect('/', '/admin/dashboard', 301);
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::redirect('/', '/admin', 301);
+Route::get('/admin', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 Route::group([
     'prefix' => 'admin', 
     'as' => 'admin.', 
     'middleware' => ['auth']
 ], function () {
-    // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::group([
         'prefix' => 'activities',
         'as' => 'activity.'

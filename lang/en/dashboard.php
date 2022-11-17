@@ -51,4 +51,5 @@ return [
     'slug' => 'slug',
     'action' => 'ប្រតិបត្តិការ',
     'save' => 'រក្សាទុក',
+    'total_business_activity' => 'ចំនួនសរុបសកម្មភាពអាជីវកម្ម'
 ];

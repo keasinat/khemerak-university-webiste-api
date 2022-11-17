@@ -21,14 +21,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(count($pages) > 0)
+                        @if(isset($pages) )
                         @foreach($pages as $page)
                         <tr>
                             <td>{{ $page->title_km }}</td>
                             <td>
                                 @foreach (pulishedOpt() as $k => $item)
                                     @if ($page->is_published == $k)
-                                        <span class="badge">{{ $item }}</span>
+                                        <span class="badge {{ $k == 1 ? 'badge-success': 'badge-danger' }}">{{ $item }}</span>
                                     @endif
                                 @endforeach
                             </td>
@@ -38,8 +38,7 @@
                             </td>
                         </tr>
                         @endforeach
-                        @else
-                        No Data
+
                         @endif
                     </tbody>
                 </table>

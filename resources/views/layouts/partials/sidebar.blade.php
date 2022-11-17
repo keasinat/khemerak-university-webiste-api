@@ -10,7 +10,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">@if(Auth::check()) {{ Auth::user()->name }}  @endif</a>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-newspaper"></i>
+              <i class="nav-icon fas fa-briefcase"></i>
               <p>
                 {{ __('dashboard.business_management') }}
                 <i class="right fas fa-angle-left"></i>
@@ -68,7 +68,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-newspaper"></i>
+              <i class="nav-icon fas fa-file-pdf"></i>
               <p>
                 {{ __('dashboard.document_management') }}
                 <i class="right fas fa-angle-left"></i>
