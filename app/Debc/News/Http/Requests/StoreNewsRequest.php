@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Debc\News\Requests;
+namespace App\Debc\News\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Debc\News\Models\News;

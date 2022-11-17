@@ -3,7 +3,7 @@
 namespace App\Debc\News\Http\Controllers;
 
 use App\Debc\News\Models\News;
-use App\Debc\News\Requests\StoreNewsRequest;
+use App\Debc\News\Http\Requests\StoreNewsRequest;
 
 
 
@@ -14,6 +14,7 @@ class NewsController
     public function index()
     {
         $list = News::paginate(8);
+
         return view('news.index', compact('list'));
     }
     public function create()
@@ -28,13 +29,14 @@ class NewsController
     }
     public function destroy($id)
     {
-        News::find($id)-> delete();
+        News::find($id)->delete();
 
-        return redirect()->route('admin.news.index')->with('danger', 'The post was successfully deleted !');
+        return redirect()->route('admin.news.index')->with('success', 'The post was successfully deleted !');
     }
-    public function  edit(News $news, $id){
+    public function edit(News $news, $id){
         
         $news= News::where("id",$id)->first();
+        
         return view('news.edit', compact('news'));
     
     }
@@ -42,6 +44,6 @@ class NewsController
 
         News::where('id', $id)->update($request->except(['_token', '_method']));
 
-        return redirect()->route('admin.news.index')->with('updated', 'The post was successfully updated !');
+        return redirect()->route('admin.news.index')->with('success', 'The post was successfully updated !');
     }
 }

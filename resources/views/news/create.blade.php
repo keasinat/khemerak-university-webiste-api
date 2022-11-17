@@ -1,22 +1,15 @@
 @extends('layouts.app')
-
-@section('title', __('Create Activity'))
-
-@section('page-title', __('News') )
-
-@push('after-styles')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-@endpush
 @section('content')
 <x-forms.post :action="route('admin.news.store')">
     <x-card>
+        <x-slot name="header">
+            ព័ត៍មាន
+        </x-slot>
         <x-slot name="body">
             <div class="container">
                 <div class="row">
                 <div class="form-group col-sm-12">
-                    <label for="title" class="col-form-label">Title </label>
+                    <label for="title" class="col-form-label">{{__('dashboard.title')}} </label>
                     <input type="text" name="title" id="title" class="form-control " value="{{ old('title') }}" required>
                     @if($errors->has('title'))
                         <div class="invalid-feedback">
@@ -32,25 +25,25 @@
                                 <input type="text" name="meta_keyword" id="meta_keyword" class="form-control" value="" required>
                             </div>
                             <div class="form-group">
-                                <label for="meta_description" class="col-form-label">Meta Description </label>
-                                <input type="text" name="meta_description" id="meta_description" class="form-control" value="" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="description" class="col-form-label">Short Description </label>
                                 <textarea name="description" id="description" cols="30" rows="10" class="form-control" required></textarea>
                             </div>
                         </div>
-                        <!-- <div class="col-sm-6">
-                            <label for="" class="col-form-label">Select Thumbnail</label>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="meta_description" class="col-form-label">Meta Description </label>
+                                <input type="text" name="meta_description" id="meta_description" class="form-control" value="" required>
+                            </div>
+                            <label for="" class="col-form-label">{{__('dashboard.select_thumbnail')}}</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info input-group-text">
-                                    <i class="fa-solid fa-image"></i>
+                                    <i class="fa-solid fa fa-image"></i>
                                 </a>
                                 </div>
-                                <input id="thumbnail" class="form-control" type="text" name="en[thumbnail]" readonly="" value="">
+                                <input id="thumbnail" class="form-control" type="text" name="thumbnail" readonly="" value="">
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
@@ -83,10 +76,11 @@
 @endsection
 
 @push('after-scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+    <script>
+        var route_prefix = "/filemanager";
+    </script>
     <script>
         $( function() {
           $( "#post_date" ).datepicker({
@@ -100,5 +94,20 @@
             var year = date.getFullYear().toString().slice(2);
             return year + '-' + month + '-' + day;
         }
+    </script>
+    <script>
+        $('#content').ckeditor({
+        height: 500,
+        filebrowserImageBrowseUrl: route_prefix + '?type=Images',
+        filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
+        filebrowserBrowseUrl: route_prefix + '?type=Files',
+        filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
+        });
+    </script>
+    <script>
+        {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
+    </script>
+    <script>
+        $('#lfm').filemanager('image', {prefix: route_prefix});
     </script>
 @endpush
