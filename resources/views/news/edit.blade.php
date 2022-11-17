@@ -66,8 +66,9 @@
                             <div class="form-group col-sm-6">
                                 <label for="" class="col-form-label">Status</label>
                                 <select name="is_published" id="is_published" class="form-control">
-                                    <option value="0">Publish</option>
-                                    <option value="1">Save as draft</option>
+                                    @foreach (pulishedOpt() as $k => $item)
+                                        <option value="{{ $k }}" {{ $news->is_published == $k ? 'selected' : '' }}>{{ $item }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

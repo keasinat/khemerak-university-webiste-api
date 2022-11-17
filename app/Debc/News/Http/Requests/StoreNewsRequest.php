@@ -28,8 +28,6 @@ class StoreNewsRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'content' => 'required|string',
-            'title' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
             'meta_keyword' => 'string|nullable',
             'meta_description' => 'string|nullable',
             'slug' => 'required|string',

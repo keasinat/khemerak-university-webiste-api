@@ -10,15 +10,18 @@ use App\Http\Resources\NewsResource;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::whereNull('deleted_at')->get();
+        $paginate = $request->per_page ?? 9;
+
+        $news = News::whereNull('deleted_at')->paginate($paginate);
 
         return NewsResource::collection($news);
     }
-    public function show(Request $request)
+    
+    public function show($id)
     {
-        $news = Page::whereNull('deleted_at')
+        $news = News::whereNull('deleted_at')
         ->orWhere('id', $id)
         ->first();
 

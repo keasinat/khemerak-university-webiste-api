@@ -27,21 +27,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach ($list as $item)
+                        @foreach ($news as $article)
                         <tr>
-                            <td><img src="{{ asset($item->thumbnail) }}" width="70" height="50" /></td>
-                            <td>{{ Str::limit($item->title,60) }}</td>
-                            <td>{{ date('Y-m-d', strtotime($item->created_at)) }}</td>
+                            <td><img src="{{ asset($article->thumbnail) }}" width="70" height="50" /></td>
+                            <td>{{ Str::limit($article->title,60) }}</td>
+                            <td>{{ date('Y-m-d', strtotime($article->created_at)) }}</td>
                             <td>
-                                @if($item->is_published == 1)
-                                    <span class="badge badge-danger">Save to Draft</span>
-                                @else
-                                    <span class="badge badge-primary">Published</span>
+
+                                @foreach (pulishedOpt() as $k => $status)
+                                @if ($article->is_published == $k)
+                                <span class="badge {{ $k == 1 ? 'badge-success' : 'badge-danger' }}">{{ $status }}</span>
                                 @endif
+                                    
+                                @endforeach
                             </td>
                             <td >
-                                <x-utils.edit-button :href="route('admin.news.edit',  $item->id)" />
-                                <x-utils.delete-button :href="route('admin.news.destroy', $item->id)"/>
+                                <x-utils.edit-button :href="route('admin.news.edit',  $article->id)" />
+                                <x-utils.delete-button :href="route('admin.news.destroy', $article->id)"/>
                             </td>
                         </tr>
                         @endforeach

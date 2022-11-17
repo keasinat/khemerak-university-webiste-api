@@ -46,5 +46,5 @@ Route::group([
     'prefix' => 'news'
 ], function() {
     Route::get('/', [NewsController::class, 'index']);
-    Route::get('{id}', [PageController::class, 'show']);
+    Route::get('{id}', [NewsController::class, 'show']);
 });
