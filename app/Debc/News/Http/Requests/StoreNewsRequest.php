@@ -30,10 +30,11 @@ class StoreNewsRequest extends FormRequest
             'content' => 'required|string',
             'title' => 'required|string|max:255',
             'title' => 'required|string|max:255',
-            'meta_keyword' => 'required|string|max:255',
-            'meta_description' => 'required|string|max:255',
+            'meta_keyword' => 'string|nullable',
+            'meta_description' => 'string|nullable',
             'slug' => 'required|string',
             'is_published' => 'boolean|required',
+            'post_date' => 'timestamps|nullable'
         ];
     }
 }

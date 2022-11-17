@@ -14,14 +14,12 @@ class News extends Model
     protected $fillable = [
         'id',
         'slug',
-        'new_id',
         'thumbnail',
         'title',
         'description',
         'content',
         'meta_keyword',
         'meta_description',
-        'post_date',
         'is_published'
     ];
 
