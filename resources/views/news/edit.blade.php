@@ -111,7 +111,7 @@
     </script>
 
     <script>
-        $('#content').ckeditor({
+        $('#content_km').ckeditor({
         height: 500,
         filebrowserImageBrowseUrl: route_prefix + '?type=Images',
         filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
