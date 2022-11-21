@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Debc\News\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class UpdateNewsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class UpdateNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'thumbnail' => 'string|nullable',
+            'title_km' => 'required|string|max:255',
+            'description_km' => 'required|string',
+            'content_km' => 'required|string',
+            'meta_keyword' => 'string|nullable',
+            'meta_description' => 'string|nullable',
+            'slug' => 'string',
+            'is_published' => 'boolean|required',
         ];
     }
 }

@@ -70,8 +70,8 @@ Route::group([
         Route::get('create', [NewsController::class, 'create'])->name('create');
         Route::post('/', [NewsController::class, 'store'])->name('store');
         Route::delete('/{id}', [NewsController::class, 'destroy'])->name('destroy');
-        Route::get('/{id}', [NewsController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [NewsController::class, 'update'])->name('update');
+        Route::get('edit/{news}', [NewsController::class, 'edit'])->name('edit');
+        Route::patch('/{news}', [NewsController::class, 'update'])->name('update');
     });
 
     

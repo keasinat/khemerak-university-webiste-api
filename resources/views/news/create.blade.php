@@ -9,11 +9,11 @@
             <div class="container">
                 <div class="row">
                 <div class="form-group col-sm-12">
-                    <label for="title" class="col-form-label">{{__('dashboard.title')}} </label>
-                    <input type="text" name="title" id="title" class="form-control " value="{{ old('title') }}" required>
-                    @if($errors->has('title'))
+                    <label for="title_km" class="col-form-label">{{__('dashboard.title')}} </label>
+                    <input type="text" name="title_km" id="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }} " value="{{ old('title_km') }}">
+                    @if($errors->has('title_km'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('title') }}
+                            {{ $errors->first('title_km') }}
                         </div>
                     @endif
                 </div>
@@ -22,38 +22,63 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="meta_keyword" class="col-form-label">Meta Keyword </label>
-                                <input type="text" name="meta_keyword" id="meta_keyword" class="form-control" value="" required>
+                                <textarea name="meta_keyword" id="meta_keyword" cols="30" rows="10" class="form-control {{ $errors->has('meta_keyword') ? 'is-invalid' : '' }} ">{{ old('meta_keyword') }}</textarea>
+                                @if($errors->has('meta_keyword'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('meta_keyword') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label for="description" class="col-form-label">Short Description </label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="form-control" required></textarea>
+                                <label for="description_km" class="col-form-label">Short Description </label>
+                                <textarea name="description_km" id="description_km" cols="30" rows="10" class="form-control {{ $errors->has('description_km') ? 'is-invalid' : '' }}">{{ old('description_km') }}</textarea>
+                                @if($errors->has('description_km'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('description_km') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="meta_description" class="col-form-label">Meta Description </label>
-                                <input type="text" name="meta_description" id="meta_description" class="form-control" value="" required>
+                                <label for="meta_description" class="form-label">Meta Description </label>
+                                <textarea name="meta_description" id="meta_description" cols="30" rows="10" class="form-control {{ $errors->has('meta_description') ? 'is-invalid' : '' }}">{{ old('meta_description') }}</textarea>
+                                @if($errors->has('meta_description'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('meta_description') }}
+                                    </div>
+                                @endif
                             </div>
-                            <label for="" class="col-form-label">{{__('dashboard.select_thumbnail')}}</label>
+                            <label for="" class="form-label">{{__('dashboard.select_thumbnail')}}</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info input-group-text">
                                     <i class="fa-solid fa fa-image"></i>
                                 </a>
                                 </div>
-                                <input id="thumbnail" class="form-control" type="text" name="thumbnail" readonly="" value="">
+                                <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" readonly="" value="{{ old('thumbnail') }}">
+                                @if($errors->has('thumbnail'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('thumbnail') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
-                            <textarea name="content" id="content" cols="50" rows="10" class="form-control" required>{{ old('content') }}</textarea>
+                            <textarea name="content_km" id="content" cols="50" rows="10" class="form-control {{ $errors->has('content_km') ? 'is-invalid' : '' }}">{{ old('content_km') }}</textarea>
+                            @if($errors->has('content_km'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('content_km') }}
+                            </div>
+                        @endif
                         </div>
                     </div>
                     <div class="row">
                             <div class="form-group col-sm-6">
                                 <label for="slug" class="col-form-label">@lang('Slug')</label>
-                                <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}" required>
+                                <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}" >
                                 @if($errors->has('slug'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('slug') }}
@@ -69,7 +94,7 @@
                                 </select>
                             </div>
                         </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
             </div>
         </x-slot>
     </x-card>
@@ -82,20 +107,7 @@
     <script>
         var route_prefix = "/filemanager";
     </script>
-    <script>
-        $( function() {
-          $( "#post_date" ).datepicker({
-            dateFormat: 'yy-mm-d',
-            minDate: getFormattedDate(new Date())
-          }).datepicker("setDate",'now');
-        } );
-        function getFormattedDate(date) {
-            var day = date.getDate();
-            var month = date.getMonth() + 1;
-            var year = date.getFullYear().toString().slice(2);
-            return year + '-' + month + '-' + day;
-        }
-    </script>
+
     <script>
         $('#content').ckeditor({
         height: 500,

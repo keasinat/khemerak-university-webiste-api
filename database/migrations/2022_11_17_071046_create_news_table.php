@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('thumbnail')->nullable();
             $table->string('slug')->unique();
-            $table->string('title');
-            $table->string('description');
-            $table->longText('content')->nullable();
+            $table->string('title_km');
+            $table->string('description_km');
+            $table->longText('content_km')->nullable();
             $table->text('meta_keyword')->nullable();
             $table->text('meta_description')->nullable();
             $table->boolean('is_published');

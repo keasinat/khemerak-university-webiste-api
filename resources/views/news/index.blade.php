@@ -30,7 +30,7 @@
                         @foreach ($news as $article)
                         <tr>
                             <td><img src="{{ asset($article->thumbnail) }}" width="70" height="50" /></td>
-                            <td>{{ Str::limit($article->title,60) }}</td>
+                            <td>{{ Str::limit($article->title_km,60) }}</td>
                             <td>{{ date('Y-m-d', strtotime($article->created_at)) }}</td>
                             <td>
 

@@ -25,14 +25,14 @@ class StoreNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'content' => 'required|string',
+            'thumbnail' => 'string|nullable',
+            'title_km' => 'required|string|max:255',
+            'description_km' => 'required|string',
+            'content_km' => 'required|string',
             'meta_keyword' => 'string|nullable',
             'meta_description' => 'string|nullable',
             'slug' => 'required|string',
             'is_published' => 'boolean|required',
-            'post_date' => 'timestamps|nullable'
         ];
     }
 }
