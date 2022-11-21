@@ -17,9 +17,9 @@ class News extends Model
         'id',
         'slug',
         'thumbnail',
-        'title',
-        'description',
-        'content',
+        'title_km',
+        'description_km',
+        'content_km',
         'meta_keyword',
         'meta_description',
         'is_published'

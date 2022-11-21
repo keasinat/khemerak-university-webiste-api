@@ -48,8 +48,6 @@ class NewsController
     }
     public function update(StoreNewsRequest $request, $id )
     {
-
-        // News::where('id', $id)->update($request->except(['_token', '_method']));
         $news = News::findorFail($id);
         $news->update($request->except(['_token', '_method']));
 

@@ -10,7 +10,7 @@
                 <div class="row">
                 <div class="form-group col-sm-12">
                     <label for="title" class="col-form-label">{{__('dashboard.title')}} </label>
-                    <input type="text" name="title" id="title" class="form-control " value="{{ old('title') }}" required>
+                    <input type="text" name="title_km" id="title_km" class="form-control " value="{{ old('title') }}" required>
                     @if($errors->has('title'))
                         <div class="invalid-feedback">
                             {{ $errors->first('title') }}
@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description" class="col-form-label">Short Description </label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="form-control" required></textarea>
+                                <textarea name="description_km" id="description_km" cols="30" rows="10" class="form-control" required></textarea>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
-                            <textarea name="content" id="content" cols="50" rows="10" class="form-control" required>{{ old('content') }}</textarea>
+                            <textarea name="content_km" id="content_km" cols="50" rows="10" class="form-control" required>{{ old('content') }}</textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -69,7 +69,7 @@
                                 </select>
                             </div>
                         </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
             </div>
         </x-slot>
     </x-card>
@@ -83,21 +83,7 @@
         var route_prefix = "/filemanager";
     </script>
     <script>
-        $( function() {
-          $( "#post_date" ).datepicker({
-            dateFormat: 'yy-mm-d',
-            minDate: getFormattedDate(new Date())
-          }).datepicker("setDate",'now');
-        } );
-        function getFormattedDate(date) {
-            var day = date.getDate();
-            var month = date.getMonth() + 1;
-            var year = date.getFullYear().toString().slice(2);
-            return year + '-' + month + '-' + day;
-        }
-    </script>
-    <script>
-        $('#content').ckeditor({
+        $('#content_km').ckeditor({
         height: 500,
         filebrowserImageBrowseUrl: route_prefix + '?type=Images',
         filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
