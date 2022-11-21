@@ -10,7 +10,7 @@
                 <div class="row">
                 <div class="form-group col-sm-12">
                     <label for="title" class="col-form-label">{{__('dashboard.title')}} </label>
-                    <input type="text" name="title_km" id="title_km" class="form-control " value="{{ old('title') }}" required>
+                    <input type="text" name="title_km" id="title_km" class="form-control " value="{{ old('title_km') }}" required>
                     @if($errors->has('title'))
                         <div class="invalid-feedback">
                             {{ $errors->first('title') }}
@@ -22,17 +22,17 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="meta_keyword" class="col-form-label">Meta Keyword </label>
-                                <input type="text" name="meta_keyword" id="meta_keyword" class="form-control" value="" required>
+                                <input type="text" name="meta_keyword" id="meta_keyword" class="form-control" value="{{ old('meta_keyword') }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="description" class="col-form-label">Short Description </label>
-                                <textarea name="description_km" id="description_km" cols="30" rows="10" class="form-control" required></textarea>
+                                <textarea name="description_km" id="description_km" cols="30" rows="10" class="form-control" value="" required>{{ old('description_km') }}</textarea>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="meta_description" class="col-form-label">Meta Description </label>
-                                <input type="text" name="meta_description" id="meta_description" class="form-control" value="" required>
+                                <input type="text" name="meta_description" id="meta_description" class="form-control" value="{{ old('meta_description') }}" required>
                             </div>
                             <label for="" class="col-form-label">{{__('dashboard.select_thumbnail')}}</label>
                             <div class="input-group">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
-                            <textarea name="content_km" id="content_km" cols="50" rows="10" class="form-control" required>{{ old('content') }}</textarea>
+                            <textarea name="content_km" id="content_km" cols="50" rows="10" class="form-control" required="required" >{{ old('content_km') }}</textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -84,11 +84,11 @@
     </script>
     <script>
         $('#content_km').ckeditor({
-        height: 500,
-        filebrowserImageBrowseUrl: route_prefix + '?type=Images',
-        filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
-        filebrowserBrowseUrl: route_prefix + '?type=Files',
-        filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
+            height: 500,
+            filebrowserImageBrowseUrl: route_prefix + '?type=Images',
+            filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: route_prefix + '?type=Files',
+            filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
         });
     </script>
     <script>

@@ -30,18 +30,16 @@
                         @foreach ($news as $article)
                         <tr>
                             <td><img src="{{ asset($article->thumbnail) }}" width="70" height="50" /></td>
-                            <td>{{ Str::limit($article->title,60) }}</td>
+                            <td>{{ Str::limit($article->title_km,60) }}</td>
                             <td>{{ date('Y-m-d', strtotime($article->created_at)) }}</td>
                             <td>
-
                                 @foreach (pulishedOpt() as $k => $status)
-                                @if ($article->is_published == $k)
-                                <span class="badge {{ $k == 1 ? 'badge-success' : 'badge-danger' }}">{{ $status }}</span>
-                                @endif
-                                    
+                                    @if ($article->is_published == $k)
+                                    <span class="badge {{ $k == 1 ? 'badge-success' : 'badge-danger' }}">{{ $status }}</span>
+                                    @endif
                                 @endforeach
                             </td>
-                            <td >
+                            <td>
                                 <x-utils.edit-button :href="route('admin.news.edit',  $article->id)" />
                                 <x-utils.delete-button :href="route('admin.news.destroy', $article->id)"/>
                             </td>

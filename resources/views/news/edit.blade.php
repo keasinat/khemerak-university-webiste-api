@@ -18,7 +18,7 @@
                 <div class="row">
                 <div class="form-group col-sm-12">
                     <label for="title" class="col-form-label">{{ __('dashboard.title') }} </label>
-                    <input type="text" name="title_km" id="title_km" class="form-control " value="{{$news->title}}" required>
+                    <input type="text" name="title_km" id="title_km" class="form-control " value="{{$news->title_km}}" required>
                     @if($errors->has('title'))
                         <div class="invalid-feedback">
                             {{ $errors->first('title') }}
@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description" class="col-form-label">Short Description </label>
-                                <textarea name="description_km" id="description_km" cols="30" rows="10" class="form-control" required>{{$news->description}}</textarea>
+                                <textarea name="description_km" id="description_km" cols="30" rows="10" class="form-control" required>{{$news->description_km}}</textarea>
                             </div>
                         </div>
                         <div class="col-sm-6">
