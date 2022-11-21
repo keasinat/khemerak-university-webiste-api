@@ -3,45 +3,53 @@
 namespace App\Debc\News\Http\Controllers;
 
 use App\Debc\News\Models\News;
-use App\Debc\News\Requests\StoreNewsRequest;
-
-
+use App\Debc\News\Http\Requests\StoreNewsRequest;
+use App\Debc\News\Http\Requests\UpdateNewsRequest;
 
 use Illuminate\Http\Request;
 
 class NewsController 
 {
+
     public function index()
     {
-        $list = News::paginate(8);
-        return view('news.index', compact('list'));
+        $news = News::whereNull('deleted_at')->orderBy('id', 'DESC')->get();
+
+        return view('news.index', compact('news'));
     }
+
     public function create()
     {
         return view('news.create');
     }
+
     public function store(StoreNewsRequest $request)
     {
+        // dd($request->all());
         News::create($request->all());
         
         return redirect()->route('admin.news.index')->with('success', 'The post was successfully created.');
     }
+
     public function destroy($id)
     {
-        News::find($id)-> delete();
+        News::find($id)->delete();
 
-        return redirect()->route('admin.news.index')->with('danger', 'The post was successfully deleted !');
+        return redirect()->route('admin.news.index')->with('success', 'The post was successfully deleted !');
     }
-    public function  edit(News $news, $id){
+
+    public function edit(News $news){
         
-        $news= News::where("id",$id)->first();
-        return view('news.edit', compact('news'));
+        return view('news.edit')->withNews($news);
     
     }
-    public function update(StoreNewsRequest $request, $id ){
 
-        News::where('id', $id)->update($request->except(['_token', '_method']));
+    public function update(UpdateNewsRequest $request, $news )
+    {
 
-        return redirect()->route('admin.news.index')->with('updated', 'The post was successfully updated !');
+        $news = News::findorFail($news);
+        $news->update($request->except(['_token', '_method']));
+
+        return redirect()->route('admin.news.index')->with('success', 'The post was successfully updated !');
     }
 }

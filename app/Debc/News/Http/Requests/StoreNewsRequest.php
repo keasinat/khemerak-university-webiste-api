@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Debc\News\Requests;
+namespace App\Debc\News\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Debc\News\Models\News;
@@ -25,13 +25,12 @@ class StoreNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'content' => 'required|string',
-            'title' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-            'meta_keyword' => 'required|string|max:255',
-            'meta_description' => 'required|string|max:255',
+            'thumbnail' => 'string|nullable',
+            'title_km' => 'required|string|max:255',
+            'description_km' => 'required|string',
+            'content_km' => 'required|string',
+            'meta_keyword' => 'string|nullable',
+            'meta_description' => 'string|nullable',
             'slug' => 'required|string',
             'is_published' => 'boolean|required',
         ];

@@ -4,23 +4,24 @@ namespace App\Debc\News\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d';
 
     protected $fillable = [
         'id',
         'slug',
-        'new_id',
-        'title',
-        'description',
-        'content',
+        'thumbnail',
+        'title_km',
+        'description_km',
+        'content_km',
         'meta_keyword',
         'meta_description',
-        'post_date',
         'is_published'
     ];
 
