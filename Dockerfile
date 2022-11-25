@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install pgsql \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd 
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install xml
 
 RUN apt-get update && apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
