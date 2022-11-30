@@ -80,4 +80,14 @@ class DocumentController extends Controller
 
         return DcategoryResource::collection($categories);
     }
+
+    public function categorySlug($slug)
+    {
+        $category = Dcategory::with('documents')
+                    ->has('documents')
+                    ->where('slug', $slug)
+                    ->paginate();
+
+        return DcategoryResource::collection($category);
+    }
 }
