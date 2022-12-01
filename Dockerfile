@@ -77,12 +77,12 @@ USER www
 #RUN  chown -R www:www bootstrap/cache
 
 RUN chmod 755 public
-RUN chmod 755 storage
+RUN chmod 777 storage
 RUN chmod 755 bootstrap/cache
 #RUN chown -R www:www public
 #RUN chown -R www:www storage
 #RUN chown -R www:www /var/www
-RUN chmod -R 755 /var/www/storage
+RUN chmod -R 777 /var/www/storage
 RUN chmod -R 755 /var/www/storage/logs
 RUN chmod -R 755 /var/www/storage/logs/laravel.log
 #RUN chown -R www:www bootstrap/cache
