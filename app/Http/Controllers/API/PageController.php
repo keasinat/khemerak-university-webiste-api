@@ -12,7 +12,9 @@ class PageController extends Controller
 {
     public function index()
     {
-        $pages = Page::whereNull('deleted_at')->get();
+        $pages = Page::whereNull('deleted_at')
+                ->where('is_published', 1)
+                ->get();
 
         return PageResource::collection($pages);
     }
@@ -20,10 +22,11 @@ class PageController extends Controller
     public function show($param)
     {
         $page = Page::whereNull('deleted_at')
+                    ->where('is_published', 1)
                     ->orWhere('id', $param)
                     ->orWhere('slug', $param)
                     ->first();
 
-        return $page;
+        return new PageResource($page);
     }
 }
