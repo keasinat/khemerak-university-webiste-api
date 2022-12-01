@@ -23,8 +23,7 @@ class DocumentController extends Controller
 
         if ($request->has('keyword') && !empty($keyword)) {
             $document = $document->whereNull('deleted_at')
-                ->where('title_en', 'LIKE', '%'. $keyword .'%')  
-                ->orWhere('title_km', 'LIKE', '%'. $keyword .'%')    
+                ->where('title_km', 'LIKE', '%'. $keyword .'%')    
                 ->paginate($paginate);
 
             return DocumentResource::collection($document);
@@ -33,8 +32,7 @@ class DocumentController extends Controller
         if ($request->has('category')  && !empty($category)) {
             $categories = $categories::with('documents')
                 ->whereNull('deleted_at')
-                ->where('title_en', 'LIKE', '%'. $category .'%')  
-                ->orWhere('title_km', 'LIKE', '%'. $category .'%')
+                ->where('title_km', 'LIKE', '%'. $category .'%')
                 ->paginate($paginate);
             
             return DocumentResource::collection($categories);
@@ -58,8 +56,7 @@ class DocumentController extends Controller
 
         if ($request->has('keyword') && !empty($keyword)) {
             $categories = $categories->whereNull('deleted_at')
-                ->where('title_en', 'LIKE', '%'. $keyword .'%')  
-                ->orWhere('title_km', 'LIKE', '%'. $keyword .'%')    
+                ->where('title_km', 'LIKE', '%'. $keyword .'%')    
                 ->paginate($paginate);
 
             return DocumentResource::collection($document);
@@ -68,8 +65,7 @@ class DocumentController extends Controller
         if ($request->has('category')  && !empty($category)) {
             $categories = $categories::with('documents')->has('documents')
                 ->whereNull('deleted_at')
-                ->where('title_en', 'LIKE', '%'. $category .'%')  
-                ->orWhere('title_km', 'LIKE', '%'. $category .'%')
+                ->where('title_km', 'LIKE', '%'. $category .'%')
                 ->paginate($paginate);
             
             return DocumentResource::collection($categories);
