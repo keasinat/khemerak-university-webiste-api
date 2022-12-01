@@ -14,7 +14,7 @@ class NewsController extends Controller
     {
         $paginate = $request->per_page ?? 9;
 
-        $news = News::whereNull('deleted_at')->paginate($paginate);
+        $news = News::whereNull('deleted_at')->where('is_published', 1)->paginate($paginate);
 
         return NewsResource::collection($news);
     }
@@ -22,9 +22,10 @@ class NewsController extends Controller
     public function show($id)
     {
         $news = News::whereNull('deleted_at')
-        ->orWhere('id', $id)
-        ->first();
+            ->where('is_published', 1)
+            ->where('id', $id)
+            ->first();
 
-        return $news;
+        return new NewsResource($news);
     }
 }
