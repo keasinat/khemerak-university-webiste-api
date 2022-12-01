@@ -77,7 +77,6 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('admin.document.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
-                  .
                   <i class="far fa-circle nav-icon"></i>
                   <p>{{ __('dashboard.document_management') }}</p>
                 </a>
