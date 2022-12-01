@@ -20,7 +20,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('home') }}" class="nav-link">
+            <a href="{{ route('home') }}" class="nav-link {{ (request()->is('admin')) ? 'active' : '' }}">  
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 {{ __('dashboard.dashboard') }}
@@ -28,7 +28,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.page.index') }}" class="nav-link">
+            <a href="{{ route('admin.page.index') }}"  class="nav-link {{ (strpos(Route::currentRouteName(),  'page') == 0) ? '' : 'active ' }}">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 {{ __('dashboard.page_management') }}
@@ -36,7 +36,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.news.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'news.activity') == 0) ? 'active' : '' }}">
+            <a href="{{ route('admin.news.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'news') == 0) ? '' : 'active ' }}">
               <i class="nav-icon far fa-newspaper"></i>
               <p>
                 {{ __('dashboard.blog_management') }}
@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.activity.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'activity') == 0) ? '' : 'active ' }}">
               <i class="nav-icon fas fa-briefcase"></i>
               <p>
                 {{ __('dashboard.business_management') }}
@@ -53,7 +53,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('admin.activity.index') }}" class="nav-link">
+                <a href="{{ route('admin.activity.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'activity') == 0) ? '' : 'active ' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>{{ __('dashboard.activity_list') }}</p>
                 </a>
@@ -67,7 +67,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.document.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
               <i class="nav-icon fas fa-file-pdf"></i>
               <p>
                 {{ __('dashboard.document_management') }}
@@ -76,7 +76,8 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('admin.document.index') }}" class="nav-link">
+                <a href="{{ route('admin.document.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
+                  .
                   <i class="far fa-circle nav-icon"></i>
                   <p>{{ __('dashboard.document_management') }}</p>
                 </a>
