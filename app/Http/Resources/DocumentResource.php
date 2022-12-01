@@ -14,6 +14,13 @@ class DocumentResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'thumbnail' => $this->thumbnail,
+            'file' => $this->file,
+            'title_km' => $this->title_km,
+            'category_name' => $this->dcategory->title_km,
+            'created_at' => $this->created_at->format('Y-m-d'),
+        ];
     }
 }

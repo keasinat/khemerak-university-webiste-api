@@ -14,6 +14,12 @@ class DcategoryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'slug' => $this->slug,
+            'title_km' => $this->title_km,
+            'created_at' => $this->created_at->format('Y-m-d'),
+            'documents' => $this->documents
+        ];
     }
 }
