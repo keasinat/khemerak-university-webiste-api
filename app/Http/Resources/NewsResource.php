@@ -12,8 +12,18 @@ class NewsResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray($request)
+    public function toArray($request) 
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            "thumbnail" => $this->thumbnail,
+            "slug" => $this->slug,
+            "title_km"  => $this->title_km,
+            "description_km"  => $this->description_km,
+            "content_km"  => $this->content_km,
+            "meta_keyword"  => $this->meta_keyword,
+            "meta_description"  => $this->meta_description,
+            "created_at"  => $this->created_at,
+        ];
     }
 }
