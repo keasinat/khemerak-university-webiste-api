@@ -22,9 +22,10 @@ class NewsController extends Controller
     public function show($id)
     {
         $news = News::whereNull('deleted_at')
-        ->orWhere('id', $id)
-        ->first();
+            ->where('is_published', 1)
+            ->where('id', $id)
+            ->first();
 
-        return $news;
+        return new NewsResource($news);
     }
 }
