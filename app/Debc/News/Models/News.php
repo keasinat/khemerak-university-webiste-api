@@ -4,11 +4,12 @@ namespace App\Debc\News\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,Sluggable, SoftDeletes;
 
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d';
@@ -24,6 +25,14 @@ class News extends Model
         'meta_description',
         'is_published'
     ];
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => ['en'=> ['title_km']]
+            ]
+        ];
+    }
 
     public $dates = [
         'deleted_at',

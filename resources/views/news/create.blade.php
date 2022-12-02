@@ -5,6 +5,9 @@
         <x-slot name="header">
             ព័ត៍មាន
         </x-slot>
+        <x-slot name="headerAction">
+                <a href="{{ route('admin.news.index') }}" class="btn btn-primary">{{ __('dashboard.cancel') }}</a>
+            </x-slot>
         <x-slot name="body">
             <div class="container">
                 <div class="row">
@@ -102,25 +105,34 @@
 @endsection
 
 @push('after-scripts')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
-    <script>
-        var route_prefix = "/filemanager";
-    </script>
-
-    <script>
-        $('#content').ckeditor({
-        height: 500,
-        filebrowserImageBrowseUrl: route_prefix + '?type=Images',
-        filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
-        filebrowserBrowseUrl: route_prefix + '?type=Files',
-        filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
-        });
-    </script>
-    <script>
-        {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
-    </script>
-    <script>
-        $('#lfm').filemanager('image', {prefix: route_prefix});
-    </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+        <script>
+            var route_prefix = "/filemanager";
+        </script>
+        <script>
+            $('#content').ckeditor({
+            height: 500,
+            filebrowserImageBrowseUrl: route_prefix + '?type=Images',
+            filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: route_prefix + '?type=Files',
+            filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
+            });
+        </script>
+        <script>
+            {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
+        </script>
+        <script>
+            $('#lfm').filemanager('image', {prefix: route_prefix});
+        </script>
+        <script>
+                $('#title_km').change(function(e) {
+                $.get('{{ route('admin.news.check_slug') }}', 
+                    { 'title_km': $(this).val() }, 
+                    function( data ) {
+                    $('#slug').val(data.slug);
+                    }
+                );
+                });
+        </script>
 @endpush

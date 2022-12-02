@@ -5,6 +5,7 @@ namespace App\Debc\News\Http\Controllers;
 use App\Debc\News\Models\News;
 use App\Debc\News\Http\Requests\StoreNewsRequest;
 use App\Debc\News\Http\Requests\UpdateNewsRequest;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 use Illuminate\Http\Request;
 
@@ -51,5 +52,14 @@ class NewsController
         $news->update($request->except(['_token', '_method']));
 
         return redirect()->route('admin.news.index')->with('success', 'The post was successfully updated !');
+    }
+    public function check_slug(Request $request)
+    {   
+        $slug= '';
+        if(!empty($request->title_km)) {
+            $slug = SlugService::createSlug(News::class, 'slug', $request->title_km);
+        }
+
+        return response()->json(['slug' => $slug]);
     }
 }
