@@ -63,6 +63,7 @@ Route::group([
         Route::patch('/{id}', [PageController::class, 'update'])->name('update');
         Route::delete('{page}',  [PageController::class, 'destroy'])->name('destroy');
     });
+
     Route::group([
         'prefix' => 'news',
         'as' => 'news.'
@@ -73,6 +74,7 @@ Route::group([
         Route::delete('/{id}', [NewsController::class, 'destroy'])->name('destroy');
         Route::get('edit/{news}', [NewsController::class, 'edit'])->name('edit');
         Route::patch('/{news}', [NewsController::class, 'update'])->name('update');
+        Route::get('/check_slug', [NewsController::class, 'check_slug'])->name('check_slug');
     });
 
     
