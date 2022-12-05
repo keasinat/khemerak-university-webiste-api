@@ -6,6 +6,7 @@ use App\Http\Controllers\API\ActivityController;
 use App\Http\Controllers\API\PageController;
 use App\Http\Controllers\API\DocumentController;
 use App\Http\Controllers\API\NewsController;
+use App\Http\Controllers\API\SearchController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,10 +29,11 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'pages'
+    'prefix' => 'pages',
+    'as' => 'page.'
 ], function () {
     Route::get('/', [PageController::class, 'index']);
-    Route::get('{param}', [PageController::class, 'show']);
+    Route::get('{param}', [PageController::class, 'show'])->name('show');
 });
 
 
@@ -47,5 +49,10 @@ Route::group([
     'prefix' => 'news'
 ], function() {
     Route::get('/', [NewsController::class, 'index']);
-    Route::get('{id}', [NewsController::class, 'show']);
+    Route::get('{id}', [NewsController::class, 'show'])->name('news.show');
+});
+Route::group([
+    'prefix' => 'search'
+], function() {
+    Route::get('/', [SearchController::class, 'search']);
 });

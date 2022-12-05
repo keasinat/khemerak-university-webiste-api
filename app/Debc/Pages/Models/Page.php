@@ -5,8 +5,10 @@ namespace App\Debc\Pages\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Page extends Model
+class Page extends Model implements Searchable
 {
     use HasFactory, SoftDeletes;
 
@@ -24,4 +26,15 @@ class Page extends Model
         'deleted_at',
         'created_at'
     ];
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('page.show', $this->id);
+        return new \Spatie\Searchable\SearchResult(
+            $this,
+            $this->title_km,
+            $this->content_km,
+            $url
+        );
+    }
 }
