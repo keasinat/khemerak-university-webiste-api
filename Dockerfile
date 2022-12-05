@@ -83,8 +83,8 @@ USER www
 #RUN chown -R www:www storage
 #RUN chown -R www:www /var/www
 RUN chmod -R 777 /var/www/storage
-RUN chmod -R 777 /var/www/storage/logs
-RUN chmod -R 777 /var/www/storage/logs/laravel.log
+#RUN chmod -R 777 /var/www/storage/logs
+#RUN chmod -R 777 /var/www/storage/logs/laravel.log
 #RUN chown -R www:www bootstrap/cache
 
 # Expose port 9000 and start php-fpm server
