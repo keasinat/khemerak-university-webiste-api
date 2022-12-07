@@ -9,6 +9,7 @@ use App\Debc\News\Http\Controllers\NewsController;
 use App\Debc\Document\Http\Controllers\DocumentController;
 use App\Debc\Document\Http\Controllers\DcategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -103,13 +104,7 @@ Route::group([
             });
     });
 
-    Route::group([
-        'prefix' => 'user',
-        'as' => 'user.'
-    ], function () {
-        Route::get('/', [UserController::class, 'index'])->name('index');
-
-    });
-
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
 });
 

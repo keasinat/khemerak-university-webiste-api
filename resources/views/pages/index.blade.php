@@ -33,8 +33,7 @@
                                 @endforeach
                             </td>
                             <td>
-                                <x-utils.edit-button :href="route('admin.page.edit',  $page)" />
-                                <x-utils.delete-button :href="route('admin.page.destroy', $page->id)" />
+                               @include('pages.includes.actions')
                             </td>
                         </tr>
                         @endforeach

@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class News extends Model
 {
-    use HasFactory,Sluggable, SoftDeletes;
+    use HasFactory, Sluggable, SoftDeletes;
 
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d';
