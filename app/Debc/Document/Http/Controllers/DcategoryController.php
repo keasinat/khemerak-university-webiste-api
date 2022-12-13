@@ -100,18 +100,42 @@ class DcategoryController
      * @param  \App\Models\Dcategory  $dcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dcategory $dcategory)
+    // public function destroy(Dcategory $dcategory)
+    // {
+    //     $documents = Document::where('dcat_id', $dcategory->id)->count();
+
+    //     if ($documents > 0) {
+    //         return redirect()->route('admin.document.category.index')
+    //         ->withFlashDanger('Category is in used.');
+    //     } else {
+    //         $dcategory->delete();
+
+    //         return redirect()->route('admin.document.category.index')
+    //             ->withFlashSuccess('Category is deleted.');
+    //     }
+    // }
+    public function destroy($dcategory)
     {
-        $documents = Document::where('dcat_id', $dcategory->id)->count();
+        $documents = Document::where('dcategory_id', $dcategory->id)->count();
+        $category = Dcategory::findOrfail($dcategory);
 
-        if ($documents > 0) {
-            return redirect()->route('admin.document.category.index')
-            ->withFlashDanger('Category is in used.');
-        } else {
-            $dcategory->delete();
-
-            return redirect()->route('admin.document.category.index')
-                ->withFlashSuccess('Category is deleted.');
+        if(count($category->subcategory))
+        {
+            $subcategories = $category->subcategory;
+            foreach($subcategories as $cat)
+            {
+                $cat = Dcategory::findOrFail($cat->id);
+                $cat->parent_id = null;
+                $cat->save();
+            }
         }
+        if ($documents > 0) {
+
+        } else {
+
+        }
+        $category->delete();
+        return redirect()->route('admin.document.category.index')
+                ->with('success','Category is deleted.');
     }
 }
