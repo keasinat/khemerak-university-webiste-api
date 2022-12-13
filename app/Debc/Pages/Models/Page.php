@@ -29,11 +29,10 @@ class Page extends Model implements Searchable
 
     public function getSearchResult(): SearchResult
     {
-        $url = route('page.show', $this->id);
+        $url = route('page.show', $this->slug);
         return new \Spatie\Searchable\SearchResult(
             $this,
             $this->title_km,
-            $this->content_km,
             $url
         );
     }

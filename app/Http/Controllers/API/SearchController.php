@@ -15,8 +15,8 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $searchResults = (new Search())
-            ->registerModel(Page::class, ['title_km', 'content_km'])
-            ->registerModel(News::class, ['title_km', 'content_km'])
+            ->registerModel(Page::class, ['title_km'])
+            ->registerModel(News::class, ['title_km'])
             ->perform($request->input('query'));
         // dd($searchResults);exit;
         // return SearchResource::collection($searchResults);

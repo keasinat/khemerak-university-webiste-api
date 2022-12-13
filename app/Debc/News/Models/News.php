@@ -35,11 +35,10 @@ class News extends Model implements Searchable
 
     public function getSearchResult(): SearchResult
     {
-        $url = route('news.show', $this->id);
+        $url = route('news.show', $this->slug);
         return new \Spatie\Searchable\SearchResult(
             $this,
             $this->title_km,
-            $this->content_km,
             $url
         );
     }
