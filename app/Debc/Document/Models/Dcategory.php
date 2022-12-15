@@ -9,7 +9,7 @@ class Dcategory extends Model
 {
     use SoftDeletes;
     protected $table = 'dcategories';
-    protected $guarded = [];
+    protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d';
 
 

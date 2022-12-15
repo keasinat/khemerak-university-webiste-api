@@ -11,12 +11,12 @@
                 icon="c-icon cil-plus"
                 class="card-header-action"
                 :href="route('admin.document.category.index')"
-                :text="__('Cancel')"
+                :text="__('dashboard.cancel')"
                 />
         </x-slot>
         <x-slot name="body">
             <div class="form-group">
-                <label for="">Khmer Title</label>
+                <label for="">{{ __('dashboard.category_name') }}</label>
                 <input type="text" name="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') }}">
                 @if($errors->has('title_km'))
                     <div class="invalid-feedback">
@@ -37,7 +37,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for=""></label>
+                    <label for="">{{ __('dashboard.document_category') }}</label>
                     <select name="parent_id" id="" class="form-control">
                         <option value="">none</option>
                         @if (isset($categories))

@@ -11,6 +11,6 @@
     
 
     @if(count($subcategory->subcategory))
-        @include('subcategory-list',['subcategories' => $subcategory->subcategory])
+        @include('documents.category.subcategory-list',['subcategories' => $subcategory->subcategory])
     @endif
 @endforeach

@@ -27,7 +27,7 @@ class DcategoryController
     public function index()
     {
 
-        $categories = Dcategory::whereNull('parent_id')->get();
+        $categories = Dcategory::whereNull('parent_id')->orderBy('id', 'desc')->get();
         
         return view('documents.category.index',compact('categories'));
     }
@@ -71,11 +71,12 @@ class DcategoryController
      * @param  \App\Models\Dcategory  $dcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dcategory $dcategory)
+    public function edit($id)
     { 
+        $category = Dcategory::findOrFail($id);
         $categories = Dcategory::whereNull('parent_id')->get();
 
-        return view('documents.category.edit', compact('categories'))->withDcategory($dcategory);
+        return view('documents.category.edit', compact('categories', 'category'));
     }
 
     /**
@@ -85,7 +86,7 @@ class DcategoryController
      * @param  \App\Models\Dcategory  $dcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $dcategory)
+    public function update(UpdateDcategoryRequest $request, $dcategory)
     {
         $dcategory = Dcategory::findOrfail($dcategory);
 
@@ -100,42 +101,31 @@ class DcategoryController
      * @param  \App\Models\Dcategory  $dcategory
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(Dcategory $dcategory)
-    // {
-    //     $documents = Document::where('dcat_id', $dcategory->id)->count();
 
-    //     if ($documents > 0) {
-    //         return redirect()->route('admin.document.category.index')
-    //         ->withFlashDanger('Category is in used.');
-    //     } else {
-    //         $dcategory->delete();
-
-    //         return redirect()->route('admin.document.category.index')
-    //             ->withFlashSuccess('Category is deleted.');
-    //     }
-    // }
-    public function destroy($dcategory)
+    public function destroy($id)
     {
-        $documents = Document::where('dcategory_id', $dcategory->id)->count();
-        $category = Dcategory::findOrfail($dcategory);
+        $documents = Document::where('dcategory_id', $id)->count();
+        $category = Dcategory::findOrfail($id);
 
-        if(count($category->subcategory))
-        {
-            $subcategories = $category->subcategory;
-            foreach($subcategories as $cat)
-            {
-                $cat = Dcategory::findOrFail($cat->id);
-                $cat->parent_id = null;
-                $cat->save();
-            }
-        }
         if ($documents > 0) {
-
+            return redirect()->route('admin.document.category.index')
+                    ->with('warning','Category is in used.');
         } else {
+            if(count($category->subcategory))
+            {
+                $subcategories = $category->subcategory;
+                foreach($subcategories as $cat)
+                {
+                    $cat = Dcategory::findOrFail($cat->id);
+                    $cat->parent_id = null;
+                    $cat->save();
+                }
+            }
 
+            $category->delete();
+            return redirect()->route('admin.document.category.index')
+                    ->with('success','Category is deleted.');
         }
-        $category->delete();
-        return redirect()->route('admin.document.category.index')
-                ->with('success','Category is deleted.');
+
     }
 }

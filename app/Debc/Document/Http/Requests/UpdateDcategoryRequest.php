@@ -3,6 +3,7 @@
 namespace App\Debc\Document\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateDcategoryRequest extends FormRequest
 {
@@ -24,8 +25,11 @@ class UpdateDcategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_km' => 'max:255|string',
-            'slug' => 'nullable|string|unique:dcategories,slug',
+            'title_km' => 'max:255|string|required',
+            'slug' => [
+                'required',
+                Rule::unique('dcategories','slug')->ignore($this->dcategory)
+            ],
             'parent_id' => 'integer|nullable'
         ];
     }
@@ -33,7 +37,8 @@ class UpdateDcategoryRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title_km' => trans('dashboard.category_name')
+            'title_km' => trans('dashboard.category_name'),
+            'parent_id' => trans('dashboard.document_category')
         ];
     }
 }
