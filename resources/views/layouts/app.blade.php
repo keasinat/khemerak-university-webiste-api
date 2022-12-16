@@ -31,7 +31,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
+    @include('layouts.message')
     @include('layouts.partials.breadcrumbs')
     <!-- Main content -->
     <section class="content">

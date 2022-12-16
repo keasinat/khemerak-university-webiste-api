@@ -98,9 +98,10 @@ Route::group([
                 Route::get('/', [DcategoryController::class, 'index'])->name('index');
                 Route::get('create', [DcategoryController::class, 'create'])->name('create');
                 Route::post('/', [DcategoryController::class, 'store'])->name('store');
-                Route::get('edit/{dcategory}', [DcategoryController::class, 'edit'])->name('edit');
+                Route::get('edit/{id}', [DcategoryController::class, 'edit'])->name('edit');
                 Route::patch('/{dcategory}', [DcategoryController::class, 'update'])->name('update');
-                Route::delete('{dcategory}', [DcategoryController::class, 'destroy'])->name('destroy');
+                Route::delete('{id}', [DcategoryController::class, 'destroy'])->name('destroy');
+                
             });
     });
 
