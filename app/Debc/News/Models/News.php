@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-
-class News extends Model
+class News extends Model implements Searchable
 {
     use HasFactory, Sluggable, SoftDeletes;
 
@@ -40,4 +41,14 @@ class News extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('news.show', $this->slug);
+        return new \Spatie\Searchable\SearchResult(
+            $this,
+            $this->title_km,
+            $url
+        );
+    }
 }

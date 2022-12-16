@@ -21,12 +21,18 @@ class PageController extends Controller
 
     public function show($param)
     {
+       
+        // $page = Page::whereNull('deleted_at')
+        //             ->where('is_published', 1)
+        //             // ->Where('id', $param)
+        //             ->where('slug', '%'.$param.'%')
+        //             ->first();
         $page = Page::whereNull('deleted_at')
                     ->where('is_published', 1)
-                    ->orWhere('id', $param)
+                    ->where('id', $param)
                     ->orWhere('slug', $param)
-                    ->first();
-
+                    ->firstOrFail();
         return new PageResource($page);
+        // return $page;
     }
 }
