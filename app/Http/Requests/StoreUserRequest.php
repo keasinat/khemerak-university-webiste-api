@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Debc\Document\Http\Requests;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateDcategoryRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,20 +24,20 @@ class UpdateDcategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_km' => 'max:255|string|required',
-            'slug' => [
-                'required',
-                Rule::unique('dcategories','slug')->ignore($this->dcategory)
-            ],
-            'parent_id' => 'integer|nullable'
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required'
         ];
     }
 
     public function attributes()
     {
         return [
-            'title_km' => trans('dashboard.category_name'),
-            'parent_id' => trans('dashboard.document_category')
+            'name' => trans('dashboard.username'),
+            'email' => trans('dashboard.email'),
+            'password' => trans('dashboard.password'),
+            'roles' => trans('dashboard.role')
         ];
     }
 }

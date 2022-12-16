@@ -4,11 +4,21 @@ namespace App\Debc\Pages\Http\Controllers;
 
 use App\Debc\Pages\Models\Page;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Debc\Pages\Http\Requests\StorePageRequest;
 use App\Debc\Pages\Http\Requests\UpdatePageRequest;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
-class PageController 
+class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:page-list|page-create|page-edit|page-delete', ['only' => ['index']]);
+        $this->middleware('permission:page-create', ['only' => ['create','store']]);
+        $this->middleware('permission:page-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:page-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

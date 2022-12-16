@@ -33,7 +33,8 @@ class StoreDcategoryRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title_km' => trans('dashboard.category_name')
+            'title_km' => trans('dashboard.category_name'),
+            'parent_id' => trans('dashboard.document_category')
         ];
     }
 }

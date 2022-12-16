@@ -40,8 +40,7 @@
                                 @endforeach
                             </td>
                             <td>
-                                <x-utils.edit-button :href="route('admin.news.edit',  $article->id)" />
-                                <x-utils.delete-button :href="route('admin.news.destroy', $article->id)"/>
+                                @include('news.actions')
                             </td>
                         </tr>
                         @endforeach

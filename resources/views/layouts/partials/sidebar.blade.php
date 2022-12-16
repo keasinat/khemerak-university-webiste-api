@@ -99,13 +99,41 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">Access</li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                {{ __('dashboard.user_management') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              @can('user-list')
+              <li class="nav-item">
+                <a href="{{ route('admin.users.index') }}" class="nav-link">
+					<i class="far fa-circle nav-icon"></i>
+                  	<p>{{ __('dashboard.user_management') }}</p>
+				</a>
+              </li>
+              @endcan
+              @can('role-list')
+              <li class="nav-item">
+                <a href="{{ route('admin.roles.index') }}" class="nav-link">
+					<i class="far fa-circle nav-icon"></i>
+                  	<p>{{ __('dashboard.role_management') }}</p>
+				</a>
+              </li>
+              @endcan
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="fas fa-sign-out-alt nav-icon"></i>
               <p>{{ __('dashboard.logout') }}</p>
             </a>
+            <x-forms.post :action="route('logout')" id="logout-form" class="d-none"/>
           </li>
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

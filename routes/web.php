@@ -9,6 +9,7 @@ use App\Debc\News\Http\Controllers\NewsController;
 use App\Debc\Document\Http\Controllers\DocumentController;
 use App\Debc\Document\Http\Controllers\DcategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -63,6 +64,7 @@ Route::group([
         Route::patch('/{id}', [PageController::class, 'update'])->name('update');
         Route::delete('{page}',  [PageController::class, 'destroy'])->name('destroy');
     });
+
     Route::group([
         'prefix' => 'news',
         'as' => 'news.'
@@ -73,6 +75,7 @@ Route::group([
         Route::delete('/{id}', [NewsController::class, 'destroy'])->name('destroy');
         Route::get('edit/{news}', [NewsController::class, 'edit'])->name('edit');
         Route::patch('/{news}', [NewsController::class, 'update'])->name('update');
+        Route::get('/check_slug', [NewsController::class, 'check_slug'])->name('check_slug');
     });
 
     
@@ -95,19 +98,14 @@ Route::group([
                 Route::get('/', [DcategoryController::class, 'index'])->name('index');
                 Route::get('create', [DcategoryController::class, 'create'])->name('create');
                 Route::post('/', [DcategoryController::class, 'store'])->name('store');
-                Route::get('edit/{dcategory}', [DcategoryController::class, 'edit'])->name('edit');
+                Route::get('edit/{id}', [DcategoryController::class, 'edit'])->name('edit');
                 Route::patch('/{dcategory}', [DcategoryController::class, 'update'])->name('update');
-                Route::delete('{dcategory}', [DcategoryController::class, 'destroy'])->name('destroy');
+                Route::delete('{id}', [DcategoryController::class, 'destroy'])->name('destroy');
+                
             });
     });
 
-    Route::group([
-        'prefix' => 'user',
-        'as' => 'user.'
-    ], function () {
-        Route::get('/', [UserController::class, 'index'])->name('index');
-
-    });
-
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
 });
 
