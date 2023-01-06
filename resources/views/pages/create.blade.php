@@ -64,8 +64,9 @@
                             <div class="form-group">
                                 <label for="" class="form-label">{{ __('dashboard.status') }}</label>
                                 <select name="is_published" id="" class="form-control">
-                                    <option value="1">Publish</option>
-                                    <option value="0">Save as draft</option>
+                                    @foreach (pulishedOpt() as $k => $item)
+                                        <option value="{{ $k }}">{{ $item }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

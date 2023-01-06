@@ -51,7 +51,7 @@ return [
     'post_date' => 'ថ្ងៃចេញ',
     'status' => 'status',
     'action' => 'ប្រតិបត្តិការ',
-    'page_name' => 'ឈ្មោះផេក',
+    'page_name' => 'ចំណងជើងផេក',
     'title' => 'ចំណងជើង',
     'status' => 'ស្ថានភាព',
     'meta_keyword' => 'Meta Keyword',
@@ -59,5 +59,8 @@ return [
     'slug' => 'slug',
     'action' => 'ប្រតិបត្តិការ',
     'save' => 'រក្សាទុក',
-    'total_business_activity' => 'ចំនួនសរុបសកម្មភាពអាជីវកម្ម'
+    'total_business_activity' => 'ចំនួនសរុបសកម្មភាពអាជីវកម្ម',
+    'publish' => 'ចេញផ្សាយ',
+    'save_to_draft' => 'រក្សាទុកព្រាង',
+    'content' => 'មាតិកា'
 ];

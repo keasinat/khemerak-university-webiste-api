@@ -16,7 +16,7 @@ class DocumentController extends Controller
     {
         $keyword = $request->keyword;
         $category = $request->category;
-        $paginate = $request->per_page ?? 9;
+        $paginate = $request->per_page ?? 12;
 
         $document = new Document;
         $categories = new Dcategory;
@@ -41,6 +41,7 @@ class DocumentController extends Controller
 
         $document = $document::with('dcategory')
                 ->whereNull('deleted_at')
+                ->orderBy('id', 'desc')
                 ->paginate($paginate);
         
         return DocumentResource::collection($document);
@@ -79,6 +80,8 @@ class DocumentController extends Controller
 
     public function categorySlug($slug)
     {
+        $categoryId = Dcategory::where('slug', $slug)->pluck('id');
+        
         $category = Dcategory::with('documents')
                     ->has('documents')
                     ->where('slug', $slug)

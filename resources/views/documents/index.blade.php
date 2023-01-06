@@ -21,10 +21,10 @@
                 <table class="table table-bordered table-striped" id="documents">
                     <thead>
                         <tr>
-                            <th>{{ __('Thumbnail') }}</th>
-                            <th>{{ __('Title') }}</th>
-                            <th>{{ __('Category') }}</th>
-                            <th>{{ __('Action') }}</th>
+                            <th>{{ __('dashboard.thumbnail') }}</th>
+                            <th>{{ __('dashboard.title') }}</th>
+                            <th>{{ __('dashboard.category') }}</th>
+                            <th>{{ __('dashboard.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>

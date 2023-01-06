@@ -26,7 +26,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="">Category Slug</label>
+                    <label for="">{{ __('dashboard.slug') }}</label>
                     <input type="text" name="slug" class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" value="{{ old('slug') }}">
                     @if($errors->has('slug'))
                         <div class="invalid-feedback">
@@ -52,7 +52,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
         </x-slot>
     </x-card>
 </x-forms>

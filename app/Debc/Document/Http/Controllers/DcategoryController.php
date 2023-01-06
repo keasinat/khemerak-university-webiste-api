@@ -59,10 +59,28 @@ class DcategoryController
             'parent_id' => $request->parent_id
         ];
 
+        if (isset($request->parent_id)) {
+
+            $checkDuplicate = Dcategory::where('title_km', $request->title_km)
+                            ->where('parent_id', $request->parent_id)->first();
+
+            if ($checkDuplicate) {
+                return redirect()->back()->with('warning','Category already exist in this parent.');
+            }
+        } else {
+
+            $checkDuplicate = Dcategory::where('title_km', $request->title_km)
+                            ->where('parent_id', null)->first();
+            
+            if ($checkDuplicate) {
+                return redirect()->back()->with('warning','Category already exist in this name.');
+            }
+        }
+
         Dcategory::create($categoryData);
 
         return redirect()->route('admin.document.category.index')
-            ->withFlashSuccess(__('The category was successfully created.'));
+            ->with('success',__('The category was successfully created.'));
     }
 
     /**
@@ -89,6 +107,26 @@ class DcategoryController
     public function update(UpdateDcategoryRequest $request, $dcategory)
     {
         $dcategory = Dcategory::findOrfail($dcategory);
+
+        if ($request->title_km != $dcategory->title_km || $request->parent_id != $dcategory->parent_id) {
+            if (isset($request->parent_id)) {
+
+                $checkDuplicate = Dcategory::where('title_km', $request->title_km)
+                                ->where('parent_id', $request->parent_id)->first();
+
+                if ($checkDuplicate) {
+                    return redirect()->back()->with('warning','Category already exist in this parent.');
+                }
+            } else {
+
+                $checkDuplicate = Dcategory::where('title_km', $request->title_km)
+                                ->where('parent_id', null)->first();
+                
+                if ($checkDuplicate) {
+                    return redirect()->back()->with('warning','Category already exist in this name.');
+                }
+            }
+        }
 
         $this->service->update($dcategory, $request->except(['_token', '_method']));
 

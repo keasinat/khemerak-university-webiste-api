@@ -39,7 +39,7 @@
                                         @if( isset($categories) )
                                             @foreach ($categories as $category)
                                                 @php $dash= ''; @endphp
-                                                <option value="{{ $category->id }}" {{ old('dcat_id') ?? $document->dcategory_id == $category->id ? "selected": ""}}>{{ $category->title_km }}</option>
+                                                <option value="{{ $category->id }}" {{ old('dcategory_id') ?? $document->dcategory_id == $category->id ? "selected": ""}}>{{ $category->title_km }}</option>
                                                 @if(count($category->subcategory))
                                                 @include('documents.category.subcategory-opt', ['subcategories' => $category->subcategory])
                                                 @endif
