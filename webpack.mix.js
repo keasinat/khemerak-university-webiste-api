@@ -18,6 +18,8 @@ mix.copy('resources/js/adminlte.min.js', 'public/js')
     .copy('resources/plugins/fontawesome-free/css/all.min.css', 'public/plugins/fontawesome-free/css/all.min.css')
     .copy('resources/images', 'public/images')
     .copy('resources/plugins', 'public/plugins')
+    .copy('resources/js/ckeditor.js', 'public/js/ckeditor/ckeditor.js')
+    .copy('resources/js/ckeditor-adapter.js', 'public/js/ckeditor/ckeditor-adapter.js')
     .sourceMaps();
 
     if (mix.inProduction()) {

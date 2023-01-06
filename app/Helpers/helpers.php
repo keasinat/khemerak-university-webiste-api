@@ -3,8 +3,8 @@
 if (! function_exists('pulishedOpt')) {
     function pulishedOpt() {
         return [
-            '1' => __('Publish'),
-            '0' => __('Save as Draft')
+            '1' => trans('dashboard.publish'),
+            '0' => trans('dashboard.save_to_draft')
         ];
     }
 }

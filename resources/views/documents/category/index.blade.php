@@ -9,6 +9,9 @@
             @lang('Document Category Management')
         </x-slot>
         <x-slot name="headerAction">
+            @can('update')
+                
+            @endcan
             <x-utils.link
                 icon="c-icon cil-plus"
                 class="card-header-action"
@@ -21,10 +24,11 @@
                 <table class="table table-bordered table-striped" id="category">
                     <thead>
                         <tr>
-                            <th>{{__('Title English')}}</th>
-                            <th>{{__('Slug')}}</th>
-                            <th>{{__('Parent Category')}}</th>
-                            <th>{{__('Action')}}</th>
+                            <th>{{__('dashboard.title')}}</th>
+                            <th>{{__('dashboard.slug')}}</th>
+                            <th>{{__('dashboard.parent_category')}}</th>
+                            <th>{{__('dashboard.parent_category')}}</th>
+                            <th>{{__('dashboard.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,13 +44,14 @@
                                 None
                                 @endif
                             </td>
+                            <td>{{ $category->documents->count() }}</td>
                             <td>
                                 @include('documents.category.includes.actions')
                             </td>
                         </tr>
-                        @if(count($category->subcategory))
-                                     @include('documents.category.subcategory-list',['subcategories' => $category->subcategory])
-                                 @endif
+                            @if(count($category->subcategory))
+                                @include('documents.category.subcategory-list',['subcategories' => $category->subcategory])
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

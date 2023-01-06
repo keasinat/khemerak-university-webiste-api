@@ -27,12 +27,21 @@ class StoreNewsRequest extends FormRequest
         return [
             'thumbnail' => 'string|nullable',
             'title_km' => 'required|string|max:255',
-            'description_km' => 'required|string',
+            'description_km' => 'string|max:255|nullable',
             'content_km' => 'required|string',
             'meta_keyword' => 'string|nullable',
             'meta_description' => 'string|nullable',
-            'slug' => 'required|string',
+            'slug' => 'string|nullable',
             'is_published' => 'boolean|required',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'title_km' => trans('dashboard.title'),
+            'description_km' => trans('dashboard.description'),
+            'content_km' => trans('dashboard.content')
         ];
     }
 }
