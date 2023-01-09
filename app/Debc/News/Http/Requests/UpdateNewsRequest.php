@@ -34,4 +34,13 @@ class UpdateNewsRequest extends FormRequest
             'is_published' => 'boolean|required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'title_km' => trans('dashboard.title'),
+            'description_km' => trans('dashboard.description'),
+            'content_km' => trans('dashboard.content')
+        ];
+    }
 }

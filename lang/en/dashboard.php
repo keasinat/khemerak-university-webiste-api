@@ -29,7 +29,7 @@ return [
     'logout' => 'ចាកចេញ',
     'activity_list' => 'បញ្ជីសកម្មភាពអាជីវកម្ម',
     'ministry_list' => 'បញ្ជីព័ត៌មានអំពីក្រសួង',
-    'cancel' => 'Cancel',
+    'cancel' => 'ត្រលប់ក្រោយ',
     'document_management' => 'ការគ្រប់គ្រងបណ្តុំឯកសារ',
     'document_category' => 'ប្រភេទឯកសារ',
     'category_name' => 'ឈ្មោះប្រភេទឯកសារ',

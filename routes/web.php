@@ -7,6 +7,7 @@ use App\Debc\BusinessActivity\Http\Controllers\BusinessActivityController;
 use App\Debc\Pages\Http\Controllers\PageController;
 use App\Debc\News\Http\Controllers\NewsController;
 use App\Debc\Document\Http\Controllers\DocumentController;
+use App\Debc\Document\Http\Controllers\VideoController;
 use App\Debc\Document\Http\Controllers\DcategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
@@ -102,6 +103,17 @@ Route::group([
                 Route::patch('/{dcategory}', [DcategoryController::class, 'update'])->name('update');
                 Route::delete('{id}', [DcategoryController::class, 'destroy'])->name('destroy');
                 
+            });
+            Route::group([
+                'prefix' => 'videos',
+                'as' => 'video.'
+            ], function() {
+                Route::get('/', [VideoController::class, 'index'])->name('index');
+                Route::get('create', [VideoController::class,'create'])->name('create');
+                Route::post('/', [VideoController::class, 'store'])->name('store');
+                Route::get('edit/{video}', [VideoController::class, 'edit'])->name('edit');
+                Route::patch('{video}', [VideoController::class, 'update'])->name('update');
+                Route::delete('{video}',[VideoController::class, 'destroy'])->name('destroy');
             });
     });
 

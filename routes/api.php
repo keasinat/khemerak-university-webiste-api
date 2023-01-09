@@ -7,6 +7,8 @@ use App\Http\Controllers\API\PageController;
 use App\Http\Controllers\API\DocumentController;
 use App\Http\Controllers\API\NewsController;
 use App\Http\Controllers\API\SearchController;
+use App\Http\Controllers\API\VideoController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -43,6 +45,7 @@ Route::group([
     Route::get('/', [DocumentController::class, 'index']);
     Route::get('category', [DocumentController::class, 'category']);
     Route::get('category/{slug}', [DocumentController::class, 'categorySlug']);
+    Route::get('videos', [VideoController::class, 'index']);
 });
 
 Route::group([

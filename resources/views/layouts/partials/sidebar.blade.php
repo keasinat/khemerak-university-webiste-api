@@ -67,7 +67,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.document.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
+            <a href="{{ route('admin.document.index') }}" class="nav-link">
               <i class="nav-icon fas fa-file-pdf"></i>
               <p>
                 {{ __('dashboard.document_management') }}
@@ -79,6 +79,12 @@
                 <a href="{{ route('admin.document.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>{{ __('dashboard.document_management') }}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.document.video.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'video') == 0) ? '' : 'active ' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{ __('dashboard.document.video_management') }}</p>
                 </a>
               </li>
               <li class="nav-item">

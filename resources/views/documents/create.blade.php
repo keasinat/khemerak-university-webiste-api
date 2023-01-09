@@ -5,7 +5,7 @@
         <x-card>
             <x-slot name="header">@lang('Create Document')</x-slot>
             <x-slot name="headerAction">
-                <x-utils.link class="card-header-action" :href="route('admin.document.index')" :text="__('Cancel')"/>
+                <x-utils.link class="card-header-action" :href="route('admin.document.index')" :text="__('dashboard.cancel')"/>
             </x-slot>
             <x-slot name="body">
                 <div class="container">
@@ -75,7 +75,7 @@
 </script>
     <script>
         var route_prefix = "/filemanager";
-        $('#lfm').filemanager('image', {prefix: route_prefix});
+        $('#lfm').filemanager('file', {prefix: route_prefix});
         $('#filepath').filemanager('file', {prefix: route_prefix});
     </script>
 

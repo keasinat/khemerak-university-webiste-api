@@ -7,43 +7,44 @@ use Exception;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Debc\Document\Models\Document;
-use App\Debc\Document\Models\Dcategory;
+use App\Debc\Document\Models\Video;
 
-class DocumentService extends BaseService
+class VideoService extends BaseService
 {
-    public function __construct(Document $document)
+    public function __construct(Video $model)
     {
-        $this->model = $document;
+        $this->model = $model;
     }
 
-    public function store(array $data = []):Document
+    public function store(array $data = []):Video
     {
         DB::beginTransaction();
         try {
-            $document= $this->model::create($data);
-        } catch (Exception $th) {
+            $video = $this->model::create($data);
+
+        } catch (\Exception $th) {
+            //throw $th;
             DB::rollBack();
 
             throw new GeneralException(__('There was a problem create this data. Please try again.'));
         }
         DB::commit();
 
-        return $document;
+        return $video;
     }
 
-    public function update(Document $document, array $data = []):Document
+    public function update($video, array $data = []):Video
     {
         DB::beginTransaction();
         try {
-            $document->update($data);
-        } catch (Exception $th) {
+            $video->update($data);
+        } catch (\Throwable $th) {
             DB::rollBack();
-
             throw new GeneralException(__('There was a problem updating this data. Please try again.'));
         }
+
         DB::commit();
 
-        return $document;
+        return $video;
     }
 }
