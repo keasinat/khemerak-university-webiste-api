@@ -137,13 +137,13 @@
             $('#lfm').filemanager('image', {prefix: route_prefix});
         </script>
         <script>
-                $('#title_km').change(function(e) {
-                $.get('{{ route('admin.news.check_slug') }}', 
-                    { 'title_km': $(this).val() }, 
-                    function( data ) {
-                    $('#slug').val(data.slug);
-                    }
-                );
-                });
+                // $('#title_km').change(function(e) {
+                // $.get('{{ route('admin.news.check_slug') }}', 
+                //     { 'title_km': $(this).val() }, 
+                //     function( data ) {
+                //     $('#slug').val(data.slug);
+                //     }
+                // );
+                // });
         </script>
 @endpush

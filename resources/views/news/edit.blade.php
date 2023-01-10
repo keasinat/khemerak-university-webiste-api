@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<x-forms.patch :action="route('admin.news.update', $news->id)">
+<x-forms.patch :action="route('admin.news.update', $news)">
     <x-card>
         <x-slot name="header">
             ព័ត៍មាន

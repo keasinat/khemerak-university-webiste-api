@@ -2,22 +2,24 @@
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
-		<div class="col-sm-6">
-		<h1>@yield('page-title')</h1>
-		</div>
-		<div class="col-sm-6">
-			{{-- @if(Breadcrumbs::has())
-			<ol class="breadcrumb float-sm-right">
-				@foreach(Breadcrumbs::current() as $crumb)
-					@if ($crumb->url() && !$loop->last)
-					<li class="breadcrumb-item"><a href="{{ $crumb->url() }}">{{ $crumb->title() }}</a></li>
-					@else
-					<li class="breadcrumb-item active">{{ $crumb->title() }}</li>
-					@endif
-				@endforeach
-				
-			</ol>
-			@endif --}}
+		<div class="col-sm-12">
+            <ul>
+			@if(Breadcrumbs::has())
+                @foreach (Breadcrumbs::current() as $crumbs)
+                    @if ($crumbs->url() && !$loop->last)
+                        <li class="breadcrumb-item">
+                            <a href="{{ $crumbs->url() }}">
+                                {{ $crumbs->title() }}
+                            </a>
+                        </li>
+                    @else
+                        <li class="breadcrumb-item active">
+                            {{ $crumbs->title() }}
+                        </li>
+                    @endif
+                @endforeach
+            @endif
+        </ul>
 		</div>
 		</div>
 	</div><!-- /.container-fluid -->
