@@ -81,10 +81,10 @@ Route::group([
             // ->breadcrumbs(function(Trail $trail) {
             //     $trail->parent('admin.news.index')->push(__('News'), route('admin.news.index'));
             // });
-        Route::get('create', [NewsController::class, 'create'])->name('create')
-        ->breadcrumbs(function(Trail $trail) {
-                $trail->parent('admin.news.index')->push(__('Create News'), route('admin.news.create'));
-            });
+        Route::get('create', [NewsController::class, 'create'])->name('create');
+        // ->breadcrumbs(function(Trail $trail) {
+        //         $trail->parent('admin.news.index')->push(__('Create News'), route('admin.news.create'));
+        //     });
         Route::post('/', [NewsController::class, 'store'])->name('store');
         Route::delete('/{id}', [NewsController::class, 'destroy'])->name('destroy');
         Route::get('edit/{news}', [NewsController::class, 'edit'])->name('edit');
