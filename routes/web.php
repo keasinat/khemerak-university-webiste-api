@@ -26,13 +26,19 @@ use App\Http\Controllers\DashboardController;
 
 Auth::routes(['register' => false]);
 Route::redirect('/', '/admin', 301);
-Route::get('/admin', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+Route::get('/admin', [DashboardController::class, 'index'])
+    ->name('home');
+
 Route::group([
     'prefix' => 'admin', 
     'as' => 'admin.', 
     'middleware' => ['auth']
 ], function () {
-    // Route::get('/', [DashboardController::class, 'index'])->name('home');
+    // Route::get('/', [DashboardController::class, 'index'])
+    //     ->name('home')
+    //     ->breadcrumbs(function(Trail $trail) {
+    //         $trail->parent('admin.home')->push(__('Home'));
+    //     });
     Route::group([
         'prefix' => 'activities',
         'as' => 'activity.'
@@ -70,8 +76,15 @@ Route::group([
         'prefix' => 'news',
         'as' => 'news.'
     ], function () {
-        Route::get('/', [NewsController::class, 'index'])->name('index');
+        Route::get('/', [NewsController::class, 'index'])
+            ->name('index');
+            // ->breadcrumbs(function(Trail $trail) {
+            //     $trail->parent('admin.news.index')->push(__('News'), route('admin.news.index'));
+            // });
         Route::get('create', [NewsController::class, 'create'])->name('create');
+        // ->breadcrumbs(function(Trail $trail) {
+        //         $trail->parent('admin.news.index')->push(__('Create News'), route('admin.news.create'));
+        //     });
         Route::post('/', [NewsController::class, 'store'])->name('store');
         Route::delete('/{id}', [NewsController::class, 'destroy'])->name('destroy');
         Route::get('edit/{news}', [NewsController::class, 'edit'])->name('edit');

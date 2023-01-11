@@ -2,64 +2,92 @@
 
 namespace App\Debc\News\Http\Controllers;
 
-use App\Debc\News\Models\News;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Debc\News\Services\NewsService;
 use App\Debc\News\Http\Requests\StoreNewsRequest;
 use App\Debc\News\Http\Requests\UpdateNewsRequest;
-use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Str;
+use App\Debc\News\Models\News;
 
-use Illuminate\Http\Request;
-
-class NewsController 
+class NewsController extends Controller
 {
-
+    protected $service;
+    public function __construct(NewsService $service)
+    {
+        $this->service = $service;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $news = News::whereNull('deleted_at')->orderBy('id', 'DESC')->get();
+        $news = $this->service->getList()->get();
 
         return view('news.index', compact('news'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('news.create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(StoreNewsRequest $request)
     {
-        // dd($request->all());
-        News::create($request->all());
-        
-        return redirect()->route('admin.news.index')->with('success', 'The post was successfully created.');
+        $this->service->store($request->except(['_token']));
+
+        return redirect()->route('admin.news.index')->with('success', __('message.news.store_success'));
     }
 
-    public function destroy($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(News $news)
     {
-        News::find($id)->delete();
-
-        return redirect()->route('admin.news.index')->with('success', 'The post was successfully deleted !');
-    }
-
-    public function edit(News $news){
-        
         return view('news.edit')->withNews($news);
-    
     }
 
-    public function update(UpdateNewsRequest $request, $news )
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateNewsRequest $request,News $news)
     {
+        $this->service->update($news, $request->except(['_token', '_method']));
 
-        $news = News::findorFail($news);
-        $news->update($request->except(['_token', '_method']));
-
-        return redirect()->route('admin.news.index')->with('success', 'The post was successfully updated !');
+        return redirect()->route('admin.news.index')->with('success', __('message.news.update_success'));
     }
-    public function check_slug(Request $request)
-    {   
-        $slug= '';
-        if(!empty($request->title_km)) {
-            $slug = SlugService::createSlug(News::class, 'slug', $request->title_km);
-        }
 
-        return response()->json(['slug' => $slug]);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(News $news)
+    {
+        $news->delete();
+
+        return redirect()->route('admin.news.index')
+            ->with('success', __('message.news.delete_success'));
     }
 }

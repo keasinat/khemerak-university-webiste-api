@@ -30,7 +30,7 @@ class UpdateNewsRequest extends FormRequest
             'content_km' => 'required|string',
             'meta_keyword' => 'string|nullable',
             'meta_description' => 'string|nullable',
-            'slug' => 'string',
+            'slug' => 'string|nullable',
             'is_published' => 'boolean|required',
         ];
     }

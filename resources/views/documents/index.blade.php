@@ -23,7 +23,7 @@
                         <tr>
                             <th>{{ __('dashboard.thumbnail') }}</th>
                             <th>{{ __('dashboard.title') }}</th>
-                            <th>{{ __('dashboard.category') }}</th>
+                            <th>{{ __('dashboard.document.category') }}</th>
                             <th>{{ __('dashboard.action') }}</th>
                         </tr>
                     </thead>

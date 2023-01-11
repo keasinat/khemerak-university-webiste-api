@@ -11,7 +11,7 @@ use Spatie\Searchable\SearchResult;
 
 class News extends Model implements Searchable
 {
-    use HasFactory, Sluggable, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d';
@@ -27,14 +27,15 @@ class News extends Model implements Searchable
         'meta_description',
         'is_published'
     ];
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => ['en'=> ['title_km']]
-            ]
-        ];
-    }
+
+    // public function sluggable(): array
+    // {
+    //     return [
+    //         'slug' => [
+    //             'source' => ['title_km']
+    //         ]
+    //     ];
+    // }
 
     public $dates = [
         'deleted_at',
