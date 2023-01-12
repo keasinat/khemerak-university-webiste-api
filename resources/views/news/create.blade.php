@@ -116,12 +116,10 @@
 @endsection
 
 @push('after-scripts')
-        <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+@include('layouts.partials.ckeditor')
         <script>
             var route_prefix = "/filemanager";
-        </script>
-        <script>
+
             $('#content').ckeditor({
             height: 500,
             filebrowserImageBrowseUrl: route_prefix + '?type=Images',
@@ -134,7 +132,7 @@
             {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
         </script>
         <script>
-            $('#lfm').filemanager('image', {prefix: route_prefix});
+            $('#lfm').filemanager('file', {prefix: route_prefix});
         </script>
         <script>
                 // $('#title_km').change(function(e) {
