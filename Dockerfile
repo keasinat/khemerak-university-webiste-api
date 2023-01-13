@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install pgsql \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install xml \
     && docker-php-ext-install dom \

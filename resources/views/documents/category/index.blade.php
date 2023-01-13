@@ -6,18 +6,17 @@
 @section('content')
     <x-card>
         <x-slot name="header">
-            @lang('Document Category Management')
+            {{ __('dashboard.document_management') }}
         </x-slot>
         <x-slot name="headerAction">
-            @can('update')
-                
-            @endcan
+            @can('document-create')
             <x-utils.link
                 icon="c-icon cil-plus"
                 class="card-header-action"
                 :href="route('admin.document.category.create')"
-                :text="__('Create Category')"
+                :text="__('dashboard.create_new')"
                 />
+            @endcan
         </x-slot>
         <x-slot name="body">
             <div class="table-responsive p-3">
@@ -26,8 +25,8 @@
                         <tr>
                             <th>{{__('dashboard.title')}}</th>
                             <th>{{__('dashboard.slug')}}</th>
-                            <th>{{__('dashboard.parent_category')}}</th>
-                            <th>{{__('dashboard.parent_category')}}</th>
+                            <th>{{__('dashboard.document.parent_category')}}</th>
+                            <th>{{__('dashboard.document.num_of_doc')}}</th>
                             <th>{{__('dashboard.action')}}</th>
                         </tr>
                     </thead>

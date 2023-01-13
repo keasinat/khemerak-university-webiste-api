@@ -42,6 +42,8 @@ return [
         'video_management' => 'វីដេអូឯកសារ',
         'video_url' => 'តំណរវីដេអូ',
         'category' => 'ប្រភេទឯកសារ',
+        'num_of_doc' => 'ចំនួនឯកសារ',
+        'parent_category' => 'ប្រភេទឯកសារមេ',
         'video_store_msg' => 'The Video was successfully created.',
         'video_update_success_msg' => 'The Video was successfully update.',
         'video_delete_success_msg' => 'The Video was successfully deleted.'
@@ -60,7 +62,7 @@ return [
     'meta_description' => 'Meta description',
     'thumbnail' => 'រូបភាព',
     'post_date' => 'ថ្ងៃចេញ',
-    'status' => 'status',
+    'status' => 'ស្ថានភាព',
     'action' => 'ប្រតិបត្តិការ',
     'page_name' => 'ចំណងជើងផេក',
     'title' => 'ចំណងជើង',
