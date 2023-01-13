@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="" class="form-label">{{ __('dashboard.thumbnail') }}</label>
                                 <div class="input-group">
@@ -46,7 +46,7 @@
                                         <i class="far fa-image"></i>
                                     </a>
                                     </div>
-                                    <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" readonly value="{{ old('thumbnail') ?? $video->thumbnail }}">
+                                    <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" value="{{ old('thumbnail') ?? $video->thumbnail }}">
                                     @if($errors->has('thumbnail'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('thumbnail') }}
@@ -72,6 +72,23 @@
     <script>
         var route_prefix = "/filemanager";
         $('#lfm').filemanager('file', {prefix: route_prefix});
+
+        $(document).ready(function() {
+
+            $('input[name=file]').on('change',function() {
+                var url = $(this).val();
+                var thumbnailId = ytVidId(url);
+            var thumbnailUrl = 'https://img.youtube.com/vi/' + thumbnailId + '/hqdefault.jpg';console.log(thumbnailUrl);
+                $('input[name=thumbnail').val(thumbnailUrl);
+            });
+
+            });
+
+
+            function ytVidId(url) {
+            var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+            return (url.match(p)) ? RegExp.$1 : false;
+            }
     </script>
 
 @endpush
