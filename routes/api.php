@@ -24,38 +24,42 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group([
-    'prefix' => 'activities'
-], function () {
-    Route::get('/', [ActivityController::class, 'getList']);
-});
-
-Route::group([
-    'prefix' => 'pages',
-    'as' => 'page.'
-], function () {
-    Route::get('/', [PageController::class, 'index']);
-    Route::get('{param}', [PageController::class, 'show'])->name('show');
-});
+Route::middleware('throttle:60,1')->group( function () {
 
 
-Route::group([
-    'prefix' => 'documents',
-], function() {
-    Route::get('/', [DocumentController::class, 'index']);
-    Route::get('category', [DocumentController::class, 'category']);
-    Route::get('category/{slug}', [DocumentController::class, 'categorySlug']);
-    Route::get('videos', [VideoController::class, 'index']);
-});
+    Route::group([
+        'prefix' => 'activities'
+    ], function () {
+        Route::get('/', [ActivityController::class, 'getList']);
+    });
 
-Route::group([
-    'prefix' => 'news'
-], function() {
-    Route::get('/', [NewsController::class, 'index']);
-    Route::get('{id}', [NewsController::class, 'show'])->name('news.show');
-});
-Route::group([
-    'prefix' => 'search'
-], function() {
-    Route::get('/', [SearchController::class, 'search']);
+    Route::group([
+        'prefix' => 'pages',
+        'as' => 'page.'
+    ], function () {
+        Route::get('/', [PageController::class, 'index']);
+        Route::get('{param}', [PageController::class, 'show'])->name('show');
+    });
+
+
+    Route::group([
+        'prefix' => 'documents',
+    ], function() {
+        Route::get('/', [DocumentController::class, 'index']);
+        Route::get('category', [DocumentController::class, 'category']);
+        Route::get('category/{slug}', [DocumentController::class, 'categorySlug']);
+        Route::get('videos', [VideoController::class, 'index']);
+    });
+
+    Route::group([
+        'prefix' => 'news'
+    ], function() {
+        Route::get('/', [NewsController::class, 'index']);
+        Route::get('{id}', [NewsController::class, 'show'])->name('news.show');
+    });
+    Route::group([
+        'prefix' => 'search'
+    ], function() {
+        Route::get('/', [SearchController::class, 'search']);
+    });
 });
