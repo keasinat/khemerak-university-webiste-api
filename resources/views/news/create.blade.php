@@ -32,7 +32,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <textarea name="content_km" id="content" cols="50" rows="10" class="form-control {{ $errors->has('content_km') ? 'is-invalid' : '' }}">{{ old('content_km') }}</textarea>
+                                <textarea name="content_km" id="content" cols="50" rows="10" class="form-control {{ $errors->has('content_km') ? 'is-invalid' : '' }}">{!! old('content_km') !!}</textarea>
                                 @if($errors->has('content_km'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('content_km') }}
@@ -116,32 +116,32 @@
 @endsection
 
 @push('after-scripts')
-@include('layouts.partials.ckeditor')
-        <script>
-            var route_prefix = "/filemanager";
-
-            $('#content').ckeditor({
+    @include('layouts.partials.ckeditor')
+    <script>
+        var route_prefix = "/filemanager";
+        $('#content').ckeditor({
             height: 500,
             filebrowserImageBrowseUrl: route_prefix + '?type=Images',
             filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
             filebrowserBrowseUrl: route_prefix + '?type=Files',
-            filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
-            });
-        </script>
-        <script>
-            {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
-        </script>
-        <script>
-            $('#lfm').filemanager('file', {prefix: route_prefix});
-        </script>
-        <script>
-                // $('#title_km').change(function(e) {
-                // $.get('{{ route('admin.news.check_slug') }}', 
-                //     { 'title_km': $(this).val() }, 
-                //     function( data ) {
-                //     $('#slug').val(data.slug);
-                //     }
-                // );
-                // });
-        </script>
+            filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}',
+            allowedContent : true
+        });
+    </script>
+    <script>
+        {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
+    </script>
+    <script>
+        $('#lfm').filemanager('file', {prefix: route_prefix});
+    </script>
+    <script>
+            // $('#title_km').change(function(e) {
+            // $.get('{{ route('admin.news.check_slug') }}', 
+            //     { 'title_km': $(this).val() }, 
+            //     function( data ) {
+            //     $('#slug').val(data.slug);
+            //     }
+            // );
+            // });
+    </script>
 @endpush
