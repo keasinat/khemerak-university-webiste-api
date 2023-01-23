@@ -2,6 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ActivityController;
+use App\Http\Controllers\API\PageController;
+use App\Http\Controllers\API\DocumentController;
+use App\Http\Controllers\API\NewsController;
+use App\Http\Controllers\API\SearchController;
+use App\Http\Controllers\API\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +22,44 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware('throttle:60,1')->group( function () {
+
+
+    Route::group([
+        'prefix' => 'activities'
+    ], function () {
+        Route::get('/', [ActivityController::class, 'getList']);
+    });
+
+    Route::group([
+        'prefix' => 'pages',
+        'as' => 'page.'
+    ], function () {
+        Route::get('/', [PageController::class, 'index']);
+        Route::get('{param}', [PageController::class, 'show'])->name('show');
+    });
+
+
+    Route::group([
+        'prefix' => 'documents',
+    ], function() {
+        Route::get('/', [DocumentController::class, 'index']);
+        Route::get('category', [DocumentController::class, 'category']);
+        Route::get('category/{slug}', [DocumentController::class, 'categorySlug']);
+        Route::get('videos', [VideoController::class, 'index']);
+    });
+
+    Route::group([
+        'prefix' => 'news'
+    ], function() {
+        Route::get('/', [NewsController::class, 'index']);
+        Route::get('{id}', [NewsController::class, 'show'])->name('news.show');
+    });
+    Route::group([
+        'prefix' => 'search'
+    ], function() {
+        Route::get('/', [SearchController::class, 'search']);
+    });
 });
