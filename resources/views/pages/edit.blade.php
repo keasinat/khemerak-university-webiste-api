@@ -6,7 +6,7 @@
             <x-slot name="body">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-9">
                             <div class="form-group">
                                 <label for="title_km" class="form-label">{{ __('dashboard.page_name') }}</label>
                                 <input type="text" name="title_km" id="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') ?? $page->title_km }}">
@@ -16,8 +16,19 @@
                                     </div>
                                 @endif
                             </div>
-                        </div>
-                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">{{ __('dashboard.slug') }}</label>
+                                <input type="text" name="slug" id="slug" class="form-control" value="{{ old('slug') ?? $page->slug }}">
+                                @if($errors->has('slug'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('slug') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label"></label>
+                                <textarea name="content_km" id="content_km" cols="30" rows="10" class="form-control content">{{ $page->content_km }}</textarea>
+                            </div>
                             <div class="form-group">
                                 <label for="" class="form-label">{{ __('dashboard.meta_keyword') }}</label>
                                 <textarea name="meta_keyword" id="meta_keyword" cols="30" rows="5" class="form-control {{ $errors->has('meta_keyword') ? 'is-invalid' : '' }}">{{ $page->meta_keyword }}</textarea>
@@ -27,8 +38,6 @@
                                     </div>
                                 @endif
                             </div>
-                        </div>
-                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="" class="form-label">{{ __('dashboard.meta_description') }}</label>
                                 <textarea name="meta_description" id="meta_description" cols="30" rows="5" class="form-control {{ $errors->has('meta_description') ? 'is-invalid' : '' }}">{{ $page->meta_description }}</textarea>
@@ -39,22 +48,9 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-sm-12 mb-3">
-                            <label for="" class="form-label"></label>
-                            <textarea name="content_km" id="content_km" cols="30" rows="10" class="form-control content">{{ $page->content_km }}</textarea>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">{{ __('dashboard.slug') }}</label>
-                                <input type="text" name="slug" id="slug" class="form-control" value="{{ old('slug') ?? $page->slug }}">
-                                @if($errors->has('slug'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('slug') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <hr>
                             <div class="form-group">
                                 <label for="" class="form-label">{{ __('dashboard.status') }}</label>
                                 <select name="is_published" id="" class="form-control">
@@ -64,7 +60,6 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </x-slot>

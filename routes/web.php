@@ -32,7 +32,7 @@ Route::get('/admin', [DashboardController::class, 'index'])
 Route::group([
     'prefix' => 'admin', 
     'as' => 'admin.', 
-    'middleware' => ['auth', 'web']
+    'middleware' => ['auth']
 ], function () {
     // Route::get('/', [DashboardController::class, 'index'])
     //     ->name('home')

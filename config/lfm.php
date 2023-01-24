@@ -135,6 +135,7 @@ return [
         'image/jpeg',
         'image/pjpeg',
         'image/png',
+        'image/jpg',
     ],
 
     'thumb_img_width'          => 200, // px
