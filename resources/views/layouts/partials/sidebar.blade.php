@@ -98,7 +98,7 @@
           <li class="nav-header">Media</li>
 
           <li class="nav-item">
-            <a href="{{ route('admin.unisharp.lfm.show') }}" target="_blank" class="nav-link">
+            <a href="#" target="_blank" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Gallery
