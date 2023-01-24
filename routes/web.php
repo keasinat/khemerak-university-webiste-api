@@ -32,13 +32,9 @@ Route::get('/admin', [DashboardController::class, 'index'])
 Route::group([
     'prefix' => 'admin', 
     'as' => 'admin.', 
-    'middleware' => ['auth']
+    'middleware' => ['auth', 'web']
 ], function () {
-    // Route::get('/', [DashboardController::class, 'index'])
-    //     ->name('home')
-    //     ->breadcrumbs(function(Trail $trail) {
-    //         $trail->parent('admin.home')->push(__('Home'));
-    //     });
+
     Route::group([
         'prefix' => 'activities',
         'as' => 'activity.'
@@ -46,10 +42,7 @@ Route::group([
         Route::get('/', [BusinessActivityController::class, 'index'])->name('index');
         Route::get('create', [BusinessActivityController::class, 'create'])
             ->name('create');
-            // ->breadcrumbs(function(Trail $trail) {
-            //     $trail->parent('admin.activity.index')
-            //     ->push(__('Create Activity'), route('admin.activity.create'));
-            // });
+
         Route::post('/', [BusinessActivityController::class, 'store'])->name('store');
         Route::get('edit/{id}', [BusinessActivityController::class, 'edit'])->name('edit');
         Route::get('/import', [BusinessActivityController::class, 'gimport']);
