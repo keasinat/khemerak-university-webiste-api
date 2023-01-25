@@ -95,13 +95,13 @@
               </li>
             </ul>
           </li>
-          <li class="nav-header">Media</li>
+          <li class="nav-header">File Manager</li>
 
           <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link">
+            <a href="{{ route('admin.filemanager') }}" target="_blank" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
-                Gallery
+                File Manager
               </p>
             </a>
           </li>

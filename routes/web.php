@@ -118,8 +118,9 @@ Route::group([
 
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
-    Route::get('welcome', function () {
+
+    Route::get('file-manager', function () {
         return view('file-manager');
-    });
+    })->name('filemanager');
 });
 
