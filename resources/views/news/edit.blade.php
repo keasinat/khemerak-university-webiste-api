@@ -116,21 +116,23 @@
 @push('after-scripts')
     @include('layouts.partials.ckeditor')
     <script>
-        var route_prefix = "/filemanager";
-
+        var route_prefix = "/file-manager";
         $('#content_km').ckeditor({
             height: 500,
-            filebrowserImageBrowseUrl: route_prefix + '?type=Images',
-            filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
-            filebrowserBrowseUrl: route_prefix + '?type=Files',
-            filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}',
+            filebrowserImageBrowseUrl: route_prefix + '/ckeditor',
             allowedContent : true
         });
     </script>
-    <script>
-        {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
-    </script>
-    <script>
-        $('#lfm').filemanager('image', {prefix: route_prefix});
-    </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById('lfm').addEventListener('click', (event) => {
+        event.preventDefault();
+        window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+      });
+    });
+    // set file link
+    function fmSetLink($url) {
+      document.getElementById('thumbnail').value = $url;
+    }
+  </script>
 @endpush

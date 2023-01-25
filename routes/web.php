@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Tabuna\Breadcrumbs\Trail;
-use Tabuna\Breadcrumbs\Breadcrumbs;
+
 use App\Debc\BusinessActivity\Http\Controllers\BusinessActivityController;
 use App\Debc\Pages\Http\Controllers\PageController;
 use App\Debc\News\Http\Controllers\NewsController;
@@ -49,9 +48,9 @@ Route::group([
         Route::post('/import', [BusinessActivityController::class, 'import'])->name('import');
     });
 
-    Route::group(['prefix' => 'filemanager'], function () {
-        \UniSharp\LaravelFilemanager\Lfm::routes();
-    });
+    // Route::group(['prefix' => 'filemanager'], function () {
+    //     \UniSharp\LaravelFilemanager\Lfm::routes();
+    // });
 
     Route::group([
         'prefix' => 'pages',
@@ -71,13 +70,7 @@ Route::group([
     ], function () {
         Route::get('/', [NewsController::class, 'index'])
             ->name('index');
-            // ->breadcrumbs(function(Trail $trail) {
-            //     $trail->parent('admin.news.index')->push(__('News'), route('admin.news.index'));
-            // });
         Route::get('create', [NewsController::class, 'create'])->name('create');
-        // ->breadcrumbs(function(Trail $trail) {
-        //         $trail->parent('admin.news.index')->push(__('Create News'), route('admin.news.create'));
-        //     });
         Route::post('/', [NewsController::class, 'store'])->name('store');
         Route::delete('/{id}', [NewsController::class, 'destroy'])->name('destroy');
         Route::get('edit/{news}', [NewsController::class, 'edit'])->name('edit');
@@ -125,5 +118,9 @@ Route::group([
 
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
+
+    Route::get('file-manager', function () {
+        return view('file-manager');
+    })->name('filemanager');
 });
 
