@@ -25,9 +25,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install xml \
-    && docker-php-ext-install dom \
-    && docker-php-ext-install exif
 
+RUN docker-php-ext-install dom
+RUN docker-php-ext-install exif
 RUN apt-get update && apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get update && apt-get install -y nodejs
