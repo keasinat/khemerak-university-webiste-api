@@ -49,10 +49,6 @@ Route::group([
         Route::post('/import', [BusinessActivityController::class, 'import'])->name('import');
     });
 
-    Route::group(['prefix' => 'filemanager'], function () {
-        \UniSharp\LaravelFilemanager\Lfm::routes();
-    });
-
     Route::group([
         'prefix' => 'pages',
         'as' => 'page.'
