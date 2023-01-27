@@ -66,9 +66,7 @@
 @endsection
 
 @push('after-scripts')
-<script>
-    {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
-</script>
+
     <script>
         var route_prefix = "/filemanager";
         $('#lfm').filemanager('file', {prefix: route_prefix});

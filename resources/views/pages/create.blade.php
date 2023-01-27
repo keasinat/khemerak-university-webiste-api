@@ -10,9 +10,9 @@
                 <a href="{{ route('admin.page.index') }}" class="btn btn-primary">{{ __('dashboard.cancel') }}</a>
             </x-slot>
             <x-slot name="body">
-                <div class="container">
+                <div class="container-fuild">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-9">
                             <div class="form-group">
                                 <label for="title_km" class="form-label">{{ __('dashboard.page_name') }}</label>
                                 <input type="text" name="title_km" id="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') }}">
@@ -22,34 +22,6 @@
                                     </div>
                                 @endif
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">{{ __('dashboard.meta_keyword') }}</label>
-                                <textarea name="meta_keyword" id="meta_keyword" cols="30" rows="5" class="form-control {{ $errors->has('meta_keyword') ? 'is-invalid' : '' }}"></textarea>
-                                @if($errors->has('meta_keyword'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('meta_keyword') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">{{ __('dashboard.meta_description') }}</label>
-                                <textarea name="meta_description" id="meta_description" cols="30" rows="5" class="form-control {{ $errors->has('meta_description') ? 'is-invalid' : '' }}"></textarea>
-                                @if($errors->has('meta_description'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('meta_description') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-sm-12 mb-3">
-                            <label for="" class="form-label"></label>
-                            <textarea name="content_km" id="content_km" cols="30" rows="10" class="form-control content"></textarea>
-                        </div>
-                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="" class="form-label">{{ __('dashboard.slug') }}</label>
                                 <input type="text" name="slug" id="slug" class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" value="{{ old('slug') }}">
@@ -59,8 +31,33 @@
                                     </div>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label for="" class="form-label"></label>
+                                <textarea name="content_km" id="content_km" cols="30" rows="10" class="form-control content"></textarea>
+                            </div>
+                                <div class="form-group">
+                                    <label for="" class="form-label">{{ __('dashboard.meta_keyword') }}</label>
+                                    <textarea name="meta_keyword" id="meta_keyword" cols="30" rows="5" class="form-control {{ $errors->has('meta_keyword') ? 'is-invalid' : '' }}"></textarea>
+                                    @if($errors->has('meta_keyword'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('meta_keyword') }}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-label">{{ __('dashboard.meta_description') }}</label>
+                                    <textarea name="meta_description" id="meta_description" cols="30" rows="5" class="form-control {{ $errors->has('meta_description') ? 'is-invalid' : '' }}"></textarea>
+                                    @if($errors->has('meta_description'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('meta_description') }}
+                                        </div>
+                                    @endif
+                                </div>
+                           
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
+                            <hr>
                             <div class="form-group">
                                 <label for="" class="form-label">{{ __('dashboard.status') }}</label>
                                 <select name="is_published" id="" class="form-control">
@@ -70,7 +67,6 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
                     </div>
                 </div>
             </x-slot>
@@ -80,17 +76,25 @@
 
 @push('after-scripts')
 @include('layouts.partials.ckeditor')
-    <script>
-        var route_prefix = "/filemanager";
-
-        $('#content_km').ckeditor({
+<script>
+    var route_prefix = "/file-manager";
+    $('#content').ckeditor({
         height: 500,
-        filebrowserImageBrowseUrl: route_prefix + '?type=Images',
-        filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
-        filebrowserBrowseUrl: route_prefix + '?type=Files',
-        filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}',
+        filebrowserImageBrowseUrl: route_prefix + '/ckeditor',
         allowedContent : true
-        });
-    </script>
+    });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById('lfm').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+  });
+});
+// set file link
+function fmSetLink($url) {
+  document.getElementById('thumbnail').value = $url;
+}
+</script>
 
 @endpush

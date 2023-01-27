@@ -68,15 +68,28 @@
 @endsection
 
 @push('after-scripts')
-<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
-<script>
-    {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
-</script>
-    <script>
-        var route_prefix = "/filemanager";
-        $('#lfm').filemanager('file', {prefix: route_prefix});
-        $('#filepath').filemanager('file', {prefix: route_prefix});
-    </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById('lfm').addEventListener('click', (event) => {
+        event.preventDefault();
+        inputId = 'thumbnail'
+        window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+      });
+
+      document.getElementById('filepath').addEventListener('click', (event) => {
+        event.preventDefault();
+        inputId = 'file'
+        window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+      });
+
+    });
+
+    let inputId = '';
+
+    // set file link
+    function fmSetLink($url) {
+      document.getElementById(inputId).value = $url;
+    }
+  </script>
 @endpush
