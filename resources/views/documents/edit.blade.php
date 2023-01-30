@@ -29,7 +29,7 @@
                                         <i class="far fa-file-pdf"></i>
                                     </a>
                                     </div>
-                                    <input id="file" class="form-control" type="text" name="file" readonly value="{{ old('file') ?? $document->file }}">
+                                    <input id="file" class="form-control" type="text" name="file" value="{{ old('file') ?? $document->file }}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -56,7 +56,7 @@
                                         <i class="far fa-image"></i>
                                     </a>
                                     </div>
-                                    <input id="thumbnail" class="form-control" type="text" name="thumbnail" readonly value="{{ old('thumbnail') ?? $document->thumbnail }}">
+                                    <input id="thumbnail" class="form-control" type="text" name="thumbnail"  value="{{ old('thumbnail') ?? $document->thumbnail }}">
                                 </div>
                                 <div id="holder" style="margin-top:15px;max-height:200px;"></div>
                             </div>

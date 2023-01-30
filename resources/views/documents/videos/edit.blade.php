@@ -5,7 +5,7 @@
         <x-card>
             <x-slot name="header">{{ __('dashboard.video_document') }}</x-slot>
             <x-slot name="headerAction">
-                <x-utils.link class="card-header-action" :href="route('admin.document.video.update', $video)" :text="__('dashboard.cancel')"/>
+                <x-utils.link class="card-header-action" :href="route('admin.document.video.index')" :text="__('dashboard.cancel')"/>
             </x-slot>
             <x-slot name="body">
                 <div class="container">
@@ -68,8 +68,21 @@
 @push('after-scripts')
 
     <script>
-        var route_prefix = "/filemanager";
-        $('#lfm').filemanager('file', {prefix: route_prefix});
+            document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById('lfm').addEventListener('click', (event) => {
+        event.preventDefault();
+        inputId = 'thumbnail'
+        window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+      });
+
+    });
+
+    let inputId = '';
+
+    // set file link
+    function fmSetLink($url) {
+      document.getElementById(inputId).value = $url;
+    }
 
         $(document).ready(function() {
 

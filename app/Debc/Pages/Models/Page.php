@@ -10,7 +10,7 @@ use Spatie\Searchable\SearchResult;
 
 class Page extends Model implements Searchable
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'pages';
     protected $fillable = [
