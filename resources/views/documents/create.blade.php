@@ -3,12 +3,12 @@
 @section('content')
     <x-forms.post :action="route('admin.document.store')">
         <x-card>
-            <x-slot name="header">@lang('Create Document')</x-slot>
+            <x-slot name="header">{{ __('dashboard.create_new') }}</x-slot>
             <x-slot name="headerAction">
                 <x-utils.link class="card-header-action" :href="route('admin.document.index')" :text="__('dashboard.cancel')"/>
             </x-slot>
             <x-slot name="body">
-                <div class="container">
+                <div class="container-fuild">
                     <div class="form-group">
                         <label for="" class="form-label">{{ __('dashboard.document_name') }}</label>
                         <input type="text" name="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') }}">
@@ -27,7 +27,7 @@
                                     <i class="far fa-file-pdf"></i>
                                   </a>
                                 </div>
-                                <input id="file" class="form-control" type="text" name="file" readonly value="{{ old('thumbnail') }}">
+                                <input id="file" class="form-control" type="text" name="file" value="{{ old('file') }}">
                             </div>
                         </div>
                         <div class="col-sm-6">

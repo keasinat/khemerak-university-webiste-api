@@ -29,7 +29,7 @@
                                         <i class="far fa-file-pdf"></i>
                                     </a>
                                     </div>
-                                    <input id="file" class="form-control" type="text" name="file" readonly value="{{ old('file') ?? $document->file }}">
+                                    <input id="file" class="form-control" type="text" name="file" value="{{ old('file') ?? $document->file }}">
                                 </div>
                             </div>
                             <div class="col-sm-6">

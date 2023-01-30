@@ -26,6 +26,8 @@ services:
       - ./nginx:/etc/nginx/conf.d
     networks:
       - business_gov_kh
+    environment:
+      - NGINX_CLIENT_MAX_BODY_SIZE=40m
 
 networks:
   business_gov_kh:
