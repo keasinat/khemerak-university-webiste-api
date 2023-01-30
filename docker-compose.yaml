@@ -27,7 +27,7 @@ services:
     networks:
       - business_gov_kh
     environment:
-      - NGINX_CLIENT_MAX_BODY_SIZE=40m
+      - ./upload.ini:/usr/local/etc/php/8.1/cli/conf.d/uploads.ini
 
 networks:
   business_gov_kh:
