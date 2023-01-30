@@ -27,7 +27,6 @@ services:
       - ./nginx:/etc/nginx/conf.d
     networks:
       - business_gov_kh
-    environment:
       
 
 networks:
