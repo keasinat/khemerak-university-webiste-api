@@ -78,15 +78,24 @@ class DocumentController extends Controller
         return DcategoryResource::collection($categories);
     }
 
-    public function categorySlug($slug)
+    public function categorySlug($slug, Request $request)
     {
+        
+        $paginate = $request->per_page ?? 9;
+
         $categoryId = Dcategory::where('slug', $slug)->pluck('id');
         
-        $category = Dcategory::with('documents')
-                    ->has('documents')
-                    ->where('slug', $slug)
-                    ->paginate();
+        // $category = Dcategory::with('documents')
+        //             ->has('documents')
+        //             ->where('slug', $slug)
+        //             ->paginate();
+        $documents = Document::whereHas('dcategory', function ($q) use ($categoryId) {
+            $q->whereIn('parent_id', [$categoryId]);
+            $q->orWhereIn('dcategory_id', [$categoryId]);
+        })
+        ->orderBy('id', 'desc')
+        ->paginate($paginate);
 
-        return DcategoryResource::collection($category);
+        return DocumentResource::collection($documents);
     }
 }

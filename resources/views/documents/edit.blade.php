@@ -56,7 +56,7 @@
                                         <i class="far fa-image"></i>
                                     </a>
                                     </div>
-                                    <input id="thumbnail" class="form-control" type="text" name="thumbnail" readonly value="{{ old('thumbnail') ?? $document->thumbnail }}">
+                                    <input id="thumbnail" class="form-control" type="text" name="thumbnail"  value="{{ old('thumbnail') ?? $document->thumbnail }}">
                                 </div>
                                 <div id="holder" style="margin-top:15px;max-height:200px;"></div>
                             </div>
