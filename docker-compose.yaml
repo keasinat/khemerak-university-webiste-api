@@ -12,6 +12,7 @@ services:
     working_dir: /var/www/
     volumes:
       - ./:/var/www
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - business_gov_kh
 
@@ -26,8 +27,6 @@ services:
       - ./nginx:/etc/nginx/conf.d
     networks:
       - business_gov_kh
-    environment:
-      - NGINX_CLIENT_MAX_BODY_SIZE=40m
 
 networks:
   business_gov_kh:
