@@ -27,8 +27,6 @@ services:
       - ./nginx:/etc/nginx/conf.d
     networks:
       - business_gov_kh
-    environment:
-      - upload_max_filesize = 64M
 
 networks:
   business_gov_kh:
