@@ -12,7 +12,7 @@ services:
     working_dir: /var/www/
     volumes:
       - ./:/var/www
-      - ./upload.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - business_gov_kh
 
