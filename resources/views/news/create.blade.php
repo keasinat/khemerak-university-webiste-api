@@ -42,6 +42,17 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
+                                        <label for="description_km" class="col-form-label">Short Description </label>
+                                        <textarea name="description_km" id="description_km" cols="30" rows="10" class="form-control {{ $errors->has('description_km') ? 'is-invalid' : '' }}">{{ old('description_km') }}</textarea>
+                                        @if($errors->has('description_km'))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('description_km') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                         <label for="meta_description" class="col-form-label">Meta Description </label>
                                         <textarea name="meta_description" id="meta_description" cols="30" rows="10" class="form-control {{ $errors->has('meta_description') ? 'is-invalid' : '' }}">{{ old('meta_description') }}</textarea>
                                         @if($errors->has('meta_description'))
@@ -58,17 +69,6 @@
                                         @if($errors->has('meta_keyword'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('meta_keyword') }}
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="description_km" class="col-form-label">Short Description </label>
-                                        <textarea name="description_km" id="description_km" cols="30" rows="10" class="form-control {{ $errors->has('description_km') ? 'is-invalid' : '' }}">{{ old('description_km') }}</textarea>
-                                        @if($errors->has('description_km'))
-                                            <div class="invalid-feedback">
-                                                {{ $errors->first('description_km') }}
                                             </div>
                                         @endif
                                     </div>
@@ -119,7 +119,7 @@
     @include('layouts.partials.ckeditor')
     <script>
         var route_prefix = "/file-manager";
-        $('#content').ckeditor({
+        $('#content_km').ckeditor({
             height: 500,
             filebrowserImageBrowseUrl: route_prefix + '/ckeditor',
             allowedContent : true

@@ -8,7 +8,9 @@
             {{ __('dashboard.page_management') }}
         </x-slot>
         <x-slot name="headerAction">
+            @can('page-create')
             <a href="{{ route('admin.page.create') }}" class="btn btn-primary">{{ __('dashboard.create_new') }}</a>
+            @endcan
         </x-slot>
         <x-slot name="body">
             <div class="table-responsive p-3">
