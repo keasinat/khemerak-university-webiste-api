@@ -14,14 +14,13 @@ class PageResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
         return [
             'id' => $this->id,
             'slug' => $this->slug,
             'title_km' => $this->title_km,
             'content_km' => $this->content_km,
-            'meta_description' => $this->meta_description,
-            'meta_keyword' => $this->meta_keyword,
+            'meta_description' => $this->meta_description ?? "",
+            'meta_keyword' => $this->meta_keyword ?? "",
             'created_at' => $this->created_at->format('Y-m-d'),
         ];
     }

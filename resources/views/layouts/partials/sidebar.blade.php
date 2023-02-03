@@ -27,6 +27,7 @@
               </p>
             </a>
           </li>
+          @can('page-list')
           <li class="nav-item">
             <a href="{{ route('admin.page.index') }}"  class="nav-link {{ (strpos(Route::currentRouteName(),  'page') == 0) ? '' : 'active ' }}">
               <i class="nav-icon fas fa-file-alt"></i>
@@ -35,7 +36,9 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          @endcan
+          @can('news-list')
+            <li class="nav-item">
             <a href="{{ route('admin.news.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'news') == 0) ? '' : 'active ' }}">
               <i class="nav-icon far fa-newspaper"></i>
               <p>
@@ -43,6 +46,7 @@
               </p>
             </a>
           </li>
+          @endcan
           <li class="nav-item">
             <a href="{{ route('admin.activity.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'activity') == 0) ? '' : 'active ' }}">
               <i class="nav-icon fas fa-briefcase"></i>
@@ -67,7 +71,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.document.index') }}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-file-pdf"></i>
               <p>
                 {{ __('dashboard.document_management') }}
@@ -75,12 +79,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              @can('document-list')
               <li class="nav-item">
                 <a href="{{ route('admin.document.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>{{ __('dashboard.document_management') }}</p>
                 </a>
               </li>
+              @endcan
               <li class="nav-item">
                 <a href="{{ route('admin.document.video.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'video') == 0) ? '' : 'active ' }}">
                   <i class="far fa-circle nav-icon"></i>

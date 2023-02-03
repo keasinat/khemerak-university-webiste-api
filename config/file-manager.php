@@ -31,7 +31,7 @@ return [
      * List of disk names that you want to use
      * (from config/filesystems)
      */
-    'diskList'          => ['public'],
+    'diskList'          => ['images','public'],
 
     /**
      * Default disk for left manager
@@ -103,7 +103,7 @@ return [
      * Add your middleware name to array -> ['web', 'auth', 'admin']
      * !!!! RESTRICT ACCESS FOR NON ADMIN USERS !!!!
      */
-    'middleware'        => ['web'],
+    'middleware'        => ['web', 'auth'],
 
     /***************************************************************************
      * ACL mechanism ON/OFF
@@ -159,10 +159,13 @@ return [
     'aclRules'          => [
         null => [
             //['disk' => 'public', 'path' => '/', 'access' => 2],
+            ['disk' => 'public', 'path' => '/', 'access' => 1],
         ],
         1    => [
             //['disk' => 'public', 'path' => 'images/arch*.jpg', 'access' => 2],
             //['disk' => 'public', 'path' => 'files/*', 'access' => 1],
+            ['disk' => 'public', 'path' => 'images/arch*.jpg', 'access' => 2],
+            ['disk' => 'public', 'path' => 'files/*', 'access' => 1],
         ],
     ],
 
