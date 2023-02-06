@@ -8,7 +8,7 @@
         {{ __('dashboard.news_management') }}
     </x-slot>
     <x-slot name="headerAction">
-        <a href="{{ route('admin.news.create') }}" class="btn btn-primary">{{ __('dashboard.create_new') }}</a>
+        <a href="{{ route('admin.news.create') }}" class="btn btn-success">{{ __('dashboard.create_new') }}</a>
     </x-slot>
     <x-slot name="body">
             @if(Session::has('success'))       
@@ -31,7 +31,7 @@
                         <tr>
                             <td><img src="{{ asset($article->thumbnail) }}" width="70" height="50" /></td>
                             <td>{{ Str::limit($article->title_km,60) }}</td>
-                            <td>{{ date('Y-m-d', strtotime($article->created_at)) }}</td>
+                            <td>{{ date('Y-m-d', strtotime($article->post_date)) }}</td>
                             <td>
                                 @foreach (pulishedOpt() as $k => $status)
                                     @if ($article->is_published == $k)

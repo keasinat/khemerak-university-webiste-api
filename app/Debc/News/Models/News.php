@@ -25,7 +25,8 @@ class News extends Model implements Searchable
         'content_km',
         'meta_keyword',
         'meta_description',
-        'is_published'
+        'is_published',
+        'post_date'
     ];
 
     // public function sluggable(): array
@@ -40,7 +41,8 @@ class News extends Model implements Searchable
     public $dates = [
         'deleted_at',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'post_date'
     ];
 
     public function getSearchResult(): SearchResult

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('after-styles')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+@endpush
 @section('content')
 <x-forms.post :action="route('admin.news.store')">
     <x-card>
@@ -97,7 +100,7 @@
                                         <i class="fa-solid fa fa-image"></i>
                                     </a>
                                     </div>
-                                    <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" readonly="" value="{{ old('thumbnail') }}">
+                                    <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" value="{{ old('thumbnail') }}">
                                     @if($errors->has('thumbnail'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('thumbnail') }}
@@ -105,6 +108,10 @@
                                     @endif
                                 </div>
                                 <div id="holder" style="margin-top:15px;max-height:400px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_date" class="col-form-label">Public Date</label>
+                                <input type="text" name="post_date" id="post_date" class="form-control" autocomplete="off" value="{{ old('post_date') }}">
                             </div>
                         </div>
                     </div>
@@ -116,6 +123,7 @@
 @endsection
 
 @push('after-scripts')
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     @include('layouts.partials.ckeditor')
     <script>
         var route_prefix = "/file-manager";
@@ -124,8 +132,7 @@
             filebrowserImageBrowseUrl: route_prefix + '/ckeditor',
             allowedContent : true
         });
-    </script>
-<script>
+
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('lfm').addEventListener('click', (event) => {
         event.preventDefault();
@@ -136,5 +143,19 @@
     function fmSetLink($url) {
       document.getElementById('thumbnail').value = $url;
     }
+
+    $( function() {
+        $( "#post_date" ).datepicker({
+        dateFormat: 'yy-mm-d',
+        minDate: getFormattedDate(new Date())
+        }).datepicker("setDate",'now');
+    } );
+    function getFormattedDate(date) {
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear().toString().slice(2);
+        return year + '-' + month + '-' + day;
+    }
+
   </script>
 @endpush
