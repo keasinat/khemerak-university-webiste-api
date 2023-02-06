@@ -22,6 +22,7 @@ return new class extends Migration
             $table->longText('content_km');
             $table->text('meta_keyword')->nullable();
             $table->text('meta_description')->nullable();
+            $table->date('post_date')->useCurrent();
             $table->boolean('is_published');
             $table->timestamps();
             $table->softDeletes();

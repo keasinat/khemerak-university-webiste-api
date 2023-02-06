@@ -1,10 +1,15 @@
 @extends('layouts.app')
-
+@push('after-styles')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+@endpush
 @section('content')
 <x-forms.patch :action="route('admin.news.update', $news)">
     <x-card>
         <x-slot name="header">
             ព័ត៍មាន
+        </x-slot>
+        <x-slot name="headerActions">
+            <x-utils.link class="card-header-action" :href="route('admin.news.index')" :text="__('Cancel')" />
         </x-slot>
         <x-slot name="body">
             <div class="container-fuild">
@@ -76,7 +81,7 @@
                     </div>
                     <div class="col-sm-3" style="background: #f1f1f1">
                         <div class="bg p-2">
-                            <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
+                            <button type="submit" class="btn btn-success">{{ __('dashboard.save') }}</button>
                             <hr>
                             <div class="form-group">
                                 <label for="" class="col-form-label">Status</label>
@@ -95,7 +100,7 @@
                                         <i class="fa-solid fa fa-image"></i>
                                     </a>
                                     </div>
-                                    <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" readonly="" value="{{ old('thumbnail') ?? $news->thumbnail}}">
+                                    <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" value="{{ old('thumbnail') ?? $news->thumbnail}}">
                                     @if($errors->has('thumbnail'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('thumbnail') }}
@@ -103,6 +108,10 @@
                                     @endif
                                     <div id="holder" style="margin-top:15px;max-height:200px;"></div>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_date" class="col-form-label">Public Date</label>
+                                <input type="text" name="post_date" id="post_date" class="form-control" autocomplete="off" value="{{ old('post_date') ?? date('Y-m-d', strtotime($news->post_date)) }}">
                             </div>
                         </div>
                     </div>
@@ -114,6 +123,7 @@
 @endsection
 
 @push('after-scripts')
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     @include('layouts.partials.ckeditor')
     <script>
         var route_prefix = "/file-manager";
@@ -122,17 +132,29 @@
             filebrowserImageBrowseUrl: route_prefix + '/ckeditor',
             allowedContent : true
         });
-    </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById('lfm').addEventListener('click', (event) => {
-        event.preventDefault();
-        window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
-      });
-    });
-    // set file link
-    function fmSetLink($url) {
-      document.getElementById('thumbnail').value = $url;
-    }
+
+        $( function() {
+          $( "#post_date" ).datepicker({
+            dateFormat: 'yy-mm-d',
+            // minDate: getFormattedDate(new Date())
+          }).datepicker();
+        } );
+        function getFormattedDate(date) {
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear().toString().slice(2);
+            return year + '-' + month + '-' + day;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('lfm').addEventListener('click', (event) => {
+            event.preventDefault();
+            window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+        });
+        });
+        // set file link
+        function fmSetLink($url) {
+        document.getElementById('thumbnail').value = $url;
+        }
   </script>
 @endpush
