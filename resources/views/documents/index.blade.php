@@ -6,14 +6,14 @@
 @section('content')
     <x-card>
         <x-slot name="header">
-            @lang('Documents Management')
+           {{ __('dashboard.document_management') }}
         </x-slot>
         <x-slot name="headerAction">
             <x-utils.link
                 icon="c-icon cil-plus"
                 class="card-header-action"
                 :href="route('admin.document.create')"
-                :text="__('Create Document')"
+                :text="__('dashboard.create_new')"
                 />
         </x-slot>
         <x-slot name="body">

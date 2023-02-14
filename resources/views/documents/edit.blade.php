@@ -3,15 +3,15 @@
 @section('content')
     <x-forms.patch :action="route('admin.document.update', $document)">
         <x-card>
-            <x-slot name="header">@lang('Edit Document')</x-slot>
+            <x-slot name="header">{{ __('dashboard.edit') }}</x-slot>
             <x-slot name="headerActions">
-                <x-utils.link class="card-header-action" :href="route('admin.document.index')" :text="__('Cancel')"/>
+                <x-utils.link class="card-header-action" :href="route('admin.document.index')" :text="__('dashboard.cancel')"/>
             </x-slot>
             <x-slot name="body">
-                <div class="container">
+                <div class="container-fuild">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="" class="form-label">Khmer Title</label>
+                                <label for="" class="form-label">{{ __('dashboard.document_name') }}</label>
                                 <input type="text" name="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') ?? $document->title_km }}">
                                 @if($errors->has('title_km'))
                                     <div class="invalid-feedback">
@@ -22,7 +22,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="" class="form-label">Select File</label>
+                                <label for="" class="form-label">{{ __('dashboard.select_file') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                     <a id="filepath" data-input="file" class="btn btn-info input-group-text">
@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="" class="form-label">Select Category</label>
+                                    <label for="" class="form-label">{{ __('dashboard.document_category') }}</label>
                                     <select name="dcategory_id" id="" class="form-control">
                                         @if( isset($categories) )
                                             @foreach ($categories as $category)
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <label for="" class="form-label">Select Thumbnail</label>
+                                <label for="" class="form-label">{{ __('dashboard.thumbnail') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info input-group-text">

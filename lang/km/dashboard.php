@@ -37,6 +37,7 @@ return [
     'document_name' => 'ឈ្មោះឯកសារ',
     'select_file' => 'ជ្រើសរើសឯកសារ',
     'document' => [
+        'create_document' => 'បង្កើតឯកសារ',
         'video' => 'វីដេអូ',
         'video_name' => 'ចំណងជើងវីដេអូ',
         'video_management' => 'វីដេអូឯកសារ',
