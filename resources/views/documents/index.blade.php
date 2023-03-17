@@ -8,6 +8,7 @@
         <x-slot name="header">
            {{ __('dashboard.document_management') }}
         </x-slot>
+        @can('document-create')
         <x-slot name="headerAction">
             <x-utils.link
                 icon="c-icon cil-plus"
@@ -16,6 +17,7 @@
                 :text="__('dashboard.create_new')"
                 />
         </x-slot>
+        @endcan
         <x-slot name="body">
             <div class="table-responsive p-3">
                 <table class="table table-bordered table-striped" id="documents">

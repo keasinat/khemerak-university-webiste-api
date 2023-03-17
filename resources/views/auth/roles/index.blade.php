@@ -8,6 +8,7 @@
     <x-slot name="header">
         @lang('Roles Management')
     </x-slot>
+    @can('role-create')
     <x-slot name="headerAction">
         <x-utils.link
         icon="far fa-plus nav-icon"
@@ -16,6 +17,7 @@
         :text="__('Create')"
         />
     </x-slot>
+    @endcan
     <x-slot name="body">
         <div class="table-responsive p-3">
             <table class="table table-bordered table-striped" id="roles">

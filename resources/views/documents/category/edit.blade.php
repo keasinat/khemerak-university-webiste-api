@@ -4,14 +4,14 @@
 <x-forms.patch :action="route('admin.document.category.update', $category->id)">
     <x-card>
         <x-slot name="header">
-            @lang('Category Edit')
+            {{ __('dashboard.document_category') }}
         </x-slot>
         <x-slot name="headerAction">
             <x-utils.link
                 icon="c-icon cil-plus"
                 class="card-header-action"
                 :href="route('admin.document.category.index')"
-                :text="__('Cancel')"
+                :text="__('dashboard.cancel')"
                 />
         </x-slot>
         <x-slot name="body">
