@@ -146,9 +146,8 @@
 
     $( function() {
         $( "#post_date" ).datepicker({
-        dateFormat: 'yy-mm-d',
-        minDate: getFormattedDate(new Date())
-        }).datepicker("setDate",'now');
+        dateFormat: 'yy-mm-d'
+        });
     } );
     function getFormattedDate(date) {
         var day = date.getDate();
