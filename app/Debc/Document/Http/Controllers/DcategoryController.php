@@ -19,6 +19,7 @@ class DcategoryController
     {
         $this->service = $service;
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +28,7 @@ class DcategoryController
     public function index()
     {
 
-        $categories = Dcategory::whereNull('parent_id')->orderBy('id', 'desc')->get();
+        $categories = Dcategory::whereNull('parent_id')->orderBy('id', 'asc')->get();
         
         return view('documents.category.index',compact('categories'));
     }

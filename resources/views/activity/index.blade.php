@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($categories) > 0)
+                    @if ($categories)
                         @foreach ($categories as $item)
                         <tr>
                             <td>{{ $item->group }}</td>
@@ -35,8 +35,6 @@
                             <td></td>
                         </tr>
                         @endforeach
-                    @else
-                        <tr>No Data</tr>
                     @endif
 
                 </tbody>

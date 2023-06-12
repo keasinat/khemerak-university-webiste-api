@@ -36,64 +36,73 @@ Route::group([
 
     Route::group([
         'prefix' => 'activities',
-        'as' => 'activity.'
-    ], function() {
-        Route::get('/', [BusinessActivityController::class, 'index'])->name('index');
-        Route::get('create', [BusinessActivityController::class, 'create'])
-            ->name('create');
+        'as' => 'activity.',
+        'middleware' => 'permission:activity-list|activity-create|activity-edit|activity-delete'
+        ], function() {
+            Route::get('/', [BusinessActivityController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:activity-list');
+            Route::get('create', [BusinessActivityController::class, 'create'])
+                ->name('create')
+                ->middleware('permission:activity-create');
 
-        Route::post('/', [BusinessActivityController::class, 'store'])->name('store');
-        Route::get('edit/{id}', [BusinessActivityController::class, 'edit'])->name('edit');
-        Route::get('/import', [BusinessActivityController::class, 'gimport']);
-        Route::post('/import', [BusinessActivityController::class, 'import'])->name('import');
+            Route::post('/', [BusinessActivityController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [BusinessActivityController::class, 'edit'])->name('edit');
+            Route::get('/import', [BusinessActivityController::class, 'gimport']);
+            Route::post('/import', [BusinessActivityController::class, 'import'])->name('import');
     });
 
     Route::group([
         'prefix' => 'pages',
-        'as' => 'page.'
-    ], function() {
-        Route::get('/', [PageController::class, 'index'])->name('index');
-        Route::get('create', [PageController::class, 'create'])->name('create');
-        Route::post('/', [PageController::class, 'store'])->name('store');
-        Route::get('edit/{page}',  [PageController::class, 'edit'])->name('edit');
-        Route::patch('/{id}', [PageController::class, 'update'])->name('update');
-        Route::delete('{page}',  [PageController::class, 'destroy'])->name('destroy');
+        'as' => 'page.',
+        'middleware' => 'permission:page-list|page-create|page-edit|page-delete'
+        ], function() {
+            Route::get('/', [PageController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:page-list');
+            Route::get('create', [PageController::class, 'create'])->name('create');
+            Route::post('/', [PageController::class, 'store'])->name('store');
+            Route::get('edit/{page}',  [PageController::class, 'edit'])->name('edit');
+            Route::patch('/{id}', [PageController::class, 'update'])->name('update');
+            Route::delete('{page}',  [PageController::class, 'destroy'])->name('destroy');
     });
 
     Route::group([
         'prefix' => 'news',
         'as' => 'news.',
         'middleware' => 'permission:news-create|news-list|news-edit|news-delete',
-    ], function () {
-        Route::get('/', [NewsController::class, 'index'])
-            ->name('index')
-            ->middleware('permission:news-list');
-        Route::get('create', [NewsController::class, 'create'])
-            ->name('create')
-            ->middleware('permission:news-create');
-        Route::post('/', [NewsController::class, 'store'])
-            ->name('store');
-        Route::delete('/{id}', [NewsController::class, 'destroy'])
-            ->name('destroy')
-            ->middleware('permission:news-delete');
-        Route::get('edit/{news}', [NewsController::class, 'edit'])
-            ->name('edit')
-            ->middleware('permission:news-edit');
-        Route::patch('/{news}', [NewsController::class, 'update'])->name('update');
-        Route::get('/check_slug', [NewsController::class, 'check_slug'])->name('check_slug');
+        ], function () {
+            Route::get('/', [NewsController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:news-list');
+            Route::get('create', [NewsController::class, 'create'])
+                ->name('create')
+                ->middleware('permission:news-create');
+            Route::post('/', [NewsController::class, 'store'])
+                ->name('store');
+            Route::delete('/{id}', [NewsController::class, 'destroy'])
+                ->name('destroy')
+                ->middleware('permission:news-delete');
+            Route::get('edit/{news}', [NewsController::class, 'edit'])
+                ->name('edit')
+                ->middleware('permission:news-edit');
+            Route::patch('/{news}', [NewsController::class, 'update'])->name('update');
+            Route::get('/check_slug', [NewsController::class, 'check_slug'])->name('check_slug');
     });
 
     
     Route::group([
         'prefix' => 'documents',
         'as' => 'document.',
-        //'middleware' => 'permission:admin.access.document.list|admin.access.document.create|admin.access.document.edit|admin.access.document.destroy',
+        'middleware' => 'permission:admin.access.document.list|admin.access.document.create|admin.access.document.edit|admin.access.document.destroy',
         ], function() {
             Route::get('/', [DocumentController::class, 'index'])
             ->name('index');
-            Route::get('create', [DocumentController::class, 'create'])->name('create');
+            Route::get('create', [DocumentController::class, 'create'])
+                ->name('create')
+                ->middleware();
             Route::post('/', [DocumentController::class, 'store'])->name('store');
-            Route::get('edit/{document}', [DocumentController::class, 'edit'])->name('edit');
+            Route::get('{document}/edit', [DocumentController::class, 'edit'])->name('edit');
             Route::patch('/{document}', [DocumentController::class, 'update'])->name('update');
             Route::delete('/{document}', [DocumentController::class, 'destroy'])->name('destroy');
             Route::group([
@@ -121,8 +130,58 @@ Route::group([
             });
     });
 
-    Route::resource('users', UserController::class);
-    Route::resource('roles', RoleController::class);
+    // Route::resource('users', UserController::class);
+    // Route::resource('roles', RoleController::class);
+    /**
+     * User Route
+     */
+    Route::group([
+        'prefix' => 'users',
+        'as' => 'users.',
+        'middleware' => 'permission:user-list|user-create|user-edit|user-delete'
+        ], function() {
+            Route::get('/', [UserController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:user-list');
+            Route::get('/create', [UserController::class, 'create'])
+                ->name('create')
+                ->middleware('permission:user-create');
+            Route::post('/', [UserController::class, 'store'])
+                ->name('store');
+            Route::get('{user}/edit', [UserController::class, 'edit'])
+                ->name('edit')
+                ->middleware('permission:user-edit');
+            Route::patch('{user}', [UserController::class, 'update'])->name('update');
+            Route::delete('{user}', [UserController::class, 'destroy'])
+                ->name('destroy')
+                ->middleware('permission:user-delete');
+        });
+    
+    /**
+     * Role Route
+     */
+    Route::group([
+        'prefix' => 'roles',
+        'as' => 'roles.',
+        'middleware' => 'permission:role-list|role-create|role-edit|role-delete'
+        ], function() {
+        Route::get('/', [RoleController::class, 'index'])
+            ->name('index')
+            ->middleware('permission:role-list');
+        Route::get('create', [RoleController::class, 'create'])
+            ->name('create')
+            ->middleware('permission:role-create');
+        Route::post('/', [RoleController::class, 'store'])
+            ->name('store');
+        Route::get('{role}/edit', [RoleController::class, 'edit'])
+            ->name('edit')
+            ->middleware('permission:role-edit');
+        Route::patch('{role}', [RoleController::class, 'update'])
+            ->name('update');
+        Route::delete('{role}', [RoleController::class, 'destroy'])
+            ->name('destroy')
+            ->middleware('permission:role-delete');
+    });
 
     Route::get('file-manager', function () {
         return view('file-manager');

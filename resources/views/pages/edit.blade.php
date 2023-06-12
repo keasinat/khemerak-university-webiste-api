@@ -3,8 +3,14 @@
 @section('content')
     <x-forms.patch :action="route('admin.page.update', $page)">
         <x-card>
+            <x-slot name="header">
+                {{ __('dashboard.edit') }}
+            </x-slot>
+            <x-slot name="headerAction">
+                <a href="{{ route('admin.page.index') }}" class="btn btn-primary">{{ __('dashboard.cancel') }}</a>
+            </x-slot>
             <x-slot name="body">
-                <div class="container">
+                <div class="container-fuild">
                     <div class="row">
                         <div class="col-sm-9">
                             <div class="form-group">
@@ -48,16 +54,18 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <hr>
-                            <div class="form-group">
-                                <label for="" class="form-label">{{ __('dashboard.status') }}</label>
-                                <select name="is_published" id="" class="form-control">
-                                    @foreach (pulishedOpt() as $k => $item)
-                                    <option value="{{ $k }}" {{ $page->is_published  == $k ? "selected" : "" }}>{{ $item }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="col-sm-3" style="background: #f1f1f1">
+                            <div class="bg p-2">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="" class="form-label">{{ __('dashboard.status') }}</label>
+                                    <select name="is_published" id="" class="form-control">
+                                        @foreach (pulishedOpt() as $k => $item)
+                                        <option value="{{ $k }}" {{ $page->is_published  == $k ? "selected" : "" }}>{{ $item }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -71,7 +79,7 @@
 @include('layouts.partials.ckeditor')
 <script>
     var route_prefix = "/file-manager";
-    $('#content').ckeditor({
+    $('#content_km').ckeditor({
         height: 500,
         filebrowserImageBrowseUrl: route_prefix + '/ckeditor',
         allowedContent : true

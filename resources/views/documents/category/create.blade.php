@@ -4,9 +4,9 @@
 <x-forms.post :action="route('admin.document.category.store')">
     <x-card>
         <x-slot name="header">
-            @lang('Category Create')
+            {{ __('dashboard.create_new') }}
         </x-slot>
-        <x-slot name="headerActions">
+        <x-slot name="headerAction">
             <x-utils.link
                 icon="c-icon cil-plus"
                 class="card-header-action"
@@ -15,14 +15,16 @@
                 />
         </x-slot>
         <x-slot name="body">
-            <div class="form-group">
-                <label for="">{{ __('dashboard.category_name') }}</label>
-                <input type="text" name="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') }}">
-                @if($errors->has('title_km'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('title_km') }}
-                    </div>
-                @endif
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">{{ __('dashboard.category_name') }}</label>
+                    <input type="text" name="title_km" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') }}">
+                    @if($errors->has('title_km'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('title_km') }}
+                        </div>
+                    @endif
+                </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">

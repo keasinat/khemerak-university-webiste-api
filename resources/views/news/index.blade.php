@@ -7,9 +7,11 @@
     <x-slot name="header">
         {{ __('dashboard.news_management') }}
     </x-slot>
+    @can('news-create')
     <x-slot name="headerAction">
         <a href="{{ route('admin.news.create') }}" class="btn btn-success">{{ __('dashboard.create_new') }}</a>
     </x-slot>
+    @endcan
     <x-slot name="body">
             @if(Session::has('success'))       
                 <div class="alert alert-success">         
