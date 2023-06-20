@@ -56,6 +56,7 @@ class DocumentController
      */
     public function store(StoreDocumentRequest $request)
     {
+        // dd($request->all());
         $this->service->store($request->except(['_token']));
 
         return redirect()

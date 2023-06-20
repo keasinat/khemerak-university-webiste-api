@@ -23,7 +23,9 @@ class DocumentController extends Controller
 
         if ($request->has('keyword') && !empty($keyword)) {
             $document = $document->whereNull('deleted_at')
-                ->where('title_km', 'LIKE', '%'. $keyword .'%')    
+                ->where('is_published', 1)
+                ->where('title_km', 'LIKE', '%'. $keyword .'%')
+                ->orderBy('post_date', 'desc')
                 ->paginate($paginate);
 
             return DocumentResource::collection($document);
@@ -32,7 +34,9 @@ class DocumentController extends Controller
         if ($request->has('category')  && !empty($category)) {
             $categories = $categories::with('documents')
                 ->whereNull('deleted_at')
+                ->where('is_published', 1)
                 ->where('title_km', 'LIKE', '%'. $category .'%')
+                ->orderBy('post_date', 'desc')
                 ->paginate($paginate);
             
             return DocumentResource::collection($categories);
@@ -41,7 +45,8 @@ class DocumentController extends Controller
 
         $document = $document::with('dcategory')
                 ->whereNull('deleted_at')
-                ->orderBy('id', 'desc')
+                ->where('is_published', 1)
+                ->orderBy('post_date', 'desc')
                 ->paginate($paginate);
         
         return DocumentResource::collection($document);
@@ -66,7 +71,9 @@ class DocumentController extends Controller
         if ($request->has('category')  && !empty($category)) {
             $categories = $categories::with('documents')->has('documents')
                 ->whereNull('deleted_at')
+                ->where('is_published', 1)
                 ->where('title_km', 'LIKE', '%'. $category .'%')
+                ->orderBy('post_date', 'desc')
                 ->paginate($paginate);
             
             return DocumentResource::collection($categories);

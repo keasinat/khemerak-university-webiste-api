@@ -28,13 +28,26 @@ class StoreDocumentRequest extends FormRequest
             'file' => 'required',
             'dcategory_id' => 'required',
             'thumbnail' => 'required',
+            'post_date' => 'required',
+            'is_published' => 'boolean'
         ];
     }
 
     public function attributes()
     {
         return [
-            'title_km' => trans('dashboard.document_name')
+            'title_km' => trans('dashboard.document_name'),
+            'file' => trans('dashboard.document.file'),
+            'thumbnail' => trans('dashboard.document.thumbnail'),
+            'post_date' => trans('dashboard.document.post_date_required'),
+            'dcategory_id' => trans('dashboard.document_category'),
         ];
     }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'post_date.required' => trans('dashboard.document.post_date_required')
+    //     ];
+    // }
 }

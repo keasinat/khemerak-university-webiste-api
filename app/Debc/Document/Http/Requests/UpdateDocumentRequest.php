@@ -28,13 +28,19 @@ class UpdateDocumentRequest extends FormRequest
             'file' => 'string',
             'dcategory_id' => 'integer',
             'thumbnail' => 'string',
+            'post_date' => 'required',
+            'is_published' => 'boolean'
         ];
     }
 
     public function attributes()
     {
         return [
-            'title_km' => trans('dashboard.document_name')
+            'title_km' => trans('dashboard.document_name'),
+            'file' => trans('dashboard.document.file'),
+            'thumbnail' => trans('dashboard.document.thumbnail'),
+            'post_date' => trans('dashboard.document.post_date_required'),
+            'dcategory_id' => trans('dashboard.document_category'),
         ];
     }
 }

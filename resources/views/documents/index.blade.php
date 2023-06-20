@@ -23,9 +23,10 @@
                 <table class="table table-bordered table-striped" id="documents">
                     <thead>
                         <tr>
-                            <th>{{ __('dashboard.thumbnail') }}</th>
                             <th>{{ __('dashboard.title') }}</th>
                             <th>{{ __('dashboard.document.category') }}</th>
+                            <th>{{ __('dashboard.document.post_date') }}</th>
+                            <th>{{ __('dashboard.document.published') }}</th>
                             <th>{{ __('dashboard.action') }}</th>
                         </tr>
                     </thead>
@@ -33,11 +34,16 @@
                     @if (isset($documents))
                         @foreach ($documents as $document)
                         <tr>
-                            <td>
-                                <img src="{{ $document->thumbnail }}" alt="" width="50">
-                            </td>
                             <td>{{ $document->title_km }}</td>
                             <td>{{ $document->dcategory->title_km }}</td>
+                            <td>{{ $document->post_date->format('d-m-Y') }}</td>
+                            <td>
+                                @foreach(pulishedOpt() as $k => $item)
+                                    @if($document->is_published == $k)
+                                    <span class="badge {{ $document->is_published == 0 ? 'badge-danger' : 'badge-success'}}">{{ $item }}</span>
+                                    @endif
+                                @endforeach
+                            </td>
                             <td>
                                 @include('documents.includes.actions')
                             </td>

@@ -6,7 +6,7 @@
 @section('content')
     <x-card>
         <x-slot name="header">
-            @lang('User Management')
+            {{ __('dashboard.user.title') }}
         </x-slot>
         @can('user-create')
         <x-slot name="headerAction">
@@ -14,7 +14,7 @@
             icon="far fa-plus nav-icon"
             class="card-header-action"
             :href="route('admin.users.create')"
-            :text="__('Create')"
+            :text="__('dashboard.create_new')"
             />
         </x-slot>
         @endcan
