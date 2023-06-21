@@ -28,7 +28,7 @@ class UpdateDocumentRequest extends FormRequest
             'file' => 'string',
             'dcategory_id' => 'integer',
             'thumbnail' => 'string',
-            'post_date' => 'required',
+            'post_date' => 'date',
             'is_published' => 'boolean'
         ];
     }
