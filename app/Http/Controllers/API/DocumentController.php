@@ -88,7 +88,7 @@ class DocumentController extends Controller
     public function categorySlug($slug, Request $request)
     {
         
-        $paginate = $request->per_page ?? 9;
+        $paginate = $request->per_page ?? 1;
 
         $categoryId = Dcategory::where('slug', $slug)->pluck('id');
         
@@ -100,7 +100,7 @@ class DocumentController extends Controller
             $q->whereIn('parent_id', [$categoryId]);
             $q->orWhereIn('dcategory_id', [$categoryId]);
         })
-        ->orderBy('id', 'desc')
+        ->orderBy('post_date', 'desc')
         ->paginate($paginate);
 
         return DocumentResource::collection($documents);

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->date('post_date')->useCurrent()->after('title_km');
+            $table->date('post_date')->nullable()->after('title_km');
             $table->boolean('is_published')->default(false);
         });
     }
@@ -27,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->date('post_date')->useCurrent()->after('title_km');
+            $table->date('post_date')->nullable()->after('title_km');
             $table->boolean('is_published')->default(false);
         });
     }
