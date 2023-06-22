@@ -88,7 +88,7 @@ class DocumentController extends Controller
     public function categorySlug($slug, Request $request)
     {
         
-        $paginate = $request->per_page ?? 1;
+        $paginate = $request->per_page ?? 12;
 
         $categoryId = Dcategory::where('slug', $slug)->pluck('id');
         
