@@ -31,7 +31,7 @@ class Document extends Model
 
     public $casts= [
         'is_published' => 'boolean',
-        'post_date' => 'date:d-m-Y'
+        'post_date' => 'date'
     ];
 
     public function dcategory()
@@ -41,7 +41,8 @@ class Document extends Model
 
     // public function setPostDateAttribute($value)
     // {
-    //     $this->attributes['post_date'] = Carbon::createFromFormat('d-m-Y', $value)->format('d-m-Y');
+       
+    //     $this->attributes['post_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('d-m-Y');
     // }
 
     // public function getPostDateAttribute($value)

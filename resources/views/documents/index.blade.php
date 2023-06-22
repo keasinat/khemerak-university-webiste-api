@@ -36,7 +36,7 @@
                         <tr>
                             <td>{{ $document->title_km }}</td>
                             <td>{{ $document->dcategory->title_km }}</td>
-                            <td>{{ $document->post_date->format('d-m-Y') }}</td>
+                            <td>{{ $document->post_date ? $document->post_date->format('d-m-Y') : '-' }}</td>
                             <td>
                                 @foreach(pulishedOpt() as $k => $item)
                                     @if($document->is_published == $k)
