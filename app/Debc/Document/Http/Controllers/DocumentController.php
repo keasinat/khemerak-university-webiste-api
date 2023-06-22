@@ -57,7 +57,7 @@ class DocumentController
     public function store(StoreDocumentRequest $request)
     {
         // dd($request->all());
-        $request->post_date = Carbon::createFromFormat('d/m/Y', $request->post_date)->format('d-m-Y');
+        $request->post_date = Carbon::createFromFormat('d-m-Y', $request->post_date)->format('d-m-Y');
         $this->service->store($request->except(['_token']));
 
         return redirect()
