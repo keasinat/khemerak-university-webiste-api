@@ -62,7 +62,8 @@ class DocumentController extends Controller
 
         if ($request->has('keyword') && !empty($keyword)) {
             $categories = $categories->whereNull('deleted_at')
-                ->where('title_km', 'LIKE', '%'. $keyword .'%')    
+                ->where('title_km', 'LIKE', '%'. $keyword .'%')
+                ->where('is_published', 1)
                 ->paginate($paginate);
 
             return DocumentResource::collection($document);
@@ -92,14 +93,11 @@ class DocumentController extends Controller
 
         $categoryId = Dcategory::where('slug', $slug)->pluck('id');
         
-        // $category = Dcategory::with('documents')
-        //             ->has('documents')
-        //             ->where('slug', $slug)
-        //             ->paginate();
         $documents = Document::whereHas('dcategory', function ($q) use ($categoryId) {
             $q->whereIn('parent_id', [$categoryId]);
             $q->orWhereIn('dcategory_id', [$categoryId]);
         })
+        ->where('is_published', 1)
         ->orderBy('post_date', 'desc')
         ->paginate($paginate);
 

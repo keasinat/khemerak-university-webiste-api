@@ -76,7 +76,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="" class="col-form-label">{{ __('dashboard.document.post_date') }}</label>
-                                    <input type="text" name="post_date" id="post_date" class="form-control {{ $errors->has('post_date') ? 'is-invalid' : '' }}" value="{{ $document->post_date }}" autocomplete="off">
+                                    <input type="text" name="post_date" id="post_date" class="form-control {{ $errors->has('post_date') ? 'is-invalid' : '' }}" value="{{ isset($document->post_date) ? $document->post_date->format('d-m-Y') : $document->post_date }}" autocomplete="off">
                                     @if($errors->has('post_date'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('post_date') }}
