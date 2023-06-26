@@ -47,7 +47,12 @@ return [
         'parent_category' => 'ប្រភេទឯកសារមេ',
         'video_store_msg' => 'The Video was successfully created.',
         'video_update_success_msg' => 'The Video was successfully update.',
-        'video_delete_success_msg' => 'The Video was successfully deleted.'
+        'video_delete_success_msg' => 'The Video was successfully deleted.',
+        'file' => 'ឯកសារ',
+        'thumbnail' => 'រូបភាព',
+        'post_date' => 'ថ្ងៃចេញឯកសារ',
+        'published' => 'ចេញផ្សាយ',
+        'post_date_required' => 'ថ្ងៃចេញឯកសារ'
     ],
     'username' => 'ឈ្មោះអ្នកប្រើប្រាស់',
     'role' => 'តួនាទី',
@@ -76,5 +81,8 @@ return [
     'total_business_activity' => 'ចំនួនសរុបសកម្មភាពអាជីវកម្ម',
     'publish' => 'ចេញផ្សាយ',
     'save_to_draft' => 'រក្សាទុកព្រាង',
-    'content' => 'មាតិកា'
+    'content' => 'មាតិកា',
+    'user' => [
+        'title' => 'ការគ្រប់គ្រងអ្នកប្រើប្រាស់'
+    ],
 ];

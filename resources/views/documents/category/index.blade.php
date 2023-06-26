@@ -6,7 +6,7 @@
 @section('content')
     <x-card>
         <x-slot name="header">
-            {{ __('dashboard.document_management') }}
+            {{ __('dashboard.document_category') }}
         </x-slot>
         <x-slot name="headerAction">
             @can('document-create')

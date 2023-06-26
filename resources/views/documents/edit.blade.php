@@ -1,10 +1,13 @@
 @extends('layouts.app')
 @section('title', __('Edit Document'))
+@push('after-styles')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+@endpush
 @section('content')
     <x-forms.patch :action="route('admin.document.update', $document)">
         <x-card>
             <x-slot name="header">{{ __('dashboard.edit') }}</x-slot>
-            <x-slot name="headerActions">
+            <x-slot name="headerAction">
                 <x-utils.link class="card-header-action" :href="route('admin.document.index')" :text="__('dashboard.cancel')"/>
             </x-slot>
             <x-slot name="body">
@@ -60,6 +63,27 @@
                                 </div>
                                 <div id="holder" style="margin-top:15px;max-height:200px;"></div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label">{{ __('dashboard.document.published')}}</label>
+                                    <select name="is_published" id="is_published" class="form-control">
+                                        @foreach (pulishedOpt() as $k => $item)
+                                            <option value="{{ $k }}" {{ $document->is_published == $k ? 'selected' : '' }}>{{ $item }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label">{{ __('dashboard.document.post_date') }}</label>
+                                    <input type="text" name="post_date" id="post_date" class="form-control {{ $errors->has('post_date') ? 'is-invalid' : '' }}" value="{{ isset($document->post_date) ? $document->post_date->format('d-m-Y') : $document->post_date }}" autocomplete="off">
+                                    @if($errors->has('post_date'))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('post_date') }}
+                                            </div>
+                                        @endif
+                                </div>
+                            </div>
                         </div>
 
                     <button type="submit" class="btn btn-primary mt-3">{{ __('dashboard.save') }}</button>
@@ -70,6 +94,7 @@
 @endsection
 
 @push('after-scripts')
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('lfm').addEventListener('click', (event) => {
@@ -92,6 +117,13 @@
     function fmSetLink($url) {
       document.getElementById(inputId).value = $url;
     }
+
+
+    $( function() {
+        $( "#post_date" ).datepicker({
+        dateFormat: 'd-mm-yy'
+        });
+    } );
   </script>
 
 @endpush

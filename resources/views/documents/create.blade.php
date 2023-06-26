@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', __('Create Document'))
+@push('after-styles')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+@endpush
 @section('content')
     <x-forms.post :action="route('admin.document.store')">
         <x-card>
@@ -27,13 +30,18 @@
                                     <i class="far fa-file-pdf"></i>
                                   </a>
                                 </div>
-                                <input id="file" class="form-control" type="text" name="file" value="{{ old('file') }}">
+                                <input id="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" type="text" name="file" value="{{ old('file') }}">
+                                @if($errors->has('file'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('file') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group ">
                                 <label for="">{{ __('dashboard.document_category') }}</label>
-                                <select name="dcategory_id" id="" class="form-control">
+                                <select name="dcategory_id" id="" class="form-control {{ $errors->has('dcategory_id') ? 'is-invalid' : '' }}">
                                     @if( isset($categories) )
                                         @foreach ($categories as $category)
                                             @php $dash=''; @endphp
@@ -44,6 +52,11 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                @if($errors->has('dcategory_id'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('dcategory_id') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -54,9 +67,35 @@
                                     <i class="far fa-image"></i>
                                   </a>
                                 </div>
-                                <input id="thumbnail" class="form-control" type="text" name="thumbnail" value="{{ old('thumbnail') }}">
+                                <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" value="{{ old('thumbnail') }}">
+                                @if($errors->has('thumbnail'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('thumbnail') }}
+                                    </div>
+                                @endif
                             </div>
                             <div id="holder" style="margin-top:15px;max-height:200px;"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="" class="col-form-label">{{ __('dashboard.document.published')}}</label>
+                                <select name="is_published" id="is_published" class="form-control">
+                                    @foreach (pulishedOpt() as $k => $item)
+                                        <option value="{{ $k }}">{{ $item }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="" class="col-form-label">{{ __('dashboard.document.post_date') }}</label>
+                                <input type="text" name="post_date" id="post_date" class="form-control {{ $errors->has('post_date') ? 'is-invalid' : '' }}" value="{{ old('post_date') }}" autocomplete="off">
+                                @if($errors->has('post_date'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('post_date') }}
+                                        </div>
+                                    @endif
+                            </div>
                         </div>
                     </div>
 
@@ -68,19 +107,19 @@
 @endsection
 
 @push('after-scripts')
-
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('lfm').addEventListener('click', (event) => {
         event.preventDefault();
         inputId = 'thumbnail'
-        window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+        window.open('/file-manager/fm-button', 'fm', 'width=1000,height=800');
       });
 
       document.getElementById('filepath').addEventListener('click', (event) => {
         event.preventDefault();
         inputId = 'file'
-        window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+        window.open('/file-manager/fm-button', 'fm', 'width=1000,height=800');
       });
 
     });
@@ -91,5 +130,12 @@
     function fmSetLink($url) {
       document.getElementById(inputId).value = $url;
     }
+
+    $( function() {
+        $( "#post_date" ).datepicker({
+        dateFormat: 'dd-mm-yy'
+        });
+    } );
+
   </script>
 @endpush
