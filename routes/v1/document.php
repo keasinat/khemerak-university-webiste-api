@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\DocumentController;
+use App\Http\Controllers\API\VideoController;
 
 Route::group([
         'prefix' => 'documents',
