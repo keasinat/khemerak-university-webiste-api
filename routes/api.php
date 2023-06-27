@@ -7,7 +7,7 @@ use App\Http\Controllers\API\PageController;
 
 
 use App\Http\Controllers\API\SearchController;
-use App\Http\Controllers\API\VideoController;
+
 
 /*
 |--------------------------------------------------------------------------
