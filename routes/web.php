@@ -34,38 +34,6 @@ Route::group([
     'middleware' => ['auth', 'web']
 ], function () {
 
-    Route::group([
-        'prefix' => 'activities',
-        'as' => 'activity.',
-        'middleware' => 'permission:activity-list|activity-create|activity-edit|activity-delete'
-        ], function() {
-            Route::get('/', [BusinessActivityController::class, 'index'])
-                ->name('index')
-                ->middleware('permission:activity-list');
-            Route::get('create', [BusinessActivityController::class, 'create'])
-                ->name('create')
-                ->middleware('permission:activity-create');
-
-            Route::post('/', [BusinessActivityController::class, 'store'])->name('store');
-            Route::get('edit/{id}', [BusinessActivityController::class, 'edit'])->name('edit');
-            Route::get('/import', [BusinessActivityController::class, 'gimport']);
-            Route::post('/import', [BusinessActivityController::class, 'import'])->name('import');
-    });
-
-    Route::group([
-        'prefix' => 'pages',
-        'as' => 'page.',
-        'middleware' => 'permission:page-list|page-create|page-edit|page-delete'
-        ], function() {
-            Route::get('/', [PageController::class, 'index'])
-                ->name('index')
-                ->middleware('permission:page-list');
-            Route::get('create', [PageController::class, 'create'])->name('create');
-            Route::post('/', [PageController::class, 'store'])->name('store');
-            Route::get('edit/{page}',  [PageController::class, 'edit'])->name('edit');
-            Route::patch('/{id}', [PageController::class, 'update'])->name('update');
-            Route::delete('{page}',  [PageController::class, 'destroy'])->name('destroy');
-    });
 
     Route::group([
         'prefix' => 'news',

@@ -27,16 +27,7 @@
               </p>
             </a>
           </li>
-          @can('page-list')
-          <li class="nav-item">
-            <a href="{{ route('admin.page.index') }}"  class="nav-link {{ (strpos(Route::currentRouteName(),  'page') == 0) ? '' : 'active ' }}">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                {{ __('dashboard.page_management') }}
-              </p>
-            </a>
-          </li>
-          @endcan
+
           @can('news-list')
             <li class="nav-item">
             <a href="{{ route('admin.news.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'news') == 0) ? '' : 'active ' }}">
@@ -47,31 +38,7 @@
             </a>
           </li>
           @endcan
-          @can('activity-list')
-          <li class="nav-item">
-            <a href="{{ route('admin.activity.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'activity') == 0) ? '' : 'active ' }}">
-              <i class="nav-icon fas fa-briefcase"></i>
-              <p>
-                {{ __('dashboard.business_management') }}
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('admin.activity.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'activity') == 0) ? '' : 'active ' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{ __('dashboard.activity_list') }}</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{ __('dashboard.ministry_list') }}</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          @endcan
+
 
           <li class="nav-item">
             <a href="#" class="nav-link">
