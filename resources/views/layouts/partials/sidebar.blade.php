@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-      <img src="{{ asset('/images/logo-round.svg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Business Gov</span>
+      <img src="{{ asset('/images/logo.jpg') }}" alt="Entrepreneurship Development Fund" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">EDF Portal</span>
     </a>
 
     <!-- Sidebar -->
@@ -39,7 +39,33 @@
           </li>
           @endcan
 
+          @can('event-list')
+              <li class="nav-item {{ (strpos(Route::currentRouteName(), 'event') == 0) ? '' : 'menu-open' }}">
+                <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(), 'event') == 0) ? '' : 'active ' }}">
+                  <i class="nav-icon fas far fa-calendar"></i>
+                  <p>
+                    Events Management
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ route('admin.event.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'event') == 0) ? '' : 'active ' }}">
+                      <i class="far fa-calendar nav-icon"></i>
+                      <p>Event List</p>
+                    </a>
+                  </li>
 
+                  <li class="nav-item">
+                    <a href="{{ route('admin.event.category.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'category') == 0) ? '' : 'active ' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Event Category</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+                @endcan
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-file-pdf"></i>
@@ -53,20 +79,15 @@
               <li class="nav-item">
                 <a href="{{ route('admin.document.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>{{ __('dashboard.document_management') }}</p>
+                  <p>Document Management</p>
                 </a>
               </li>
               @endcan
-              <li class="nav-item">
-                <a href="{{ route('admin.document.video.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'video') == 0) ? '' : 'active ' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{ __('dashboard.document.video_management') }}</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a href="{{ route('admin.document.category.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>{{ __('dashboard.document_category') }}</p>
+                  <p>Document Category</p>
                 </a>
               </li>
             </ul>

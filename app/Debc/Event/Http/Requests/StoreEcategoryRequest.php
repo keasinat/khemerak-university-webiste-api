@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Debc\Pages\Http\Requests;
+namespace App\Debc\Event\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePageRequest extends FormRequest
+class StoreEcategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,17 @@ class StorePageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_km' => 'required|max:255|string',
-            'slug' => 'nullable|string|unique:pages,slug',
-            'content_km' => 'required',
-            'is_published' => 'boolean',
-            'meta_keyword' => 'string|nullable',
-            'meta_description' => 'string|nullable'
+            'name' => 'required|max:255|string',
+            'slug' => 'nullable|string|unique:dcategories,slug',
+            'parent_id' => 'integer|nullable'
         ];
     }
-
     public function attributes()
     {
         return [
-            'title_km' => trans('dashboard.page_name')
+            'name' => trans('dashboard.event_name'),
+            'slug' => trans('dashboard.slug'),
+            'parent_id' => trans('dashboard.event_categories'),
         ];
     }
 }

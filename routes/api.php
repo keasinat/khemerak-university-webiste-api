@@ -27,26 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('throttle:60,1')->group( function () {
 
 
-    Route::group([
-        'prefix' => 'activities'
-    ], function () {
-        Route::get('/', [ActivityController::class, 'getList']);
-    });
-
-    Route::group([
-        'prefix' => 'pages',
-        'as' => 'page.'
-    ], function () {
-        Route::get('/', [PageController::class, 'index']);
-        Route::get('{param}', [PageController::class, 'show'])->name('show');
-    });
 
 
-    Route::group([
-        'prefix' => 'search'
-    ], function() {
-        Route::get('/', [SearchController::class, 'search']);
-    });
+
 });
 
 Route::group(['prefix' => 'v1','middleware' => 'throttle:60,1'], function () {

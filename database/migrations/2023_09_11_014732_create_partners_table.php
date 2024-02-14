@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+
+        Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->string('title_km')->nullable();
-            $table->longText('content_km')->nullable();
-            $table->text('meta_keyword')->nullable();
-            $table->text('meta_description')->nullable();
-            $table->string('slug')->unique();
-            $table->boolean('is_published')->default(true);
+            $table->string('logo', 255);
+            $table->string('title', 255);
+            $table->string('link', 255);
             $table->timestamps();
             $table->softDeletes();
         });
+
     }
 
     /**
@@ -33,6 +32,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+
+        Schema::dropIfExists('partners');
     }
 };

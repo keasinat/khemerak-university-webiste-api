@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Business Gov | Log in</title>
+		<title>Entrepreneurship Development Fund | Log in</title>
 		<!-- Google Font: Source Sans Pro -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 		<!-- Font Awesome -->
@@ -16,7 +16,7 @@
 		<div class="login-box">
 		<div class="login-logo">
 			<a href="/">
-			<img src="{{ asset('images/logo.svg') }}" alt="">
+			<img src="{{ asset('images/logo-main.jpg') }}" alt="" width="360">
 			</a>
 		</div>
 		<!-- /.login-logo -->
