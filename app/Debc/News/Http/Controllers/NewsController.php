@@ -49,7 +49,7 @@ class NewsController extends Controller
     {
         $this->service->store($request->except(['_token']));
 
-        return redirect()->route('admin.news.index')->with('success', __('message.news.store_success'));
+        return redirect()->route('admin.news.index')->with('success', __('Data was store successfully.'));
     }
 
     /**
@@ -74,7 +74,7 @@ class NewsController extends Controller
     {
         $this->service->update($news, $request->except(['_token', '_method']));
 
-        return redirect()->route('admin.news.index')->with('success', __('message.news.update_success'));
+        return redirect()->route('admin.news.index')->with('success', __('Data was update successfully'));
     }
 
     /**
@@ -89,6 +89,6 @@ class NewsController extends Controller
         News::find($news)->delete();
 
         return redirect()->route('admin.news.index')
-            ->with('success', __('message.news.delete_success'));
+            ->with('success', __('Data delete successfully.'));
     }
 }

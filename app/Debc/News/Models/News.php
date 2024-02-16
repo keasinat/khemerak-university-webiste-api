@@ -4,7 +4,6 @@ namespace App\Debc\News\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -17,7 +16,6 @@ class News extends Model
 
     protected $fillable = [
         'id',
-        'slug',
         'thumbnail',
         'title_km',
         'description_km',
@@ -25,23 +23,13 @@ class News extends Model
         'meta_keyword',
         'meta_description',
         'is_published',
-        'post_date'
     ];
 
-    // public function sluggable(): array
-    // {
-    //     return [
-    //         'slug' => [
-    //             'source' => ['title_km']
-    //         ]
-    //     ];
-    // }
 
     public $dates = [
         'deleted_at',
         'created_at',
         'updated_at',
-        'post_date'
     ];
 
 

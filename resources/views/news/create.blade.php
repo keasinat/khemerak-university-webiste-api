@@ -26,15 +26,6 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="slug" class="col-form-label">@lang('Slug')</label>
-                                <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}" >
-                                @if($errors->has('slug'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('slug') }}
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="form-group">
                                 <textarea name="content_km" id="content_km" cols="50" rows="10" class="form-control {{ $errors->has('content_km') ? 'is-invalid' : '' }}">{!! old('content_km') !!}</textarea>
                                 @if($errors->has('content_km'))
                                     <div class="invalid-feedback">
@@ -109,10 +100,6 @@
                                 </div>
                                 <div id="holder" style="margin-top:15px;max-height:400px;"></div>
                             </div>
-                            <div class="form-group">
-                                <label for="post_date" class="col-form-label">Public Date</label>
-                                <input type="text" name="post_date" id="post_date" class="form-control" autocomplete="off" value="{{ old('post_date') }}">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -144,17 +131,6 @@
       document.getElementById('thumbnail').value = $url;
     }
 
-    $( function() {
-        $( "#post_date" ).datepicker({
-        dateFormat: 'yy-mm-d'
-        });
-    } );
-    function getFormattedDate(date) {
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear().toString().slice(2);
-        return year + '-' + month + '-' + day;
-    }
 
   </script>
 @endpush
