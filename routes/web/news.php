@@ -24,7 +24,7 @@ Route::group([
             ->middleware('permission:news-edit');
         Route::patch('/{news}', [NewsController::class, 'update'])->name('update');
         Route::get('/check_slug', [NewsController::class, 'check_slug'])->name('check_slug');
-        Route::delete('/{id}', [NewsController::class, 'destroy'])
+        Route::delete('{news}', [NewsController::class, 'destroy'])
             ->name('destroy')
             ->middleware('permission:news-delete');
 });

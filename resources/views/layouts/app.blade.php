@@ -55,6 +55,7 @@
 @stack('before-scripts')
 <script src="{{ mix('plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ mix('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ mix('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
 @stack('after-scripts')
 <script src="{{ mix('js/adminlte.min.js') }}"></script>

@@ -24,9 +24,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = $this->service->getList()->get();
+        $newsList = $this->service->getList()->get();
 
-        return view('news.index', compact('news'));
+        return view('news.index', compact('newsList'));
     }
 
     /**
@@ -83,9 +83,10 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy($news)
     {
-        $news->delete();
+        // dd($news);
+        News::find($news)->delete();
 
         return redirect()->route('admin.news.index')
             ->with('success', __('message.news.delete_success'));

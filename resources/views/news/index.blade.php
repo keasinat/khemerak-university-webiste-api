@@ -29,14 +29,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach ($news as $article)
+                        @foreach ($newsList as $news)
                         <tr>
-                            <td><img src="{{ asset($article->thumbnail) }}" width="70" height="50" /></td>
-                            <td>{{ Str::limit($article->title_km,60) }}</td>
-                            <td>{{ date('Y-m-d', strtotime($article->post_date)) }}</td>
+                            <td><img src="{{ asset($news->thumbnail) }}" width="70" height="50" /></td>
+                            <td>{{ Str::limit($news->title_km,60) }}</td>
+                            <td>{{ date('Y-m-d', strtotime($news->post_date)) }}</td>
                             <td>
                                 @foreach (pulishedOpt() as $k => $status)
-                                    @if ($article->is_published == $k)
+                                    @if ($news->is_published == $k)
                                     <span class="badge {{ $k == 1 ? 'badge-success' : 'badge-danger' }}">{{ $status }}</span>
                                     @endif
                                 @endforeach
