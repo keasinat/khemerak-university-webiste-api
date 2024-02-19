@@ -82,13 +82,6 @@
                       <p>{{ __('dashboard.event_management') }}</p>
                     </a>
                   </li>
-
-                  <li class="nav-item">
-                    <a href="{{ route('admin.event.category.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'category') == 0) ? '' : 'active ' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>{{ __('dashboard.event_categories') }}</p>
-                    </a>
-                  </li>
                 </ul>
               </li>
                 @endcan

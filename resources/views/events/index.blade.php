@@ -38,7 +38,7 @@
                             <td>{{ ++$k }}</td>
                             <td><img src="{{ asset($event->thumbnail) }}" width="70" height="50" /></td>
                             <td style="width:30%">{{ $event->title }}</td>
-                            <td>{{ $event->start_date ? $event->start_date->format('d-m-Y') : '-' }} ~ {{ $event->end_date ? $event->end_date->format('d-m-Y') : '-' }}</td>
+                            <td>{{ $event->start_date ? \Carbon\Carbon::parse($event->start_date)->format('d-m-Y') : '-' }} ~ {{ $event->end_date ? \Carbon\Carbon::parse($event->end_date)->format('d-m-Y') : '-' }}</td>
                             <td>
                                 @foreach (pulishedOpt() as $k => $status)
                                     @if ($event->is_published == $k)
