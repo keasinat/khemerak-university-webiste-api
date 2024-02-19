@@ -33,7 +33,6 @@ class StoreNewsRequest extends FormRequest
             'meta_description' => 'string|nullable',
             'slug' => 'string|nullable',
             'is_published' => 'boolean|required',
-            'post_date' => 'nullable'
         ];
     }
 

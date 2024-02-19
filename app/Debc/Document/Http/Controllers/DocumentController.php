@@ -14,14 +14,12 @@ use Carbon\Carbon;
 class DocumentController
 {
     protected $service;
-    // protected $roleService;
-    // protected $permissionService;
+
 
     public function __construct(DocumentService $service)
     {
         $this->service = $service;
-        // $this->roleService = $roleService;
-        // $this->permissionService = $permissionService;
+       
     }
 
     /**
@@ -56,7 +54,6 @@ class DocumentController
      */
     public function store(StoreDocumentRequest $request)
     {
-        // dd($request->all());
         $request->post_date = Carbon::createFromFormat('d-m-Y', $request->post_date)->format('d-m-Y');
         $this->service->store($request->except(['_token']));
 

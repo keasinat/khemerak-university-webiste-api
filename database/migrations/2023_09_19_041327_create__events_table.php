@@ -13,18 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('event_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 255);
-            $table->string('slug', 255);
-            $table->integer('parent_id')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-        });
 
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_category_id')->constrained();
             $table->string('title', 255);
             $table->string('thumbnail')->nullable();
             $table->longText('content');
