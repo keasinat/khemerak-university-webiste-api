@@ -38,6 +38,16 @@
                 </a>
               </li>
               @endcan
+              @can('staff-list')
+              <li class="nav-item">
+                <a href="{{ route('admin.staff.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'staff') == 0) ? '' : 'active ' }}">
+                  <i class="nav-icon far fa-newspaper"></i>
+                  <p>
+                    {{ __('dashboard.staff_management') }}
+                  </p>
+                </a>
+              </li>
+              @endcan
                 @can('document-list')
               <li class="nav-item {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'menu-open' }}">
                 <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">

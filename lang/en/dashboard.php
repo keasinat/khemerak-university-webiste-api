@@ -20,7 +20,7 @@ return [
 
     'cancel' => 'Cancel',
     'document_management' => 'Document Management',
-
+    'staff_management' => 'Staff Management',
     'document_category' => 'Document Category',
     'category_name' => 'Category Name',
     'document_name' => 'Document Name',
