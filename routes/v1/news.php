@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\API\NewsController;
+use App\Debc\News\Http\Controllers\API\NewsController;
 
 Route::group([
     'prefix' => 'news'

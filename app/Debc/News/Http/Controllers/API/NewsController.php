@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Debc\News\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +16,6 @@ class NewsController extends Controller
 
         $news = News::whereNull('deleted_at')
                 ->where('is_published', 1)
-                ->orderBy('post_date', 'desc')
                 ->paginate($paginate);
 
         return NewsResource::collection($news);
