@@ -23,7 +23,6 @@ class NewsResource extends JsonResource
             "content_km"  => $this->content_km,
             "meta_keyword"  => $this->meta_keyword,
             "meta_description"  => $this->meta_description,
-            "post_date"  => $this->post_date->format('d-m-Y'),
         ];
     }
 }

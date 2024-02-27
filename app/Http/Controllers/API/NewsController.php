@@ -16,7 +16,6 @@ class NewsController extends Controller
 
         $news = News::whereNull('deleted_at')
                 ->where('is_published', 1)
-                ->orderBy('post_date', 'desc')
                 ->paginate($paginate);
 
         return NewsResource::collection($news);
