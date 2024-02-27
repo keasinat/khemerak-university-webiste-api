@@ -6,7 +6,7 @@
 <x-forms.post :action="route('admin.news.store')">
     <x-card>
         <x-slot name="header">
-            ព័ត៍មាន
+            Create News
         </x-slot>
         <x-slot name="headerAction">
                 <a href="{{ route('admin.news.index') }}" class="btn btn-primary">{{ __('dashboard.cancel') }}</a>

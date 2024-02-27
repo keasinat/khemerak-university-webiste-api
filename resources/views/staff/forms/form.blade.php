@@ -18,6 +18,15 @@
                 </div>
                 <div id="holder" style="margin-top:15px;max-height:400px;"></div>
             </div>
+            <hr>
+            <div class="form-group">
+                <label for="" class="col-form-label">{{ __('dashboard.status') }}</label>
+                <select name="is_published" id="is_published" class="form-control">
+                    @foreach (pulishedOpt() as $k => $item)
+                        <option value="{{ $k }}">{{ $item }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
         <div class="col-sm-9">
             <div class="row">
@@ -57,44 +66,43 @@
                         </div>
                     @endif
                 </div>
-            </div>
-
             
-            <div class="form-group">
-                <label for="" class="col-form-label">Short Description in English</label>
-                <input type="text" name="short_desc_en" id="" class="form-control {{ $errors->has('short_desc_en') ? 'is-invalid' : '' }}" value="{{ old('short_desc_en') ?? ''}}">
-                @if($errors->has('short_desc_en'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('short_desc_en') }}
-                    </div>
-                @endif
-            </div>
-            <div class="form-group">
-                <label for="" class="col-form-label">Short Description in Khmer</label>
-                <input type="text" name="short_desc_km" id="" class="form-control {{ $errors->has('short_desc_km') ? 'is-invalid' : '' }}" value="{{ old('short_desc_km') ?? ''}}">
-                @if($errors->has('short_desc_km'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('short_desc_km') }}
-                    </div>
-                @endif
-            </div>
-            <div class="form-group">
-                <label for="" class="col-form-label">Bio in English</label>
-                <textarea name="bio_en" id="" cols="30" rows="10" class="form-control {{ $errors->has('bio_en') ? 'is-invalid' : '' }}" >{{ old('bio_en') ?? ''}}</textarea>
-                @if($errors->has('bio_en'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('bio_en') }}
-                    </div>
-                @endif
-            </div>
-            <div class="form-group">
-                <label for="" class="col-form-label">Bio in Khmer</label>
-                <textarea name="bio_km" id="" cols="30" rows="10" class="form-control {{ $errors->has('bio_km') ? 'is-invalid' : '' }}" >{{ old('bio_km') ?? ''}}</textarea>
-                @if($errors->has('bio_km'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('bio_km') }}
-                    </div>
-                @endif
+                <div class="form-group col-sm-6">
+                    <label for="" class="col-form-label">Short Description in English</label>
+                    <input type="text" name="short_desc_en" id="" class="form-control {{ $errors->has('short_desc_en') ? 'is-invalid' : '' }}" value="{{ old('short_desc_en') ?? ''}}">
+                    @if($errors->has('short_desc_en'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('short_desc_en') }}
+                        </div>
+                    @endif
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="" class="col-form-label">Short Description in Khmer</label>
+                    <input type="text" name="short_desc_km" id="" class="form-control {{ $errors->has('short_desc_km') ? 'is-invalid' : '' }}" value="{{ old('short_desc_km') ?? ''}}">
+                    @if($errors->has('short_desc_km'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('short_desc_km') }}
+                        </div>
+                    @endif
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="" class="col-form-label">Bio in English</label>
+                    <textarea name="bio_en" id="" cols="30" rows="10" class="form-control {{ $errors->has('bio_en') ? 'is-invalid' : '' }}" >{{ old('bio_en') ?? ''}}</textarea>
+                    @if($errors->has('bio_en'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('bio_en') }}
+                        </div>
+                    @endif
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="" class="col-form-label">Bio in Khmer</label>
+                    <textarea name="bio_km" id="" cols="30" rows="10" class="form-control {{ $errors->has('bio_km') ? 'is-invalid' : '' }}" >{{ old('bio_km') ?? ''}}</textarea>
+                    @if($errors->has('bio_km'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('bio_km') }}
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

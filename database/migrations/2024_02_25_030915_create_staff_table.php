@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('bio_en');
             $table->longText('bio_km');
             $table->string('thumbnail');
-            $table->boolean('status')->default(true);
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }

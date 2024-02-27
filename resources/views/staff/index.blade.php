@@ -33,7 +33,13 @@
                     <td><img src="{{$staff->thumbnail}}" alt="" width="70"></td>
                     <td>{{ $staff->name_en }}</td>
                     <td>{{ $staff->position_en}}</td>
-                    <td></td>
+                    <td>
+                        @foreach (pulishedOpt() as $k => $status)
+                            @if ($staff->is_published == $k)
+                            <span class="badge {{ $k == 1 ? 'badge-success' : 'badge-danger' }}">{{ $status }}</span>
+                            @endif
+                        @endforeach
+                    </td>
                     <td>
                         @include('staff.actions')
                     </td>

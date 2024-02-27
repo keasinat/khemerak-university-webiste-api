@@ -5,6 +5,7 @@
 <x-forms.post :action="route('admin.staff.store')">
     <x-card>
         <x-slot name="header">
+          Create New
         </x-slot>
         <x-slot name="headerAction">
             <a href="{{ route('admin.staff.index') }}" class="btn btn-primary">{{ __('dashboard.cancel') }}</a>

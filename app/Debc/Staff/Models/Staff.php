@@ -20,11 +20,11 @@ class Staff extends Model
         'bio_km',
         'short_desc_en',
         'short_desc_km',
-        'status',
+        'is_published',
         'thumbnail'
     ];
 
     protected $casts = [
-        'status' => 'boolean'
+        'is_published' => 'boolean'
     ];
 }
