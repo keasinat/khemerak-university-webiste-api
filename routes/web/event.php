@@ -20,16 +20,5 @@ Route::group([
     Route::delete('/{event}', [EventController::class, 'destroy'])
         ->name('destroy')
         ->middleware('permission:event-delete');
-    Route::group([
-        'prefix' => 'categories',
-        'as' => 'category.'
-    ], function() {
-        Route::get('/', [EcategoryController::class, 'index'])->name('index');
-        Route::get('create', [EcategoryController::class, 'create'])->name('create');
-        Route::post('/', [EcategoryController::class, 'store'])->name('store');
-        Route::get('edit/{id}', [EcategoryController::class, 'edit'])->name('edit');
-        Route::patch('/{ecategory}', [EcategoryController::class, 'update'])->name('update');
-        Route::delete('{id}', [EcategoryController::class, 'destroy'])->name('destroy');
 
-    });
 });

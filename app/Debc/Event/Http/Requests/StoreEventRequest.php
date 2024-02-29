@@ -25,7 +25,6 @@ class StoreEventRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255|string',
-            'event_category_id' => 'required',
             'content' => 'required',
             'description' => 'required',
             'thumbnail' => 'string|nullable',

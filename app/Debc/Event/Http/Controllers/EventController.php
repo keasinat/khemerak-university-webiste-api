@@ -27,7 +27,7 @@ class EventController
     public function index()
     {
         
-        $events = Event::with('ecategory')->whereNull('deleted_at')->get();
+        $events = Event::whereNull('deleted_at')->get();
 
         return view('events.index', compact('events'));
         
@@ -40,9 +40,7 @@ class EventController
      */
     public function create()
     {
-        $categories = EventCategory::whereNull('deleted_at')->whereNull('parent_id')->get();
-
-        return view('events.create', compact('categories'));
+        return view('events.create');
     }
 
     /**
@@ -53,21 +51,7 @@ class EventController
      */
     public function store(StoreEventRequest $request)
     {
-
-        $Data = [
-            'title' => $request->title,
-            'content' => $request->content,
-            'description' => $request->description,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'thumbnail' =>  $request->thumbnail,
-            'location' => $request->location,
-            'is_published' => $request->is_published,
-            'event_category_id' => $request->event_category_id
-        ];
-
-        Event::create($Data);
-
+        $this->service->store($request->all());
         return redirect()
             ->route('admin.event.index')
             ->withFlashSuccess(__('The Event was successfully created.'));
@@ -81,8 +65,8 @@ class EventController
      */
     public function edit(Event $event)
     {
-        $categories = EventCategory::whereNull('deleted_at')->whereNull('parent_id')->get();
-        return view('events.edit', compact('categories'))->withEvent($event);
+
+        return view('events.edit', compact('categories'));
     }
 
     /**

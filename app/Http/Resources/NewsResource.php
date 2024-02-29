@@ -22,7 +22,7 @@ class NewsResource extends JsonResource
             "description_km"  => $this->description_km,
             "content_km"  => $this->content_km,
             "meta_keyword"  => $this->meta_keyword,
-            "meta_description"  => $this->meta_description,
+            "meta_description"  => $this->meta_description
         ];
     }
 }

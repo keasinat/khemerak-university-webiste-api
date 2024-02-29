@@ -23,7 +23,6 @@ class Event extends Model
         'start_date',
         'end_date',
         'location',
-        'event_category_id',
         'is_published',
     ];
 
@@ -31,7 +30,6 @@ class Event extends Model
         'is_published' => 'boolean',
         'start_date' => 'date',
         'end_date' => 'date',
-        'event_category_id' => 'integer'
     ];
 
     public $dates = [
@@ -40,8 +38,5 @@ class Event extends Model
         'start_date',
         'end_date',
     ];
-    public function ecategory()
-    {
-        return $this->belongsTo(EventCategory::class);
-    }
+
 }
