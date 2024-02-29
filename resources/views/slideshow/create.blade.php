@@ -5,10 +5,10 @@
 <x-forms.post :action="route('admin.slideshow.store')">
     <x-card>
         <x-slot name="header">
-
+            Create Slideshow
         </x-slot>
         <x-slot name="headerAction">
-
+            <a href="{{ route('admin.slideshow.index') }}" class="btn btn-primary">{{ __('dashboard.cancel') }}</a>
         </x-slot>
         <x-slot name="body">
             <div class="container-fuild">

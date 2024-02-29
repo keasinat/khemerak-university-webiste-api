@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Debc\Slideshow\Services\SlideshowService;
 use App\Debc\Slideshow\Http\Requests\{StoreSlideRequest, UpdateSlideRequest};
+use App\Debc\Slideshow\Models\Slideshow;
 
 class SlideshowController extends Controller
 {
@@ -54,24 +55,28 @@ class SlideshowController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Slideshow $slideshow)
     {
-        //
+        return view('slideshow.edit', compact('slideshow'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSlideRequest $request, string $id)
+    public function update(UpdateSlideRequest $request, Slideshow $slideshow)
     {
-        //
+        $this->service->update($slideshow, $request->except(['_token', '_method']));
+
+        return redirect()->route('admin.slideshow.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Slideshow $slideshow)
     {
-        //
+        $slideshow->delete();
+
+        return redirect()->route('admin.slideshow.index');
     }
 }
