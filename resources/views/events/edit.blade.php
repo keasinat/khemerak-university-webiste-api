@@ -96,25 +96,7 @@
                                 </div>
                                 <div id="holder" style="margin-top:15px;max-height:200px;"></div>
                             </div>
-                            <div class="form-group col-12">
-                            <label for="event_category_id">{{ __('dashboard.event_categories') }}</label>
-                                <select name="event_category_id" class="form-control {{ $errors->has('event_category_id') ? 'is-invalid' : '' }}" value="{{ old('event_category_id') ?? $event->event_category_id }}">
-                                    @if( isset($categories) )
-                                        @foreach ($categories as $category)
-                                            @php $dash=''; @endphp
-                                            <option value="{{ $category->id }}" {{ old('event_category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-                                            @if(count($category->subcategory))
-                                                @include('events.category.subcategory-opt',['subcategories' => $category->subcategory])
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </select>
-                                @if($errors->has('event_category_id'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('event_category_id') }}
-                                    </div>
-                                @endif
-                            </div>
+
                             <div class="form-group col-12">
                                 <label for="" class="col-form-label">{{ __('dashboard.published')}}</label>
                                 <select name="is_published" id="is_published" class="form-control">
