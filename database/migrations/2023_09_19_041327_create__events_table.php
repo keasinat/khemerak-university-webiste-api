@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamps();
             $table->softDeletes();

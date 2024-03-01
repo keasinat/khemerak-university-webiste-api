@@ -17,7 +17,7 @@ return [
 
     'description' => 'Descriptions',
     'id' => 'No',
-
+    'slideshow_management' => 'SlideShow Management',
     'cancel' => 'Cancel',
     'document_management' => 'Document Management',
     'staff_management' => 'Staff Management',

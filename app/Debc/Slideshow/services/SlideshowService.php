@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Debc\Staff\Services;
+namespace App\Debc\Slideshow\Services;
 
 use App\Services\BaseService;
-use App\Debc\Staff\Models\Staff;
+use App\Debc\Slideshow\Models\Slideshow;
 use Illuminate\Support\Facades\DB;
-use Exception;
 use App\Exceptions\GeneralException;
 
-class StaffService extends BaseService {
-
-    public function __construct(Staff $staff)
+class SlideshowService extends BaseService
+{
+    public function __construct(Slideshow $slideshow)
     {
-        $this->model = $staff;
+        $this->model = $slideshow;
     }
 
     public function getList()
@@ -20,12 +19,12 @@ class StaffService extends BaseService {
         return $this->model::get();
     }
 
-    public function store(array $data = []): Staff
+    public function store(array $data = [])
     {
         DB::beginTransaction();
 
         try {
-            $staff = $this->model::create($data);
+            $slideshow = $this->model::create($data);
         } catch (\Exception $e) {
             DB::rollBack();
 
@@ -33,15 +32,15 @@ class StaffService extends BaseService {
         }
         Db::commit();
 
-        return $staff;
+        return $slideshow;
     }
 
-    public function update(Staff $staff, array $data = []): Staff
+    public function update(Slideshow $slideshow, array $data = [])
     {
         DB::beginTransaction();
 
         try {
-            $staff->update($data);
+            $slideshow->update($data);
         } catch (\Exception $e) {
             DB::rollBack();
 
@@ -49,14 +48,7 @@ class StaffService extends BaseService {
         }
         Db::commit();
 
-        return $staff;
-    }
-
-    public function delete($data)
-    {
-        $staff = $this->model::findOrfail($data);
-        $staff->delete();
-
+        return $slideshow;
     }
 
 }

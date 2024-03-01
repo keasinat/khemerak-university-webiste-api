@@ -22,7 +22,15 @@ class UpdateStaffRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'thumbnail' => 'required',
+            'name_en' => 'required',
+            'name_km' => 'required',
+            'position_en' => 'required',
+            'position_km' => 'required',
+            'bio_en' => 'required',
+            'bio_km' => 'required',
+            'short_desc_en' => 'required',
+            'short_desc_km' => 'required',
         ];
     }
 }

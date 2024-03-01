@@ -96,7 +96,6 @@
                                 </div>
                                 <div id="holder" style="margin-top:15px;max-height:200px;"></div>
                             </div>
-                            
                             <div class="form-group col-12">
                                 <label for="" class="col-form-label">{{ __('dashboard.published')}}</label>
                                 <select name="is_published" id="is_published" class="form-control">

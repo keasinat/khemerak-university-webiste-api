@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="form-group col-sm-6">
                     <label for="" class="col-form-label">Name in English</label>
-                    <input type="text" name="name_en" id="" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('name_en') ?? ''}}">
+                    <input type="text" name="name_en" id="" class="form-control {{ $errors->has('name_km') ? 'is-invalid' : '' }}" value="{{ old('name_en') ?? ''}}">
                     @if($errors->has('name_en'))
                         <div class="invalid-feedback">
                             {{ $errors->first('name_en') }}
@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="" class="col-form-label">Name in Khmer</label>
-                    <input type="text" name="name_km" id="" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('name_km') ?? ''}}">
+                    <input type="text" name="name_km" id="" class="form-control {{ $errors->has('name_km') ? 'is-invalid' : '' }}" value="{{ old('name_km') ?? ''}}">
                     @if($errors->has('name_km'))
                         <div class="invalid-feedback">
                             {{ $errors->first('name_km') }}

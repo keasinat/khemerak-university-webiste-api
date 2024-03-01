@@ -27,7 +27,16 @@
                   </p>
                 </a>
               </li>
-
+              @can('news-list')
+                <li class="nav-item">
+                <a href="{{ route('admin.slideshow.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'slideshow') == 0) ? '' : 'active ' }}">
+                  <i class="nav-icon far fa-image"></i>
+                  <p>
+                    {{ __('dashboard.slideshow_management') }}
+                  </p>
+                </a>
+              </li>
+              @endcan
               @can('news-list')
                 <li class="nav-item">
                 <a href="{{ route('admin.news.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'news') == 0) ? '' : 'active ' }}">
@@ -41,7 +50,7 @@
               @can('staff-list')
               <li class="nav-item">
                 <a href="{{ route('admin.staff.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'staff') == 0) ? '' : 'active ' }}">
-                  <i class="nav-icon far fa-newspaper"></i>
+                  <i class="nav-icon fas fa-users"></i>
                   <p>
                     {{ __('dashboard.staff_management') }}
                   </p>

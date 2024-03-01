@@ -44,6 +44,10 @@ class PermissionTableSeeder extends Seeder
             'staff-create',
             'staff-edit',
             'staff-delete',
+            'slideshow-list',
+            'slideshow-create',
+            'slideshow-edit',
+            'slideshow-delete',
          ];
       
          foreach ($permissions as $permission) {

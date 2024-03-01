@@ -6,19 +6,19 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: registry.digitaleconomy.gov.kh/business_gov_kh/backend:1.0.0
-    container_name: business_gov_kh_app
+    image: registry.digitaleconomy.gov.kh/edf_gov_kh/backend:1.0.0
+    container_name: edf_gov_kh_app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
-      - business_gov_kh
+      - edf_gov_kh
 
   nginx:
     image: nginx:stable
-    container_name: business_gov_kh_nginx
+    container_name: edf_gov_kh_nginx
     restart: unless-stopped
     ports:
       - 9090:80
@@ -26,7 +26,7 @@ services:
       - ./:/var/www
       - ./nginx:/etc/nginx/conf.d
     networks:
-      - business_gov_kh
+      - edf_gov_kh
 
 networks:
-  business_gov_kh:
+  edf_gov_kh:
