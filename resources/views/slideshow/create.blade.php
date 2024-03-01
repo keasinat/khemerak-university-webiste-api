@@ -61,13 +61,14 @@
                                     <i class="fa-solid fa fa-image"></i>
                                 </a>
                                 </div>
-                                <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" value="{{ old('thumbnail') }}">
+                                <input id="thumbnail" class="form-control {{ $errors->has('thumbnail') ? 'is-invalid' : '' }}" type="text" name="thumbnail" value="{{ old('thumbnail') }}" onchange="loadFile(event)">
                                 @if($errors->has('thumbnail'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('thumbnail') }}
                                     </div>
                                 @endif
                             </div>
+                            <img src="" alt="" id="output" width="120">
                             <div id="holder" style="margin-top:15px;max-height:400px;"></div>
                         </div>
                     </div>
@@ -100,6 +101,12 @@
       document.getElementById('thumbnail').value = $url;
     }
 
-
+    var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
   </script>
 @endpush

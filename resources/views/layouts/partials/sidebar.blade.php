@@ -30,7 +30,7 @@
               @can('news-list')
                 <li class="nav-item">
                 <a href="{{ route('admin.slideshow.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'slideshow') == 0) ? '' : 'active ' }}">
-                  <i class="nav-icon far fa-newspaper"></i>
+                  <i class="nav-icon far fa-image"></i>
                   <p>
                     {{ __('dashboard.slideshow_management') }}
                   </p>
@@ -50,7 +50,7 @@
               @can('staff-list')
               <li class="nav-item">
                 <a href="{{ route('admin.staff.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'staff') == 0) ? '' : 'active ' }}">
-                  <i class="nav-icon far fa-users"></i>
+                  <i class="nav-icon fas fa-users"></i>
                   <p>
                     {{ __('dashboard.staff_management') }}
                   </p>
@@ -102,12 +102,6 @@
                     </a>
                   </li>
 
-                  <li class="nav-item">
-                    <a href="{{ route('admin.event.category.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'category') == 0) ? '' : 'active ' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>{{ __('dashboard.event_categories') }}</p>
-                    </a>
-                  </li>
                 </ul>
               </li>
                 @endcan

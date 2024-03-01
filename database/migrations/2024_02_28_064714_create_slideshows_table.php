@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->string('headline');
             $table->string('content');
+            $table->integer('order')->default(0);
             $table->boolean('is_published')->default(true);
             $table->timestamps();
         });
