@@ -11,13 +11,6 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    public function __invoke()
-    {
-   
-
-        // return view('dashboard', compact(['businessActivities']));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +18,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return redirect()->route('admin.news.index');
+        return view('dashboard');
     }
 
 

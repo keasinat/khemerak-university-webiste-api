@@ -2,12 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\ActivityController;
-use App\Http\Controllers\API\PageController;
-
-
-use App\Http\Controllers\API\SearchController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('throttle:60,1')->group( function () {
-
-
-
-
-
-});
 
 Route::group(['prefix' => 'v1','middleware' => 'throttle:60,1'], function () {
     includeRouteFiles(__DIR__ . '/v1/');

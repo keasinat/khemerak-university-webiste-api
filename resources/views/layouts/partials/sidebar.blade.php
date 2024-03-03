@@ -104,7 +104,16 @@
                 </ul>
               </li>
                 @endcan
-               
+                @can('partner-list')
+                <li class="nav-item">
+                <a href="{{ route('admin.partner.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'partner') == 0) ? '' : 'active ' }}">
+                  <i class="nav-icon far fa-newspaper"></i>
+                  <p>
+                    {{ __('dashboard.partner_management') }}
+                  </p>
+                </a>
+              </li>
+              @endcan
               <li class="nav-header">File Manager</li>
 
               <li class="nav-item">
