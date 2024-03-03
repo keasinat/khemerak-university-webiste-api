@@ -18,7 +18,8 @@ return new class extends Migration
             $table->id();
             $table->string('logo', 255);
             $table->string('title', 255);
-            $table->string('link', 255);
+            $table->string('link', 255)->nullable();
+            $table->boolean('is_published')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });
