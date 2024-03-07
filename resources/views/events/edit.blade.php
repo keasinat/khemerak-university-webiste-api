@@ -60,7 +60,7 @@
                             <div class="form-group col-12">
                                 <label for="start_date" class="form-label">{{ __('dashboard.start_date') }}</label>
                                 <div class="input-group">
-                                    <input type="text" name="start_date" id="start_date" class="form-control {{ $errors->has('start_date') ? 'is-invalid' : '' }}" value="{{ isset($event->start_date) ? $event->start_date->format('d-m-Y') : $event->start_date }}" autocomplete="off">
+                                    <input type="text" name="start_date" id="start_date" class="form-control {{ $errors->has('start_date') ? 'is-invalid' : '' }}" value="{{ isset($event->start_date) ? $event->start_date : $event->start_date }}" autocomplete="off">
                                      @if($errors->has('start_date'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('start_date') }}
@@ -71,7 +71,7 @@
                             <div class="form-group col-12">
                                 <label for="end_date">{{ __('dashboard.end_date') }}</label>
                                     <div class="input-group">
-                                    <input type="text" name="end_date" id="end_date" class="form-control {{ $errors->has('end_date') ? 'is-invalid' : '' }}" value="{{ isset($event->end_date) ? $event->end_date->format('d-m-Y') : $event->end_date }}" autocomplete="off">
+                                    <input type="text" name="end_date" id="end_date" class="form-control {{ $errors->has('end_date') ? 'is-invalid' : '' }}" value="{{ isset($event->end_date) ? $event->end_date : $event->end_date }}" autocomplete="off">
                                         @if($errors->has('end_date'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('end_date') }}

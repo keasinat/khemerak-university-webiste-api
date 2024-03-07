@@ -54,7 +54,6 @@ class DocumentController
      */
     public function store(StoreDocumentRequest $request)
     {
-        $request->post_date = Carbon::createFromFormat('d-m-Y', $request->post_date)->format('d-m-Y');
         $this->service->store($request->except(['_token']));
 
         return redirect()
@@ -84,9 +83,7 @@ class DocumentController
      */
     public function update(UpdateDocumentRequest $request, $document)
     {
-        $document = Document::findorfail($document);//dd($request->all());
-        // $document->post_date =  Carbon::createFromFormat('d-m-Y', $request->post_date)->format('d-m-Y');
-        $document->post_date = Carbon::createFromFormat('d-m-Y', $request->post_date)->format('d-m-Y');
+        $document = Document::findorfail($document);
 
         $this->service->update($document, $request->except(['_token', '_method']));
 

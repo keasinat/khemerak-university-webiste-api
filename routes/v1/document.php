@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\DocumentController;
+use App\Debc\Document\Http\Controllers\API\DocumentController;
+
 
 Route::group([
         'prefix' => 'documents',

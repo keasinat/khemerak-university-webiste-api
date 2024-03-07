@@ -20,6 +20,7 @@ class EventService extends BaseService
         DB::beginTransaction();
         try {
             $event= $this->model::create($data);
+            // dd($event);
         } catch (Exception $th) {
             DB::rollBack();
 
@@ -34,6 +35,7 @@ class EventService extends BaseService
     {
         DB::beginTransaction();
         try {
+            // dd($data);
             $event->update($data);
         } catch (Exception $th) {
             DB::rollBack();

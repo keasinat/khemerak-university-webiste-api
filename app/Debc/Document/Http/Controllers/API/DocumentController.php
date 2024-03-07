@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Debc\Document\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,6 +9,7 @@ use App\Debc\Document\Models\Document;
 use App\Debc\Document\Models\Dcategory;
 use App\Http\Resources\DocumentResource;
 use App\Http\Resources\DcategoryResource;
+use App\Enum\isPublishedEnum;
 
 class DocumentController extends Controller
 {
@@ -58,31 +59,44 @@ class DocumentController extends Controller
         $category = $request->category;
         $paginate = $request->per_page ?? 9;
 
-        $categories = new Dcategory;
+        $query = Dcategory::query();
 
-        if ($request->has('keyword') && !empty($keyword)) {
-            $categories = $categories->whereNull('deleted_at')
-                ->where('title_km', 'LIKE', '%'. $keyword .'%')
-                ->where('is_published', 1)
-                ->paginate($paginate);
+        $query->when(!empty($keyword), function($q) use ($keyword) {
+            $q->where('title_km', 'iLIKE', '%'. $keyword. '%');
+            // $q->where('is_published', isPublishedEnum::IS_PUBLUSHED);
+        });
 
-            return DocumentResource::collection($document);
-        }
+        $query->when(!empty($category), function($q) use ($category) {
+            // $q->where('is_published', isPublishedEnum::IS_PUBLUSHED);
+            $q->whereNull('deleted_at');
+            $q->where('title_km', 'iLIKE', '%'. $category .'%');
+        });
 
-        if ($request->has('category')  && !empty($category)) {
-            $categories = $categories::with('documents')->has('documents')
-                ->whereNull('deleted_at')
-                ->where('is_published', 1)
-                ->where('title_km', 'LIKE', '%'. $category .'%')
-                ->orderBy('post_date', 'desc')
-                ->paginate($paginate);
+        // if ($request->has('keyword') && !empty($keyword)) {
+        //     $categories = $categories->whereNull('deleted_at')
+        //         ->where('title_km', 'LIKE', '%'. $keyword .'%')
+        //         ->where('is_published', 1)
+        //         ->paginate($paginate);
+
+        //     return DocumentResource::collection($document);
+        // }
+
+        // if ($request->has('category')  && !empty($category)) {
+        //     $categories = $categories::with('documents')->has('documents')
+        //         ->whereNull('deleted_at')
+        //         ->where('is_published', 1)
+        //         ->where('title_km', 'LIKE', '%'. $category .'%')
+        //         ->orderBy('post_date', 'desc')
+        //         ->paginate($paginate);
             
-            return DocumentResource::collection($categories);
+        //     return DocumentResource::collection($query);
         
-        }
+        // }
 
-        $categories = Dcategory::with('documents')->has('documents')->get();
-
+        // $categories = Dcategory::with('documents')->has('documents')->get();
+            $categories = $query->with('documents', function($q) {
+                $q->where('is_published', isPublishedEnum::IS_PUBLUSHED);
+            })->paginate($paginate);
         return DcategoryResource::collection($categories);
     }
 

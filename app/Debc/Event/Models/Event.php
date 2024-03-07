@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Event extends Model
 {
@@ -39,4 +40,17 @@ class Event extends Model
         'end_date',
     ];
 
+    // public function startDate(): Attribute 
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => Carbon::parse($value)->format('d-m-Y')
+    //     );
+    // }
+
+    // public function endDate(): Attribute 
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => Carbon::parse($value)->format('d-m-Y')
+    //     );
+    // }
 }

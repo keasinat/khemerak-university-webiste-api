@@ -2,8 +2,8 @@
 
 namespace App\Debc\Event\Http\Controllers\API;
 
-use App\Debc\Event\Models\{EventCategory, Event};
-use App\Debc\Event\Resources\{EventResource};
+use App\Debc\Event\Models\{ Event};
+use App\Debc\Event\Resources\{ eventResource};
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

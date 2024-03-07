@@ -1,7 +1,6 @@
 <?php
 
-use App\Debc\Event\Http\Controller\API\EventController;
-
+use App\Debc\Event\Http\Controllers\API\EventController;
 
 Route::group([
     'prefix' => 'events'
