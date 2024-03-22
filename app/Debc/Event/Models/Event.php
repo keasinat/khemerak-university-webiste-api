@@ -10,10 +10,12 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Event extends Model
 {
+    
     use SoftDeletes;
 
     protected $guarded = ['id'];
     public $table = 'events';
+    // protected $dateFormat = 'd-m-Y';
 
     protected $fillable = [
         'id',
@@ -40,17 +42,18 @@ class Event extends Model
         'end_date',
     ];
 
-    // public function startDate(): Attribute 
-    // {
-    //     return Attribute::make(
-    //         get: fn ($value) => Carbon::parse($value)->format('d-m-Y')
-    //     );
-    // }
+    public function startDate(): Attribute 
+    {
+        setlocale(LC_TIME, 'km');
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->format('d-M-Y')
+        );
+    }
 
-    // public function endDate(): Attribute 
-    // {
-    //     return Attribute::make(
-    //         get: fn ($value) => Carbon::parse($value)->format('d-m-Y')
-    //     );
-    // }
+    public function endDate(): Attribute 
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y')
+        );
+    }
 }
