@@ -22,7 +22,7 @@ class PartnerService extends BaseService
     public function store(array $data = []): Partner
     {
         DB::beginTransaction();
-
+        // dd($data);
         try {
             $partner = $this->model::create($data);
         } catch (\Exception $e) {

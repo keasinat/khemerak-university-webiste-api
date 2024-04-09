@@ -57,7 +57,7 @@
                             <label for="" class="col-form-label">{{__('dashboard.select_thumbnail')}}</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info input-group-text">
+                                <a id="button-image" data-input="thumbnail" data-preview="holder" class="btn btn-info input-group-text" aria-describedby="button-image">
                                     <i class="fa-solid fa fa-image"></i>
                                 </a>
                                 </div>
@@ -80,33 +80,24 @@
 @endsection
 
 @push('after-scripts')
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    @include('layouts.partials.ckeditor')
+
     <script>
         var route_prefix = "/file-manager";
-        $('#content_km').ckeditor({
-            height: 500,
-            filebrowserImageBrowseUrl: route_prefix + '/ckeditor',
-            allowedContent : true
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            document.getElementById('button-image').addEventListener('click', (event) => {
+                event.preventDefault();
+
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
         });
 
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById('lfm').addEventListener('click', (event) => {
-        event.preventDefault();
-        window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
-      });
-    });
-    // set file link
-    function fmSetLink($url) {
-      document.getElementById('thumbnail').value = $url;
-    }
+        // set file link
+        function fmSetLink($url) {
+            document.getElementById('thumbnail').value = $url;
+        }
 
-    var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output.src) // free memory
-    }
-  };
   </script>
 @endpush

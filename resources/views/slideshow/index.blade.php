@@ -20,8 +20,8 @@
                 <tr>
                     <th>No</th>
                     <th>Thumbnail</th>
-                    <th>Name</th>
-                    <th>Position</th>
+                    <th>Headline</th>
+                    <th>Content</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -66,5 +66,5 @@
         });
     });
 </script>
-      
+
 @endpush
