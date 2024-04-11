@@ -4,6 +4,7 @@
 
 ```bash
 cp .env.example .env
+# set app url of service: example edf-backend.localhost:9090
 set APP_URL 
 ```
 ## Update DB external ENV
@@ -22,3 +23,14 @@ RUN
 php artisan storage:link
 php artisan vendor:publish --tag=fm-assets
 ```
+## Migration
+Runing migration
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+## User Login 
+User: admin@admin.com
+pwd: secret

@@ -1,35 +1,34 @@
-version: '3.7'
+version: '3.8'
 services:
   app:
-    build:
-      args:
-        user: www
-        uid: 1000
-      context: ./
-      dockerfile: Dockerfile
-    image: edf_backend
     container_name: edf_backend_app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+#    image: edf-backoffice
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    depends_on:
+      - db
     networks:
       - edf_backend_app
-#  db:
-#    image: postgres:15
+  db:
+    image: postgres:16.0
 #    container_name: postgres-db
 #    restart: always
-#    environment:
-#      POSTGRES_DB: edf_service
-#      POSTGRES_USER: postgres
-#      POSTGRES_PASSWORD: root2022
-#    volumes:
-#      - db_data:/var/lib/postgresql/data
-#    networks:
-#      - edf_backend_app
-#    ports:
-#      - "54321:5432"
+    environment:
+      DB_DATABASE: edf_service
+      DB_USERNAME: postgres
+      DB_PASSWORD: Edf@2O24
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - edf_backend_app
+    ports:
+      - "5432:5432"
   nginx:
     image: nginx:stable
     container_name: edf_gov_kh_nginx
@@ -39,11 +38,14 @@ services:
     volumes:
       - ./:/var/www
       - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
+      - db
     networks:
       - edf_backend_app
 
-#volumes:
-#  db_data:
+volumes:
+  db_data:
 networks:
   edf_backend_app:
     driver: bridge

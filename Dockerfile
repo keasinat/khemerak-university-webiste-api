@@ -1,6 +1,6 @@
 FROM php:8.1-fpm
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get-y update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pgsql \
     && docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install xml
+    && docker-php-ext-install xml \
+
 
 RUN docker-php-ext-install dom
 RUN docker-php-ext-install exif
@@ -55,20 +56,19 @@ COPY --chown=www:www . /var/www
 # Install Package
 RUN composer update --ignore-platform-req=ext-exif
 RUN php artisan key:generate
-#RUN composer-dump-autoload
+RUN composer install
 #RUN chown -Rf www:www /var/www
+RUN chown -R www:www /var/www/storage
+RUN chown -R www:www /var/www/bootstrap/cache
 # Change current user to www
 USER www
 #RUN  chmod 777 public
-#RUN  chmod 777 storage
-#RUN  chmod 777 bootstrap/cache
+RUN  chmod 775 storage
+RUN  chmod 755 bootstrap/cache
 #RUN  chown -R www:www public
 #RUN  chown -R www:www storage
 #RUN  chown -R www:www bootstrap/cache
 
-#RUN chmod 755 public
-#RUN chmod 777 storage
-#RUN chmod 755 bootstrap/cache
 #RUN chown -R www:www public
 #RUN chown -R www:www storage
 #RUN chown -R www:www /var/www
