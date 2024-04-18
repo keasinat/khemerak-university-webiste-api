@@ -13,30 +13,23 @@
     </x-slot>
     @endcan
     <x-slot name="body">
-            @if(Session::has('success'))       
-                <div class="alert alert-success">         
-                    {{Session::get('success')}}      
-                </div> 
-            @endif
+
             <table class="table table-bordered text-center table-striped" id="news">
                 <thead>
                     <tr>
                         <th>{{ __('dashboard.thumbnail') }}</th>
                         <th>{{ __('dashboard.title') }}</th>
-                        <th>{{ __('dashboard.post_date') }}</th>
                         <th>{{ __('dashboard.status') }}</th>
                         <th>{{ __('dashboard.action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach ($news as $article)
+                        @foreach ($newsList as $news)
                         <tr>
-                            <td><img src="{{ asset($article->thumbnail) }}" width="70" height="50" /></td>
-                            <td>{{ Str::limit($article->title_km,60) }}</td>
-                            <td>{{ date('Y-m-d', strtotime($article->post_date)) }}</td>
-                            <td>
+                            <td><img src="{{ asset($news->thumbnail) }}" width="70" height="50" /></td>
+                            <td>{{ Str::limit($news->title_km,60) }}</td> <td>
                                 @foreach (pulishedOpt() as $k => $status)
-                                    @if ($article->is_published == $k)
+                                    @if ($news->is_published == $k)
                                     <span class="badge {{ $k == 1 ? 'badge-success' : 'badge-danger' }}">{{ $status }}</span>
                                     @endif
                                 @endforeach

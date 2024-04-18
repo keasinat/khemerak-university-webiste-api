@@ -26,15 +26,6 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="slug" class="col-form-label">{{ __('dashboard.slug') }}</label>
-                                <input type="text" name="slug" id="slug" class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" value="{{ old('slug') ?? $news->slug}}">
-                                @if($errors->has('slug'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('slug') }}
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="form-group">
                                 <textarea name="content_km" id="content_km" cols="50" rows="10" class="form-control {{ $errors->has('content_km') ? 'is-invalid' : '' }}" >{{ old('content_km') ?? $news->content_km}}</textarea>
                                 @if($errors->has('content_km'))
                                     <div class="invalid-feedback">
@@ -109,10 +100,6 @@
                                     <div id="holder" style="margin-top:15px;max-height:200px;"></div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="post_date" class="col-form-label">Public Date</label>
-                                <input type="text" name="post_date" id="post_date" class="form-control" autocomplete="off" value="{{ old('post_date') ?? date('Y-m-d', strtotime($news->post_date)) }}">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,19 +119,6 @@
             filebrowserImageBrowseUrl: route_prefix + '/ckeditor',
             allowedContent : true
         });
-
-        $( function() {
-          $( "#post_date" ).datepicker({
-            dateFormat: 'yy-mm-d',
-            // minDate: getFormattedDate(new Date())
-          }).datepicker();
-        } );
-        function getFormattedDate(date) {
-            var day = date.getDate();
-            var month = date.getMonth() + 1;
-            var year = date.getFullYear().toString().slice(2);
-            return year + '-' + month + '-' + day;
-        }
 
         document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('lfm').addEventListener('click', (event) => {

@@ -8,16 +8,11 @@ use Spatie\Permission\Models\Permission;
 use DB;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use App\Models\User;
 
 class RoleController extends Controller
 {
-    // function __construct()
-    // {
-    //      $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-    //      $this->middleware('permission:role-create', ['only' => ['create','store']]);
-    //      $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-    //      $this->middleware('permission:role-delete', ['only' => ['destroy']]);
-    // }
+
 
     /**
      * Display a listing of the resource.
@@ -50,7 +45,6 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-        dd($request->all());
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
@@ -110,8 +104,21 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        // if (Auth::id() == User::MASTER_USER && $role->id == User::MASTER_ROLE) {
+        //     return redirect()->route('admin.roles.index')
+        //     ->with('success','Role delete successfully');
+        // }
+
+        $checkRole = Role::withCount('users')->findOrfail($role->id);
+
+        if ($checkRole->user_count > 0) {
+            return redirect()->route('admin.roles.index')->with('success', 'Role in used.Not Allow to delete.');
+        } else {
+            $role->delete();
+            return redirect()->route('admin.roles.index')
+            ->with('success','Role delete successfully');
+        }
     }
 }

@@ -8,7 +8,10 @@
             <x-utils.link class="card-header-action" :href="route('admin.users.index')" :text="__('Cancel')"/>
         </x-slot>
         <x-slot name="body">
-            <div class="form-group row">
+            <div class="container-fuild">
+                <div class="row">
+                    <div class="col-sm-6">
+                    <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">{{ __('dashboard.username') }}</label>
                 <div class="col-sm-10">
                     <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}">
@@ -68,6 +71,10 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
+                    </div>
+                </div>
+            </div>
+            
         </x-slot>
     </x-card>
 </x-forms>

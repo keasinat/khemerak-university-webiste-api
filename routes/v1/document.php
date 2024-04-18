@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\DocumentController;
-use App\Http\Controllers\API\VideoController;
+use App\Debc\Document\Http\Controllers\API\DocumentController;
+
 
 Route::group([
         'prefix' => 'documents',
@@ -9,5 +9,5 @@ Route::group([
         Route::get('/', [DocumentController::class, 'index']);
         Route::get('category', [DocumentController::class, 'category']);
         Route::get('category/{slug}', [DocumentController::class, 'categorySlug']);
-        Route::get('videos', [VideoController::class, 'index']);
+
     });
