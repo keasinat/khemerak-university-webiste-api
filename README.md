@@ -32,5 +32,12 @@ php artisan db:seed
 ```
 
 ## User Login 
+```bash
 User: admin@admin.com
 pwd: secret
+```
+## Docker run
+
+```bash
+docker-compose up -d --build --force-recreate
+```
