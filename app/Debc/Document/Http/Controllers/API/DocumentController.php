@@ -9,7 +9,7 @@ use App\Debc\Document\Models\Document;
 use App\Debc\Document\Models\Dcategory;
 use App\Http\Resources\DocumentResource;
 use App\Http\Resources\DcategoryResource;
-use App\Enum\isPublishedEnum;
+use App\Enum\IsPublishedEnum;
 
 class DocumentController extends Controller
 {
@@ -39,9 +39,9 @@ class DocumentController extends Controller
                 ->where('title_km', 'LIKE', '%'. $category .'%')
                 ->orderBy('post_date', 'desc')
                 ->paginate($paginate);
-            
+
             return DocumentResource::collection($categories);
-        
+
         }
 
         $document = $document::with('dcategory')
@@ -49,7 +49,7 @@ class DocumentController extends Controller
                 ->where('is_published', 1)
                 ->orderBy('post_date', 'desc')
                 ->paginate($paginate);
-        
+
         return DocumentResource::collection($document);
     }
 
@@ -63,11 +63,11 @@ class DocumentController extends Controller
 
         $query->when(!empty($keyword), function($q) use ($keyword) {
             $q->where('title_km', 'iLIKE', '%'. $keyword. '%');
-            // $q->where('is_published', isPublishedEnum::IS_PUBLUSHED);
+            // $q->where('is_published', IsPublishedEnum::IS_PUBLUSHED);
         });
 
         $query->when(!empty($category), function($q) use ($category) {
-            // $q->where('is_published', isPublishedEnum::IS_PUBLUSHED);
+            // $q->where('is_published', IsPublishedEnum::IS_PUBLUSHED);
             $q->whereNull('deleted_at');
             $q->where('title_km', 'iLIKE', '%'. $category .'%');
         });
@@ -88,25 +88,25 @@ class DocumentController extends Controller
         //         ->where('title_km', 'LIKE', '%'. $category .'%')
         //         ->orderBy('post_date', 'desc')
         //         ->paginate($paginate);
-            
+
         //     return DocumentResource::collection($query);
-        
+
         // }
 
         // $categories = Dcategory::with('documents')->has('documents')->get();
             $categories = $query->with('documents', function($q) {
-                $q->where('is_published', isPublishedEnum::IS_PUBLUSHED);
+                $q->where('is_published', IsPublishedEnum::IS_PUBLUSHED);
             })->paginate($paginate);
         return DcategoryResource::collection($categories);
     }
 
     public function categorySlug($slug, Request $request)
     {
-        
+
         $paginate = $request->per_page ?? 12;
 
         $categoryId = Dcategory::where('slug', $slug)->pluck('id');
-        
+
         $documents = Document::whereHas('dcategory', function ($q) use ($categoryId) {
             $q->whereIn('parent_id', [$categoryId]);
             $q->orWhereIn('dcategory_id', [$categoryId]);

@@ -7,7 +7,7 @@ use App\Debc\Event\Http\Resources\EventResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use App\Enum\isPublishedEnum;
+use App\Enum\IsPublishedEnum;
 
 class EventController extends Controller
 {
@@ -29,7 +29,7 @@ class EventController extends Controller
         $events->when(!empty($endDate), function (Builder $query) use ($endDate) {
                 $query->where('end_date', '<=', $endDate);
             });
-        $events = $events->whereNull('deleted_at')->where('is_published', isPublishedEnum::IS_PUBLUSHED)->paginate($paginate);
+        $events = $events->whereNull('deleted_at')->where('is_published', IsPublishedEnum::IS_PUBLUSHED)->paginate($paginate);
 
         return EventResource::collection($events);
     }

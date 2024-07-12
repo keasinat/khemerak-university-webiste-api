@@ -2,7 +2,7 @@
 
 namespace App\Enum;
 
-enum isPublishedEnum: int
+enum IsPublishedEnum: int
 {
     case IS_PUBLUSHED = 1;
     case IS_DRAFT = 0;

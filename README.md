@@ -4,7 +4,7 @@
 
 ```bash
 cp .env.example .env
-# set app url of service: example edf-backend.localhost:9090
+# set app url of service: example backend.localhost:9090
 set APP_URL 
 ```
 ## Update DB external ENV
