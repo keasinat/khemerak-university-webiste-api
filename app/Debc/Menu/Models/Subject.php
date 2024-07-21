@@ -2,12 +2,13 @@
 
 namespace App\Debc\Menu\Models;
 
+use App\Trait\MenuScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Subject extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, MenuScope;
     protected $table = 'subjects';
     protected $guarded = ['id'];
 

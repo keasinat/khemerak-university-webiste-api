@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Debc\Menu\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class NewsResource extends JsonResource
+class AcademicDetailResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -16,16 +16,15 @@ class NewsResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "thumbnail" => $this->thumbnail ?? 'https://via.placeholder.com/350x167',
+            "thumbnail" => $this->thumbnail ?? '',
             "slug" => $this->slug,
             "title_km"  => $this->title_km,
-            "title_en"  => $this->title_en ?? '',
+            "title_en" => $this->title_en,
+            "highlight_km" => $this->highlight_km,
+            "highlight_en" => $this->highlight_en,
             "description_km"  => $this->description_km,
-            "description_en"  => $this->description_en ?? '',
-            "content_km"  => $this->content_km,
-            "content_en"  => $this->content_en,
-            "meta_keyword"  => $this->meta_keyword,
-            "meta_description"  => $this->meta_description
+            "description_en"  => $this->description_en
         ];
     }
 }
+

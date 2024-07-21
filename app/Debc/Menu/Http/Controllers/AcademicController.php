@@ -128,6 +128,7 @@ class AcademicController
         if(!isset($data['is_top'])){
             $data['is_top'] = 0;
         }
+        $data['slug'] = Str::slug($request->slug, '_');
 
         $this->service->update($academic, $data);
 

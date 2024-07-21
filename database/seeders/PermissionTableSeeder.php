@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Traits\DisableForeignKeys;
+use Database\Seeders\Traits\TruncateTable;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 
 class PermissionTableSeeder extends Seeder
 {
+    use DisableForeignKeys, TruncateTable;
     /**
      * Run the database seeds.
      *
@@ -53,9 +56,11 @@ class PermissionTableSeeder extends Seeder
             'menu-delete',
             'menu-destroy'
          ];
-
+         $this->disableForeignKeys();
+         $this->truncate('permissions');
          foreach ($permissions as $permission) {
               Permission::create(['name' => $permission]);
          }
+         $this->enableForeignKeys();
     }
 }
