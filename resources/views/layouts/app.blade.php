@@ -15,11 +15,14 @@
   @stack('before-styles')
  <link rel="stylesheet" href="{{ mix('css/adminlte.css') }}">
   @stack('after-styles')
+  @if (app()->getLocale() == "km")
   <style>
     * {
     font-family: 'Battambang', 'Source Sans Pro';
     }
   </style>
+  @endif
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -51,7 +54,7 @@
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2024.</strong> All rights reserved. Development by DEBC
+    <strong>Copyright &copy; 2024.</strong> All rights reserved. Developed by <a href="https://t.me/sinatboy">SINAT</a>
   </footer>
 
 </div>

@@ -27,7 +27,6 @@ class PermissionTableSeeder extends Seeder
             'news-create',
             'news-edit',
             'news-delete',
-
             'document-list',
             'document-create',
             'document-edit',
@@ -48,8 +47,13 @@ class PermissionTableSeeder extends Seeder
             'slideshow-create',
             'slideshow-edit',
             'slideshow-delete',
+            'menu-list',
+            'menu-create',
+            'menu-edit',
+            'menu-delete',
+            'menu-destroy'
          ];
-      
+
          foreach ($permissions as $permission) {
               Permission::create(['name' => $permission]);
          }

@@ -2,7 +2,7 @@
 
 return [
     'dashboard' => 'Dashboard',
-    'blog_management' => 'News Management',
+    'blog_management' => 'News',
     'setting' => 'Settings',
     'media' => '',
     'user_management' => 'User Management',
@@ -18,7 +18,7 @@ return [
     'location' => 'Location',
     'description' => 'Descriptions',
     'id' => 'No',
-    'slideshow_management' => 'SlideShow Management',
+    'slideshow_management' => 'Slide Show',
     'cancel' => 'Cancel',
     'document_management' => 'Document Management',
     'staff_management' => 'Staff Management',
