@@ -2,12 +2,13 @@
 
 namespace App\Debc\Menu\Models;
 
+use App\Trait\MenuScope;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Academic extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, MenuScope;
     protected $table = 'academics';
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d';
