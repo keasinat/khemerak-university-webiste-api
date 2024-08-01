@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('thumbnail');
             $table->string('link')->nullable();
-            $table->string('headline')->nullable();
-            $table->string('content')->nullable();
+            $table->string('headline_km')->nullable();
+            $table->string('headline_en')->nullable();
+            $table->string('content_km')->nullable();
+            $table->string('content_en')->nullable();
+            $table->string('btn_label_km')->nullable();
+            $table->string('btn_label_en')->nullable();
             $table->integer('order')->default(0);
             $table->boolean('is_published')->default(true);
             $table->timestamps();

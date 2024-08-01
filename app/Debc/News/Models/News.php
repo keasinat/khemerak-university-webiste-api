@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class News extends Model 
+class News extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -18,8 +18,11 @@ class News extends Model
         'id',
         'thumbnail',
         'title_km',
+        'title_en',
         'description_km',
+        'description_en',
         'content_km',
+        'content_en',
         'meta_keyword',
         'meta_description',
         'is_published',

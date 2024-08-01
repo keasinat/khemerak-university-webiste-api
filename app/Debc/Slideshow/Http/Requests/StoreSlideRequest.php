@@ -23,9 +23,13 @@ class StoreSlideRequest extends FormRequest
     {
         return [
             'thumbnail' => 'required',
-            'headline' => 'required',
-            'content' => 'required',
-            'link' => 'nullable',
+            'headline_km' => 'nullable|string',
+            'headline_en' => 'nullable|string',
+            'content_km' => 'nullable|string',
+            'content_en' => 'nullable|string',
+            'btn_label_km' => 'nullable|string',
+            'btn_label_en' => 'nullable|string',
+            'link' => 'nullable|url:http,https',
 
         ];
     }

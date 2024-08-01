@@ -31,8 +31,8 @@
                 <tr>
                     <td>{{ ++$k }}</td>
                     <td><img src="{{$slideshow->thumbnail}}" alt="" width="70"></td>
-                    <td>{{ $slideshow->headline }}</td>
-                    <td>{{ $slideshow->content}}</td>
+                    <td>{{ $slideshow->headline_km }}</td>
+                    <td>{{ $slideshow->content_km}}</td>
                     <td>
                         @foreach (pulishedOpt() as $k => $status)
                             @if ($slideshow->is_published == $k)

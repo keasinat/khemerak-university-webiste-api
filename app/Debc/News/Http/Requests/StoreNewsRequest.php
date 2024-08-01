@@ -27,8 +27,11 @@ class StoreNewsRequest extends FormRequest
         return [
             'thumbnail' => 'string|nullable',
             'title_km' => 'required|string|max:255',
+            'title_en' => 'required|string|max:255',
             'description_km' => 'string|max:255|nullable',
+            'description_en' => 'string|max:255|nullable',
             'content_km' => 'required|string',
+            'content_en' => 'required|string',
             'meta_keyword' => 'string|nullable',
             'meta_description' => 'string|nullable',
             'slug' => 'string|nullable',
@@ -36,12 +39,12 @@ class StoreNewsRequest extends FormRequest
         ];
     }
 
-    public function attributes()
-    {
-        return [
-            'title_km' => trans('dashboard.title'),
-            'description_km' => trans('dashboard.description'),
-            'content_km' => trans('dashboard.content')
-        ];
-    }
+    // public function attributes()
+    // {
+    //     return [
+    //         'title_km' => trans('dashboard.title'),
+    //         'description_km' => trans('dashboard.description'),
+    //         'content_km' => trans('dashboard.content')
+    //     ];
+    // }
 }

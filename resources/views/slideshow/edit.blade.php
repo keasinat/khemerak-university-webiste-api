@@ -15,33 +15,27 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="" class="col-form label">Title</label>
-                            <input type="text" name="headline" id="" class="form-control {{ $errors->has('headline') ? 'is-invalid' : '' }}" value="{{ old('headline') ?? $slideshow->headline }}">
-                            @if($errors->has('headline'))
+                            <label for="" class="col-form label">Title Khmer</label>
+                            <input type="text" name="headline_km" id="" class="form-control {{ $errors->has('headline_km') ? 'is-invalid' : '' }}" value="{{ old('headline_km') ?? $slideshow->headline_km }}">
+                            @if($errors->has('headline_km'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('headline') }}
+                                    {{ $errors->first('headline_km') }}
                                 </div>
                             @endif
                         </div>
+                    </div>
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="" class="col-form label">Link URL</label>
-                            <input type="text" name="link" id="" class="form-control {{ $errors->has('link') ? 'is-invalid' : '' }}" value="{{ old('link') ?? $slideshow->link }}">
-                            @if($errors->has('link'))
+                            <label for="" class="col-form label">Title English</label>
+                            <input type="text" name="headline_en" id="" class="form-control {{ $errors->has('headline_en') ? 'is-invalid' : '' }}" value="{{ old('headline_en')  ?? $slideshow->headline_en}}">
+                            @if($errors->has('headline_en'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('link') }}
+                                    {{ $errors->first('headline_en') }}
                                 </div>
                             @endif
                         </div>
-                        <div class="form-group">
-                            <label for="" class="col-form label">Content</label>
-                            <textarea name="content" class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}" id="" cols="30" rows="10">{{ old('content') ?? $slideshow->content }}</textarea>
-                            @if($errors->has('content'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('content') }}
-                                </div>
-                            @endif
-                        </div>
-
+                    </div>
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label for="" class="col-form-label">{{ __('dashboard.status') }}</label>
                             <select name="is_published" id="is_published" class="form-control">
@@ -50,7 +44,6 @@
                                 @endforeach
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-success">Save</button>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -71,7 +64,66 @@
                             <div id="holder" style="margin-top:15px;max-height:400px;"></div>
                         </div>
                     </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="" class="col-form label">Content Khmer</label>
+                            <textarea name="content_km" class="form-control {{ $errors->has('content_km') ? 'is-invalid' : '' }}" id="" cols="30" rows="10">{{ old('content_km') ?? $slideshow->content_km }}</textarea>
+                            @if($errors->has('content_km'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('content_km') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="" class="col-form label">Content English</label>
+                            <textarea name="content_en" class="form-control {{ $errors->has('content_en') ? 'is-invalid' : '' }}" id="" cols="30" rows="10">{{ old('content_en') ?? $slideshow->content_en}}</textarea>
+                            @if($errors->has('content_en'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('content_en') }}
+                                </div>
+                            @endif
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="" class="col-form label">Button Text Khmer</label>
+                            <input type="text" name="btn_label_km" id="" class="form-control {{ $errors->has('btn_label_km') ? 'is-invalid' : '' }}" value="{{ old('btn_label_km') ?? $slideshow->btn_label_km}}">
+                            @if($errors->has('btn_label_km'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('btn_label_km') }}
+                                </div>
+                            @endif
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="" class="col-form label">Button Text English</label>
+                            <input type="text" name="btn_label_en" id="" class="form-control {{ $errors->has('btn_label_en') ? 'is-invalid' : '' }}" value="{{ old('btn_label_en') ?? $slideshow->btn_label_en}}">
+                            @if($errors->has('btn_label_en'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('btn_label_en') }}
+                                </div>
+                            @endif
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="" class="col-form label">Link URL</label>
+                            <input type="text" name="link" id="" class="form-control {{ $errors->has('link') ? 'is-invalid' : '' }}" value="{{ old('link') ?? $slideshow->link }}">
+                            @if($errors->has('link'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('link') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
+                <button type="submit" class="btn btn-success">Save</button>
             </div>
         </x-slot>
     </x-card>

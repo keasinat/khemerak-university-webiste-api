@@ -26,8 +26,11 @@ class UpdateNewsRequest extends FormRequest
         return [
             'thumbnail' => 'string|nullable',
             'title_km' => 'required|string|max:255',
+            'title_en' => 'required|string|max:255',
             'description_km' => 'required|string',
+            'description_en' => 'required|string',
             'content_km' => 'required|string',
+            'content_en' => 'required|string',
             'meta_keyword' => 'string|nullable',
             'meta_description' => 'string|nullable',
             'slug' => 'string|nullable',

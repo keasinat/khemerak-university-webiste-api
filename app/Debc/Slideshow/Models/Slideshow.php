@@ -12,8 +12,12 @@ class Slideshow extends Model
     protected $fillable = [
         'thumbnail',
         'link',
-        'headline',
-        'content',
-        'is_published'
+        'headline_km',
+        'headline_en',
+        'content_km',
+        'content_en',
+        'is_published',
+        'btn_label_km',
+        'btn_label_en'
     ];
 }

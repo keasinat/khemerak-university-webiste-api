@@ -23,7 +23,7 @@ class NewsResource extends JsonResource
             "description_km"  => $this->description_km,
             "description_en"  => $this->description_en ?? '',
             "content_km"  => $this->content_km,
-            "content_en"  => $this->content_en,
+            "content_en"  => $this->content_en ?? '',
             "meta_keyword"  => $this->meta_keyword,
             "meta_description"  => $this->meta_description
         ];

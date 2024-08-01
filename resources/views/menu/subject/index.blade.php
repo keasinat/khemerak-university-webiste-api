@@ -36,7 +36,7 @@
                         <tr>
                             <td>{{ $subject->title_km }}</td>
                             <td>{{ $subject->academic->title_km }}</td>
-                            <td><img src="{{$subject->thumbnail}}" alt="none"></td>
+                            <td><img src="{{$subject->thumbnail}}" alt="none" width="50px"></td>
                             <td>
                                 @foreach(pulishedOpt() as $k => $item)
                                     @if($subject->is_published == $k)

@@ -15,6 +15,7 @@ class NewsController extends Controller
         $paginate = $request->per_page ?? 9;
 
         $news = News::where('is_published', 1)
+                ->orderByDesc('id')
                 ->paginate($paginate);
 
         return NewsResource::collection($news);

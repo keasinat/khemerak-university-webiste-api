@@ -22,7 +22,15 @@ class UpdateSlideRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'thumbnail' => 'required',
+            'headline_km' => 'nullable|string',
+            'headline_en' => 'nullable|string',
+            'content_km' => 'nullable|string',
+            'content_en' => 'nullable|string',
+            'btn_label_km' => 'nullable|string',
+            'btn_label_en' => 'nullable|string',
+            'link' => 'nullable|url:http,https',
+
         ];
     }
 }

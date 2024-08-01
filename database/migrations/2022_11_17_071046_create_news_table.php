@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('thumbnail')->nullable();
             $table->string('title_km');
+            $table->string('title_en')->nullable();
             $table->string('description_km');
+            $table->string('description_en')->nullable();
             $table->longText('content_km');
+            $table->longText('content_en')->nullable();
             $table->text('meta_keyword')->nullable();
             $table->text('meta_description')->nullable();
             $table->boolean('is_published');
