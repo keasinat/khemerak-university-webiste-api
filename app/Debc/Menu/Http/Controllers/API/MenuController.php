@@ -55,8 +55,11 @@ class MenuController extends Controller
 
     public function subjects(Request $request) : ResourceCollection
     {
-        $data = Subject::isPublished()->get();
-        return AcademicResource::collection($data);
+        $data = Subject::isPublished();
+        if(isset($request->academic_id)){
+            $data->where('academic_id', $request->academic_id);
+        }
+        return AcademicResource::collection($data->get());
     }
 
     public function subjectDetail(ShowRequest $request)
