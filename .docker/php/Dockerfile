@@ -1,47 +1,67 @@
 FROM php:8.3-fpm
-COPY docker.conf /usr/local/etc/php-fpm.d/docker.conf
-#COPY .bashrc /root/
 
-# mix
-RUN apt-get update \
-  && apt-get install -y build-essential zlib1g-dev default-mysql-client curl gnupg procps vim git unzip libzip-dev libpq-dev \
-  && docker-php-ext-install zip pdo_mysql pdo_pgsql pgsql
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+        libpq-dev \
+        zlib1g-dev \
+        libxml2-dev \
+        libzip-dev \
+        libonig-dev \
+        zip \
+        curl \
+        unzip \
+        git \
+        vim \
+        sudo \
+    && docker-php-ext-configure gd \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install zip \
+    && docker-php-ext-install pdo \
+    && docker-php-ext-install pdo_pgsql \
+    && docker-php-ext-install pgsql \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
 
-# intl
-RUN apt-get install -y libicu-dev \
-  && docker-php-ext-configure intl \
-  && docker-php-ext-install intl
+RUN apt-get update && apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt-get update && apt-get install -y nodejs
 
-# gd
-RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev && \
-docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ && \
-docker-php-ext-install gd
+# Set working directory
+WORKDIR /var/www/html
 
 
-# Xdebug
-# RUN pecl install xdebug \
-# && docker-php-ext-enable xdebug \
-# && echo ";zend_extension=xdebug" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Node.js, NPM, Yarn
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install npm@latest -g
-RUN npm install yarn -g
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Composer
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php composer-setup.php
-RUN php -r "unlink('composer-setup.php');"
-RUN mv composer.phar /usr/local/bin/composer
+# Add user for laravel application
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
 
-ENV COMPOSER_ALLOW_SUPERUSER 1
-ENV COMPOSER_HOME /composer
-ENV PATH $PATH:/composer/vendor/bin
-RUN composer config --global process-timeout 3600
-#RUN composer global require "laravel/installer"
-WORKDIR /var/www
-#WORKDIR /root
-#RUN git clone https://git.dev.digitaleconomy.gov.kh/DEBC/EDF-backoffice-api.git
+# adding node and npm and use nvm
+ENV NODE_VERSION=14.15.0
+RUN apt install -y curl
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+ENV NVM_DIR=/root/.nvm
+RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
+ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+RUN node --version
+RUN npm --version
+
+
+# Copy existing application directory contents
+COPY . .
+COPY --chown=www:www . /var/www/html
+# Change current user to www
+USER www
+
+# Expose port 9000 and start php-fpm server
 EXPOSE 9000
-
+CMD ["php-fpm"]
