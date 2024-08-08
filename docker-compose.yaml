@@ -5,7 +5,7 @@ networks:
 
 services:
   app:
-    build: .docker/php
+    build: .
     container_name: app_khemerak
     volumes:
       - .:/var/www/html
