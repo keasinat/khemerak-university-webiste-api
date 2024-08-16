@@ -16,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (env('FORCE_HTTPS')) {
+            URL::forceScheme('https');
+        }
     }
 
     /**
@@ -30,6 +32,6 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        Schema::defaultStringLength(125);
+        Schema::defaultStringLength(225);
     }
 }
