@@ -17,5 +17,6 @@ Route::prefix('menus')->group(function () {
         Route::get('list', [MenuController::class, 'subjectList']);
         Route::get('top', [MenuController::class, 'topSubjects']);
         Route::get('{id}', [MenuController::class, 'subjectDetail']);
+        Route::get('single-page/{menu_id}', [MenuController::class, 'singlePage']);
     });
 });

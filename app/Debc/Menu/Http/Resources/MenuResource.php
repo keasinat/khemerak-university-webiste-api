@@ -19,6 +19,7 @@ class MenuResource extends JsonResource
             "slug" => $this->slug,
             "title_km"  => $this->title_km,
             "title_en" => $this->title_en,
+            "is_single_page" => $this->is_single_page ?? 0,
             "sub_menu" => self::collection($this->whenLoaded('children'))
         ];
     }

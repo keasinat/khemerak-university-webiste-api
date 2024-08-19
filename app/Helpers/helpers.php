@@ -45,3 +45,12 @@ if (! function_exists('includeRouteFiles')) {
         includeFilesInFolder($folder);
     }
 }
+
+if (! function_exists('isSinglePage')) {
+    function isSinglePage() {
+        return [
+            '0' => 'Multiple',
+            '1' => 'Single'
+        ];
+    }
+}

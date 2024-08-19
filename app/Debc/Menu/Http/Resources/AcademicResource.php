@@ -22,6 +22,7 @@ class AcademicResource extends JsonResource
             "title_en" => $this->title_en,
             "highlight_km" => $this->highlight_km,
             "highlight_en" => $this->highlight_en,
+            "is_single_page" => $this->is_single_page,
             "children" => self::collection($this->whenLoaded('children'))
         ];
     }

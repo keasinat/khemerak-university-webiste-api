@@ -51,21 +51,22 @@ class MenuController extends Controller
 
     public function subjectList(Request $request) : ResourceCollection
     {
-        $data = null;
+        $data = Subject::isPublished();
         if(isset($request->menu_id)){
-            $data = Subject::isPublished()->where('academic_id', $request->menu_id)->get();
+            $data->where('academic_id', $request->menu_id);
         }
 
-        return MenuResource::collection($data);
+        return MenuResource::collection($data->get());
     }
 
     public function subjects(Request $request) : ResourceCollection
     {
         $data = Subject::isPublished();
-        if(isset($request->academic_id)){
-            $data->where('academic_id', $request->academic_id);
+        $per_page = $request->per_page ?? 12;
+        if(isset($request->menu_id)){
+            $data->where('academic_id', $request->menu_id);
         }
-        return AcademicResource::collection($data->get());
+        return AcademicResource::collection($data->paginate($per_page));
     }
 
     public function subjectDetail(Request $request)
@@ -73,6 +74,15 @@ class MenuController extends Controller
         $data = null;
         if(isset($request->id)){
             $data = Subject::findOrFail($request->id);
+        }
+        return new AcademicDetailResource($data);
+    }
+
+    function singlePage(Request $request)
+    {
+        $data = null;
+        if(isset($request->menu_id)){
+            $data = Subject::where('academic_id', $request->menu_id)->firstOrFail();
         }
         return new AcademicDetailResource($data);
     }

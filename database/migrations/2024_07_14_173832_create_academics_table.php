@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('description_en')->nullable();
             $table->boolean('is_published')->default(TRUE);
             $table->boolean('is_top')->default(FALSE);
+            $table->boolean('is_single_page')->default(FALSE);
             $table->timestamps();
             $table->softDeletes();
         });

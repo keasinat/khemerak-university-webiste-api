@@ -91,7 +91,7 @@
                         <div id="holder" style="margin-top:15px;max-height:400px;"></div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <div class="form-group">
                         <label for="" class="col-form-label">{{ __('dashboard.status') }}</label>
                         <select name="is_published" id="is_published" class="form-control">
@@ -101,7 +101,17 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="" class="col-form-label">Content on this Menu</label>
+                        <select name="is_single_page" id="is_single_page" class="form-control">
+                            @foreach (isSinglePage() as $k => $item)
+                                <option value="{{ $k }}" {{ (old('is_single_page') !== null) ? old('is_single_page') == $k ? 'selected' : '' : ($k == $category->is_single_page ? 'selected' :'') }}>{{ $item }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
                     <div class="form-group">
                         <label for="" class="col-form-label"></label>
                         <div  class="mt-3 text-right">

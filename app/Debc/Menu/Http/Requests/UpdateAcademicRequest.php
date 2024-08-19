@@ -36,7 +36,8 @@ class UpdateAcademicRequest extends FormRequest
             'description_km' => 'nullable|string|max:255',
             'description_en' => 'nullable|string|max:255',
             'is_top' => 'nullable|boolean',
-            'is_published' => 'nullable|boolean'
+            'is_published' => 'nullable|boolean',
+            'is_single_page' => 'nullable|boolean'
         ];
     }
 

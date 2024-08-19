@@ -12,7 +12,7 @@ class NewsController extends Controller
 {
     public function index(Request $request)
     {
-        $paginate = $request->per_page ?? 9;
+        $paginate = $request->per_page ?? 12;
 
         $news = News::where('is_published', 1)
                 ->orderByDesc('id')

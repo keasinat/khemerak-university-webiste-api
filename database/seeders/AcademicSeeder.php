@@ -23,30 +23,54 @@ class AcademicSeeder extends Seeder
                 'title_en' => $academic['name_en'],
                 'slug' => Str::slug($academic['name_en'], '_'),
                 'description_km' => $academic['highlight_km'],
-                'thumbnail' => $academic['thumbnail']
+                'thumbnail' => $academic['thumbnail'],
+                'is_top' => $academic['is_top'] ?? 0,
+                'is_single_page' => $academic['is_single_page'] ?? 0
             ]);
-            foreach ($academic['sub_menu'] as $sub) {
-                $sub_academic = Academic::create([
-                    'parent_id' => $academic_insert->id,
-                    'title_km' => $sub['name_km'],
-                    'title_en' => $sub['name_en'],
-                    'slug' => Str::slug($sub['name_en'], '_'),
-                    'description_km' => $sub['highlight_km'],
-                    'thumbnail' => $sub['thumbnail'],
-                    'is_top' => 1
-                ]);
-                foreach ($sub['children'] as $child) {
+            if(count($academic['sub_menu']) === 0){
+                echo 'run-----------';
+                foreach ($academic['children'] as $child) {
                     Subject::create([
-                        'academic_id' => $sub_academic->id,
+                        'academic_id' => $academic_insert->id,
                         'title_km' => $child['name_km'],
                         'title_en' => $child['name_en'],
                         'slug' => Str::slug($child['name_en'], '_'),
                         'highlight_km' => $child['highlight_km'],
                         'thumbnail' => $child['thumbnail'],
-                        'is_top' => $child['is_top'] ?? 0
+                        'is_top' => $child['is_top'] ?? 0,
+                        'description_km' => $child['description_km'] ?? '',
+                        'description_en' => $child['description_en'] ?? ''
                     ]);
+                    echo 'end run-----------';
+                }
+            }else{
+                foreach ($academic['sub_menu'] as $sub) {
+                    $sub_academic = Academic::create([
+                        'parent_id' => $academic_insert->id,
+                        'title_km' => $sub['name_km'],
+                        'title_en' => $sub['name_en'],
+                        'slug' => Str::slug($sub['name_en'], '_'),
+                        'description_km' => $sub['highlight_km'],
+                        'thumbnail' => $sub['thumbnail'],
+                        'is_top' => $sub['is_top'] ?? 0,
+                        'is_single_page' => $academic['is_single_page'] ?? 0
+                    ]);
+                    foreach ($sub['children'] as $child) {
+                        Subject::create([
+                            'academic_id' => $sub_academic->id,
+                            'title_km' => $child['name_km'],
+                            'title_en' => $child['name_en'],
+                            'slug' => Str::slug($child['name_en'], '_'),
+                            'highlight_km' => $child['highlight_km'],
+                            'thumbnail' => $child['thumbnail'],
+                            'is_top' => $child['is_top'] ?? 0,
+                            'description_km' => $child['description_km'] ?? '',
+                            'description_en' => $child['description_en'] ?? ''
+                        ]);
+                    }
                 }
             }
+
         }
         $this->enableForeignKeys();
     }

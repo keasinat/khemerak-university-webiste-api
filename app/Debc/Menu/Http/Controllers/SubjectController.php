@@ -7,7 +7,7 @@ use App\Debc\Menu\Http\Requests\UpdateSubjectRequest;
 use App\Debc\Menu\Models\Academic;
 use App\Debc\Menu\Models\Subject;
 use App\Debc\Menu\Services\SubjectService;
-use Str;
+use Illuminate\Support\Str;
 class SubjectController
 {
     protected $service;
@@ -50,7 +50,7 @@ class SubjectController
     public function store(StoreSubjectRequest $request)
     {
         $request = $request->validated();
-        $request['slug'] = Str::slug($request->slug, '_');
+        $request['slug'] = Str::slug($request['slug'], '_');
         $data = $this->service->store($request);
         // dd($data);
         return redirect()
@@ -85,7 +85,7 @@ class SubjectController
         if(!isset($data['is_top'])){
             $data['is_top'] = 0;
         }
-        $request['slug'] = Str::slug($request->slug, '_');
+        $request['slug'] = Str::slug($request['slug'], '_');
 
         $this->service->update($subject, $data);
 

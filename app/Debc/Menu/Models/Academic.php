@@ -24,7 +24,8 @@ class Academic extends Model
         'description_km',
         'description_en',
         'is_published',
-        'is_top'
+        'is_top',
+        'is_single_page'
     ];
 
     public $dates = [

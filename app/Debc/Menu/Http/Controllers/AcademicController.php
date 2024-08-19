@@ -51,7 +51,6 @@ class AcademicController
     public function store(StoreAcademicRequest $request)
     {
         $data = $request->validated();
-
         if (isset($request->parent_id)) {
 
             $checkDuplicate = Academic::where('title_km', $request->title_km)->where('parent_id', $request->parent_id)->first();
