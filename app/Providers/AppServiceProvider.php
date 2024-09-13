@@ -16,9 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (env('FORCE_HTTPS')) {
-            URL::forceScheme('https');
-        }
+
     }
 
     /**
@@ -28,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (env('FORCE_HTTPS')) {
+        if (env('FORCE_HTTPS') == true) {
             URL::forceScheme('https');
         }
 
