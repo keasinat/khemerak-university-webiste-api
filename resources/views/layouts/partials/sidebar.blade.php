@@ -71,7 +71,7 @@
                                 <a href="{{ route('admin.menu.academic.index') }}"
                                     class="nav-link {{ strpos(Route::currentRouteName(), 'academic') == 0 ? '' : 'active ' }}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('Academic') }}</p>
+                                    <p>{{ __('Menu') }}</p>
                                 </a>
                             </li>
 
@@ -79,7 +79,7 @@
                                 <a href="{{ route('admin.menu.subject.index') }}"
                                     class="nav-link {{ strpos(Route::currentRouteName(), 'subject') == 0 ? '' : 'active ' }}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('Subjects') }}</p>
+                                    <p>{{ __('Content') }}</p>
                                 </a>
                             </li>
                         </ul>

@@ -33,8 +33,8 @@ class UpdateSubjectRequest extends FormRequest
                 Rule::unique('academics','slug')->ignore($this->academic)
             ],
             'thumbnail' => 'nullable|string',
-            'description_km' => 'nullable|string|max:255',
-            'description_en' => 'nullable|string|max:255',
+            'description_km' => 'nullable|string',
+            'description_en' => 'nullable|string',
             'is_top' => 'nullable|boolean',
             'is_published' => 'nullable|boolean',
             'highlight_km' => 'nullable|string|max:255',
