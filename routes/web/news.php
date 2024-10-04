@@ -1,5 +1,6 @@
 <?php
 
+use App\Debc\News\Http\Controllers\NcategoryController;
 use App\Debc\News\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,16 @@ Route::group([
         Route::delete('{news}', [NewsController::class, 'destroy'])
             ->name('destroy')
             ->middleware('permission:news-delete');
+        Route::group([
+            'prefix' => 'categories',
+            'as' => 'category.'
+        ], function() {
+            Route::get('/', [NcategoryController::class, 'index'])->name('index');
+            Route::get('create', [NcategoryController::class, 'create'])->name('create');
+            Route::post('/', [NcategoryController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [NcategoryController::class, 'edit'])->name('edit');
+            Route::patch('/{ncategory}', [NcategoryController::class, 'update'])->name('update');
+            Route::delete('{id}', [NcategoryController::class, 'destroy'])->name('destroy');
+
+        });
 });

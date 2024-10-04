@@ -25,6 +25,7 @@ class StoreDcategoryRequest extends FormRequest
     {
         return [
             'title_km' => 'required|max:255|string',
+            'title_en' => 'nullable|max:255|string',
             'slug' => 'nullable|string|unique:dcategories,slug',
             'parent_id' => 'integer|nullable'
         ];

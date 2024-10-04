@@ -1,7 +1,7 @@
 <?php
 
 use App\Debc\Document\Http\Controllers\API\DocumentController;
-
+use Illuminate\Support\Facades\Route;
 
 Route::group([
         'prefix' => 'documents',

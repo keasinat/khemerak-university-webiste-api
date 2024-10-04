@@ -19,6 +19,7 @@ class Document extends Model
         'file',
         'dcategory_id',
         'title_km',
+        'title_en',
         'is_published',
         'post_date'
     ];
@@ -41,7 +42,7 @@ class Document extends Model
 
     // public function setPostDateAttribute($value)
     // {
-       
+
     //     $this->attributes['post_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('d-m-Y');
     // }
 

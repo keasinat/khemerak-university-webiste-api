@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ncategory_id')->constrained();
             $table->string('thumbnail')->nullable();
             $table->string('title_km');
             $table->string('title_en')->nullable();

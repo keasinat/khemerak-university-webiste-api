@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Debc\Document\Http\Requests;
+namespace App\Debc\News\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateDcategoryRequest extends FormRequest
+class UpdateNcategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,7 @@ class UpdateDcategoryRequest extends FormRequest
             'title_en' => 'max:255|string|nullable',
             'slug' => [
                 'required',
-                Rule::unique('dcategories','slug')->ignore($this->dcategory)
+                Rule::unique('ncategories','slug')->ignore($this->ncategory)
             ],
             'parent_id' => 'integer|nullable'
         ];

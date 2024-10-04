@@ -18,8 +18,8 @@ class DcategoryResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'title_km' => $this->title_km,
-            'created_at' => $this->created_at->format('Y-m-d'),
-            'documents' => $this->documents
+            'title_en' => $this->title_en,
+            'created_at' => $this->created_at->format('Y-m-d')
         ];
     }
 }

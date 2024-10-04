@@ -23,7 +23,7 @@ return [
     'document_management' => 'Document Management',
     'staff_management' => 'Staff Management',
     'partner_management' => 'Partner Management',
-    'document_category' => 'Document Category',
+    'document_category' => 'Category',
     'category_name' => 'Category Name',
     'document_name' => 'Document Name',
     'select_file' => 'Select Document',

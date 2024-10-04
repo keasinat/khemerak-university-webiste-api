@@ -32,7 +32,7 @@
                         </p>
                     </a>
                 </li>
-                @can('news-list')
+                @can('slideshow-list')
                     <li class="nav-item">
                         <a href="{{ route('admin.slideshow.index') }}"
                             class="nav-link {{ strpos(Route::currentRouteName(), 'slideshow') == 0 ? '' : 'active ' }}">
@@ -44,7 +44,7 @@
                     </li>
                 @endcan
                 @can('news-list')
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('admin.news.index') }}"
                             class="nav-link {{ strpos(Route::currentRouteName(), 'news') == 0 ? '' : 'active ' }}">
                             <i class="nav-icon far fa-newspaper"></i>
@@ -52,6 +52,34 @@
                                 {{ __('dashboard.blog_management') }}
                             </p>
                         </a>
+                    </li> --}}
+                    <li class="nav-item {{ strpos(Route::currentRouteName(), 'news') == 0 ? '' : 'menu-open' }}">
+                        <a href="#"
+                            class="nav-link {{ strpos(Route::currentRouteName(), 'news') == 0 ? '' : 'active ' }}">
+                            <i class="nav-icon far fa-newspaper"></i>
+                            <p>
+                                {{ __('dashboard.blog_management') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.news.index') }}"
+                                    class="nav-link {{ strpos(Route::currentRouteName(), 'news') == 0 ? '' : 'active ' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ __('dashboard.blog_management') }}</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.news.category.index') }}"
+                                    class="nav-link {{ strpos(Route::currentRouteName(), 'category') == 0 ? '' : 'active ' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Category</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 @endcan
 
@@ -59,7 +87,7 @@
                     <li class="nav-item {{ strpos(Route::currentRouteName(), 'menu') == 0 ? '' : 'menu-open' }}">
                         <a href="#"
                             class="nav-link {{ strpos(Route::currentRouteName(), 'menu') == 0 ? '' : 'active ' }}">
-                            <i class="nav-icon fas fa-file-pdf"></i>
+                            <i class="nav-icon fas fa-bars"></i>
                             <p>
                                 {{ __('Menu') }}
                                 <i class="right fas fa-angle-left"></i>
@@ -95,65 +123,71 @@
                   </p>
                 </a>
               </li>
-              @endcan
-                @can('document-list')
-              <li class="nav-item {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'menu-open' }}">
-                <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
-                  <i class="nav-icon fas fa-file-pdf"></i>
-                  <p>
-                    {{ __('dashboard.document_management') }}
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-
-                  <li class="nav-item">
-                    <a href="{{ route('admin.document.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'document') == 0) ? '' : 'active ' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>{{ __('dashboard.document_management') }}</p>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="{{ route('admin.document.category.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'category') == 0) ? '' : 'active ' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>{{ __('dashboard.document_category') }}</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-                @endcan
-
-                @can('event-list')
-              <li class="nav-item {{ (strpos(Route::currentRouteName(), 'event') == 0) ? '' : 'menu-open' }}">
-                <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(), 'event') == 0) ? '' : 'active ' }}">
-                  <i class="nav-icon fas far fa-calendar"></i>
-                  <p>
-                    {{ __('dashboard.event_management') }}
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="{{ route('admin.event.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'event') == 0) ? '' : 'active ' }}">
-                      <i class="far fa-calendar nav-icon"></i>
-                      <p>{{ __('dashboard.event_management') }}</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-                @endcan
-                @can('partner-list')
-                <li class="nav-item">
-                <a href="{{ route('admin.partner.index') }}" class="nav-link {{ (strpos(Route::currentRouteName(), 'partner') == 0) ? '' : 'active ' }}">
-                  <i class="nav-icon far fa-newspaper"></i>
-                  <p>
-                    {{ __('dashboard.partner_management') }}
-                  </p>
-                </a>
-              </li>
               @endcan --}}
-                <li class="nav-header">File Manager</li>
+                @can('document-list')
+                    <li class="nav-item {{ strpos(Route::currentRouteName(), 'document') == 0 ? '' : 'menu-open' }}">
+                        <a href="#"
+                            class="nav-link {{ strpos(Route::currentRouteName(), 'document') == 0 ? '' : 'active ' }}">
+                            <i class="nav-icon fas fa-file-pdf"></i>
+                            <p>
+                                {{ __('dashboard.document_management') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.document.index') }}"
+                                    class="nav-link {{ strpos(Route::currentRouteName(), 'document') == 0 ? '' : 'active ' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ __('document') }}</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.document.category.index') }}"
+                                    class="nav-link {{ strpos(Route::currentRouteName(), 'category') == 0 ? '' : 'active ' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ __('dashboard.document_category') }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+
+                {{-- @can('event-list')
+                    <li class="nav-item {{ strpos(Route::currentRouteName(), 'event') == 0 ? '' : 'menu-open' }}">
+                        <a href="#"
+                            class="nav-link {{ strpos(Route::currentRouteName(), 'event') == 0 ? '' : 'active ' }}">
+                            <i class="nav-icon fas far fa-calendar"></i>
+                            <p>
+                                {{ __('dashboard.event_management') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.event.index') }}"
+                                    class="nav-link {{ strpos(Route::currentRouteName(), 'event') == 0 ? '' : 'active ' }}">
+                                    <i class="far fa-calendar nav-icon"></i>
+                                    <p>{{ __('dashboard.event_management') }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan --}}
+                @can('partner-list')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.partner.index') }}"
+                            class="nav-link {{ strpos(Route::currentRouteName(), 'partner') == 0 ? '' : 'active ' }}">
+                            <i class="nav-icon far fa-newspaper"></i>
+                            <p>
+                                {{ __('dashboard.partner_management') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                {{-- <li class="nav-header">File Manager</li>
 
                 <li class="nav-item">
                     <a href="{{ route('admin.filemanager') }}" target="_blank" class="nav-link">
@@ -162,7 +196,7 @@
                             File Manager
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-header">Access</li>
                 @can('user-list')
                     <li

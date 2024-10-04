@@ -24,7 +24,8 @@ class UpdateDocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_km' => 'required|max:255|string',
+            'title_km' => 'required|max:500|string',
+            'title_en' => 'nullable|max:500|string',
             'file' => 'string',
             'dcategory_id' => 'integer',
             'thumbnail' => 'string',

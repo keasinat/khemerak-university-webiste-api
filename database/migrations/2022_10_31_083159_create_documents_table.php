@@ -18,7 +18,8 @@ class CreateDocumentsTable extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('file');
             $table->foreignId('dcategory_id')->constrained();
-            $table->string('title_km');
+            $table->string('title_km', 512);
+            $table->string('title_en', 512);
             $table->timestamps();
             $table->softDeletes();
         });

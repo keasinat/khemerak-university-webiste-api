@@ -17,7 +17,8 @@ return new class extends Migration
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
             $table->string('logo', 255);
-            $table->string('title', 255);
+            $table->string('title_km', 255)->nullable();
+            $table->string('title_en', 255)->nullable();
             $table->string('link', 255)->nullable();
             $table->boolean('is_published')->default(true);
             $table->timestamps();

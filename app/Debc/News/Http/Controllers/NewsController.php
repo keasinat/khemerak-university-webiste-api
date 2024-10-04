@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Debc\News\Services\NewsService;
 use App\Debc\News\Http\Requests\StoreNewsRequest;
 use App\Debc\News\Http\Requests\UpdateNewsRequest;
+use App\Debc\News\Models\Ncategory;
 use Illuminate\Support\Str;
 use App\Debc\News\Models\News;
 
@@ -36,7 +37,8 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('news.create');
+        $categories = Ncategory::whereNull('parent_id')->get();
+        return view('news.create', compact('categories'));
     }
 
     /**
@@ -47,8 +49,7 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
-        $this->service->store($request->except(['_token']));
-
+        $data = $this->service->store($request->all());
         return redirect()->route('admin.news.index')->with('success', __('Data was store successfully.'));
     }
 
@@ -60,7 +61,8 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        return view('news.edit')->withNews($news);
+        $categories = Ncategory::whereNull('parent_id')->get();
+        return view('news.edit', compact('categories'))->withNews($news);
     }
 
     /**

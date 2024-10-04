@@ -26,6 +26,7 @@ class News extends Model
         'meta_keyword',
         'meta_description',
         'is_published',
+        'ncategory_id'
     ];
 
 

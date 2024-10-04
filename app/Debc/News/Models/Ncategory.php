@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Debc\Document\Models;
+namespace App\Debc\News\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Dcategory extends Model
+class Ncategory extends Model
 {
     use SoftDeletes;
-    protected $table = 'dcategories';
+    protected $table = 'ncategories';
     protected $guarded = ['id'];
     protected $dateFormat = 'Y-m-d';
 
@@ -26,17 +26,17 @@ class Dcategory extends Model
         'deleted_at'
     ];
 
-    public function documents()
+    public function news()
     {
-        return $this->hasMany(Document::class);
+        return $this->hasMany(News::class);
     }
     public function subcategory()
     {
-        return $this->hasMany(Dcategory::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     public function parent()
     {
-        return $this->belongsTo(Dcategory::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 }

@@ -1,23 +1,22 @@
 @extends('layouts.app')
-@section('title', __('Category Create'))
+@section('title', __('Category Edit'))
 @section('content')
-    <x-forms.post :action="route('admin.document.category.store')">
+    <x-forms.patch :action="route('admin.news.category.update', $category->id)">
         <x-card>
             <x-slot name="header">
-                {{ __('dashboard.create_new') }}
+                Edit Category
             </x-slot>
             <x-slot name="headerAction">
-                <x-utils.link icon="c-icon cil-plus" class="card-header-action" :href="route('admin.document.category.index')" :text="__('dashboard.cancel')" />
+                <x-utils.link icon="c-icon cil-plus" class="card-header-action" :href="route('admin.news.category.index')" :text="__('dashboard.cancel')" />
             </x-slot>
             <x-slot name="body">
                 <div class="row">
-
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Name in Khmer</label>
+                            <label for="" class="form-label">Name in Khmer</label>
                             <input type="text" name="title_km"
                                 class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}"
-                                value="{{ old('title_km') }}">
+                                value="{{ old('title_km') ?? $category->title_km }}">
                             @if ($errors->has('title_km'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('title_km') }}
@@ -27,10 +26,10 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Name in English</label>
+                            <label for="" class="form-label">Name In English</label>
                             <input type="text" name="title_en"
                                 class="form-control {{ $errors->has('title_en') ? 'is-invalid' : '' }}"
-                                value="{{ old('title_en') }}">
+                                value="{{ old('title_en') ?? $category->title_en }}">
                             @if ($errors->has('title_en'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('title_en') }}
@@ -40,10 +39,10 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">{{ __('dashboard.slug') }}</label>
+                            <label for="" class="form-label">{{ __('dashboard.slug') }}</label>
                             <input type="text" name="slug"
                                 class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}"
-                                value="{{ old('slug') }}">
+                                value="{{ old('slug') ?? $category->slug }}">
                             @if ($errors->has('slug'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('slug') }}
@@ -51,28 +50,8 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-sm-6 d-none">
-                        <div class="form-group">
-                            <label for="">{{ __('dashboard.document_category') }}</label>
-                            <select name="parent_id" id="" class="form-control">
-                                <option value="">none</option>
-                                @if (isset($categories))
-                                    @foreach ($categories as $category)
-                                        @php $dash= ''; @endphp
-                                        <option value="{{ $category->id }}">{{ $category->title_km }}</option>
-                                        @if (count($category->subcategory))
-                                            @include('documents.category.subcategory-opt', [
-                                                'subcategories' => $category->subcategory,
-                                            ])
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                    </div>
-
                 </div>
-                <button type="submit" class="btn btn-primary">{{ __('dashboard.save') }}</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </x-slot>
         </x-card>
         </x-forms>

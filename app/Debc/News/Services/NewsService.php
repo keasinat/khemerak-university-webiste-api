@@ -30,7 +30,7 @@ class NewsService extends BaseService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new GeneralException(__('There was a problem creating your data.'));
+            return throw new GeneralException(__('There was a problem creating your data.'));
         }
 
         DB::commit();

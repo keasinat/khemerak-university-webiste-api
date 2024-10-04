@@ -1,15 +1,15 @@
 <?php
 
-namespace  App\Debc\Document\Http\Controllers;
+namespace  App\Debc\News\Http\Controllers;
 
-use App\Debc\Document\Models\Document;
-use App\Debc\Document\Models\Dcategory;
+use App\Debc\News\Models\News;
+use App\Debc\News\Models\Ncategory;
 use Illuminate\Support\Str;
-use App\Debc\Document\Services\CategoryService;
-use App\Debc\Document\Http\Requests\StoreDcategoryRequest;
-use App\Debc\Document\Http\Requests\UpdateDcategoryRequest;
+use App\Debc\News\Services\CategoryService;
+use App\Debc\News\Http\Requests\StoreNcategoryRequest;
+use App\Debc\News\Http\Requests\UpdateNcategoryRequest;
 
-class DcategoryController
+class NcategoryController
 {
     protected $service;
 
@@ -26,9 +26,9 @@ class DcategoryController
     public function index()
     {
 
-        $categories = Dcategory::whereNull('parent_id')->orderBy('id', 'asc')->get();
+        $categories = Ncategory::whereNull('parent_id')->orderBy('id', 'asc')->get();
 
-        return view('documents.category.index',compact('categories'));
+        return view('news.category.index',compact('categories'));
     }
 
     /**
@@ -38,10 +38,10 @@ class DcategoryController
      */
     public function create()
     {
-        $categories = Dcategory::whereNull('deleted_at')
+        $categories = Ncategory::whereNull('deleted_at')
                 ->where('parent_id', null)->get();
 
-        return view('documents.category.create', compact('categories'));
+        return view('news.category.create', compact('categories'));
     }
 
     /**
@@ -50,7 +50,7 @@ class DcategoryController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDcategoryRequest $request)
+    public function store(StoreNcategoryRequest $request)
     {
         $categoryData = [
             'title_km' => $request->title_km,
@@ -61,7 +61,7 @@ class DcategoryController
 
         if (isset($request->parent_id)) {
 
-            $checkDuplicate = Dcategory::where('title_km', $request->title_km)
+            $checkDuplicate = Ncategory::where('title_km', $request->title_km)
                             ->where('parent_id', $request->parent_id)->first();
 
             if ($checkDuplicate) {
@@ -69,7 +69,7 @@ class DcategoryController
             }
         } else {
 
-            $checkDuplicate = Dcategory::where('title_km', $request->title_km)
+            $checkDuplicate = Ncategory::where('title_km', $request->title_km)
                             ->where('parent_id', null)->first();
 
             if ($checkDuplicate) {
@@ -77,41 +77,41 @@ class DcategoryController
             }
         }
 
-        Dcategory::create($categoryData);
+        Ncategory::create($categoryData);
 
-        return redirect()->route('admin.document.category.index')
+        return redirect()->route('admin.news.category.index')
             ->with('success',__('The category was successfully created.'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Dcategory  $dcategory
+     * @param  \App\Models\Ncategory  $ncategory
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $category = Dcategory::findOrFail($id);
-        $categories = Dcategory::whereNull('parent_id')->get();
+        $category = Ncategory::findOrFail($id);
+        $categories = Ncategory::whereNull('parent_id')->get();
 
-        return view('documents.category.edit', compact('categories', 'category'));
+        return view('news.category.edit', compact('categories', 'category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Dcategory  $dcategory
+     * @param  \App\Models\Ncategory  $ncategory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDcategoryRequest $request, $dcategory)
+    public function update(UpdateNcategoryRequest $request, $ncategory)
     {
-        $dcategory = Dcategory::findOrfail($dcategory);
+        $ncategory = Ncategory::findOrfail($ncategory);
 
-        if ($request->title_km != $dcategory->title_km || $request->parent_id != $dcategory->parent_id) {
+        if ($request->title_km != $ncategory->title_km || $request->parent_id != $ncategory->parent_id) {
             if (isset($request->parent_id)) {
 
-                $checkDuplicate = Dcategory::where('title_km', $request->title_km)
+                $checkDuplicate = Ncategory::where('title_km', $request->title_km)
                                 ->where('parent_id', $request->parent_id)->first();
 
                 if ($checkDuplicate) {
@@ -119,7 +119,7 @@ class DcategoryController
                 }
             } else {
 
-                $checkDuplicate = Dcategory::where('title_km', $request->title_km)
+                $checkDuplicate = Ncategory::where('title_km', $request->title_km)
                                 ->where('parent_id', null)->first();
 
                 if ($checkDuplicate) {
@@ -128,25 +128,25 @@ class DcategoryController
             }
         }
 
-        $this->service->update($dcategory, $request->except(['_token', '_method']));
+        $this->service->update($ncategory, $request->except(['_token', '_method']));
 
-        return redirect()->route('admin.document.category.index');
+        return redirect()->route('admin.news.category.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Dcategory  $dcategory
+     * @param  \App\Models\Ncategory  $ncategory
      * @return \Illuminate\Http\Response
      */
 
     public function destroy($id)
     {
-        $documents = Document::where('dcategory_id', $id)->count();
-        $category = Dcategory::findOrfail($id);
+        $news = News::where('ncategory_id', $id)->count();
+        $category = Ncategory::findOrfail($id);
 
-        if ($documents > 0) {
-            return redirect()->route('admin.document.category.index')
+        if ($news > 0) {
+            return redirect()->route('admin.news.category.index')
                     ->with('warning','Category is in used.');
         } else {
             if(count($category->subcategory))
@@ -154,14 +154,14 @@ class DcategoryController
                 $subcategories = $category->subcategory;
                 foreach($subcategories as $cat)
                 {
-                    $cat = Dcategory::findOrFail($cat->id);
+                    $cat = Ncategory::findOrFail($cat->id);
                     $cat->parent_id = null;
                     $cat->save();
                 }
             }
 
             $category->delete();
-            return redirect()->route('admin.document.category.index')
+            return redirect()->route('admin.news.category.index')
                     ->with('success','Category is deleted.');
         }
 

@@ -25,17 +25,18 @@ class StoreNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'thumbnail' => 'string|nullable',
+            'thumbnail' => 'required|string',
             'title_km' => 'required|string|max:255',
-            'title_en' => 'required|string|max:255',
-            'description_km' => 'string|max:255|nullable',
-            'description_en' => 'string|max:255|nullable',
+            'title_en' => 'nullable|string|max:255',
+            'description_km' => 'required|string|max:255',
+            'description_en' => 'nullable|string|max:255',
             'content_km' => 'required|string',
             'content_en' => 'required|string',
-            'meta_keyword' => 'string|nullable',
-            'meta_description' => 'string|nullable',
-            'slug' => 'string|nullable',
+            'meta_keyword' => 'nullable|string',
+            'meta_description' => 'nullable|string',
+            'slug' => 'nullable|string',
             'is_published' => 'boolean|required',
+            'ncategory_id' => 'required|integer'
         ];
     }
 

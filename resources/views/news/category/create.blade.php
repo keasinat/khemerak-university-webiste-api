@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title', __('Category Create'))
 @section('content')
-    <x-forms.post :action="route('admin.document.category.store')">
+    <x-forms.post :action="route('admin.news.category.store')">
         <x-card>
             <x-slot name="header">
                 {{ __('dashboard.create_new') }}
             </x-slot>
             <x-slot name="headerAction">
-                <x-utils.link icon="c-icon cil-plus" class="card-header-action" :href="route('admin.document.category.index')" :text="__('dashboard.cancel')" />
+                <x-utils.link icon="c-icon cil-plus" class="card-header-action" :href="route('admin.news.category.index')" :text="__('dashboard.cancel')" />
             </x-slot>
             <x-slot name="body">
                 <div class="row">
@@ -49,25 +49,6 @@
                                     {{ $errors->first('slug') }}
                                 </div>
                             @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-6 d-none">
-                        <div class="form-group">
-                            <label for="">{{ __('dashboard.document_category') }}</label>
-                            <select name="parent_id" id="" class="form-control">
-                                <option value="">none</option>
-                                @if (isset($categories))
-                                    @foreach ($categories as $category)
-                                        @php $dash= ''; @endphp
-                                        <option value="{{ $category->id }}">{{ $category->title_km }}</option>
-                                        @if (count($category->subcategory))
-                                            @include('documents.category.subcategory-opt', [
-                                                'subcategories' => $category->subcategory,
-                                            ])
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </select>
                         </div>
                     </div>
 

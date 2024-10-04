@@ -19,7 +19,8 @@ class DocumentResource extends JsonResource
             'thumbnail' => $this->thumbnail,
             'file' => $this->file,
             'title_km' => $this->title_km,
-            'category_name' => $this->dcategory->title_km,
+            'title_en' => $this->title_en,
+            // 'category_name' => $this->dcategory->title_km,
             'created_at' => $this->created_at->format('Y-m-d'),
         ];
     }

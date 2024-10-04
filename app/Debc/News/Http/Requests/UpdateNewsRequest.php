@@ -24,17 +24,18 @@ class UpdateNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'thumbnail' => 'string|nullable',
+            'thumbnail' => 'string|required',
             'title_km' => 'required|string|max:255',
-            'title_en' => 'required|string|max:255',
+            'title_en' => 'nullable|string|max:255',
             'description_km' => 'required|string',
-            'description_en' => 'required|string',
+            'description_en' => 'nullable|string',
             'content_km' => 'required|string',
-            'content_en' => 'required|string',
+            'content_en' => 'nullable|string',
             'meta_keyword' => 'string|nullable',
             'meta_description' => 'string|nullable',
             'slug' => 'string|nullable',
             'is_published' => 'boolean|required',
+            'ncategory_id' => 'required|integer'
         ];
     }
 

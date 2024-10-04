@@ -92,6 +92,26 @@
                                 <button type="submit" class="btn btn-success">{{ __('dashboard.save') }}</button>
                                 <hr>
                                 <div class="form-group">
+                                    <label for="" class="form-label">{{ __('dashboard.document_category') }}</label>
+                                    <select name="ncategory_id" id="" class="form-control" required>
+                                        <option value="">Select an option</option>
+                                        @if (isset($categories))
+                                            @foreach ($categories as $category)
+                                                @php $dash= ''; @endphp
+                                                <option value="{{ $category->id }}"
+                                                    {{ old('ncategory_id') ?? $news->ncategory_id == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->title_km }}</option>
+                                                @if (count($category->subcategory))
+                                                    @include('documents.category.subcategory-opt', [
+                                                        'subcategories' => $category->subcategory,
+                                                    ])
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                                <hr>
+                                <div class="form-group">
                                     <label for="" class="col-form-label">Status</label>
                                     <select name="is_published" id="is_published" class="form-control">
                                         @foreach (pulishedOpt() as $k => $item)
@@ -101,7 +121,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <hr>
                                 <div class="form-group">
                                     <label for=""
                                         class="col-form-label">{{ __('dashboard.select_thumbnail') }}</label>
