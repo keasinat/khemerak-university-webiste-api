@@ -6,13 +6,13 @@ return [
         "name_en" => "About Us",
         "highlight_km" => "",
         "is_single_page" => 1,
-        "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+        "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
         "sub_menu" => [
             [
                 "name_km" => "ទស្សនៈបណ្ឌិត រស់ រ៉ាវុធ សាកលវិទ្យាធិការ",
                 "name_en" => "The views of Dr. Ros Ravuth, Rector",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "is_single_page" => 1,
                 "children" => [
                     [
@@ -21,7 +21,7 @@ return [
                         "highlight_km" => "",
                         "thumbnail" => "https://via.placeholder.com/860x700",
                         "is_top" => 0,
-                        "description_km" => "<p>ការអប់រំជាមាគ៌ាដ៏ត្រឹមត្រូវក្នុងការអភិវឌ្ឍន៏សង្គមជាតិក្នុងសតវត្សរ៏ទី២១ ដើម្បីឱ្យប្រទេសជាតិអាចធ្វើសមាហរណកម្មនៅក្នុងតំបន់និងក្នុងពិភពលោក។គ្មានការអប់រំ គ្មានការអភិវឌ្ឍន៏ ហើយក៏មិនអាចកាត់បន្ថយភាពក្រីក្របានដែរ។</p><p>សាកលវិទ្យាល័យខេមរៈ ជាស្មារតីសុខក្សេមក្សាន្ត និងជាទីប្រមូលផ្តុំបញ្ញវន្តជាន់ខ្ពស់ជាតិ និង អន្តរជាតិក្នុងការបណ្តុះបណ្តាល ថ្នាក់បណ្ឌិត ថ្នាក់បរិញ្ញាជាន់ខ្ពស់ ថ្នាក់បរិញ្ញាបត្រ ថ្នាក់បរិញ្ញាប័ត្ររង និង មធ្យមសិក្សាឯកទេសដោយផ្តល់នូវសេវាបណ្តុះបណ្តាលប្រកបដោយគុណភាព ខាងចំណេះដឹង ជំនាញ និង បច្ចេកវិទ្យាថ្មីៗ ដើម្បីអភិវឌ្ឍន៏បញ្ញាញាណ បំណិនជីវិត កិត្យានុភាព កិត្តិយស តម្លៃខាងសីលធម៌ និងភាពថ្លៃថ្នូរសម្រាប់បុគ្គលគ្រប់រូប ដែលត្រូវបានបណ្តុះបណ្តាលនៅសាកលវិទ្យាល័យខេមរៈ។</p><p>សាកលវិទ្យាល័យខេមរៈ ជាមជ្ឈមណ្ឌលបណ្តុះបណ្តាលធនធានមនុស្សរបស់ជាតិកម្រិតខ្ពស់បង្កើតនៅមូលដ្ឋានបញ្ញាទាំងទ្រឹស្តី ទាំងការអនុវត្តដោយឈរ នៅលើវិជ្ជាជីវៈក្រមសីលធម៌ បង្កើតពន្លឺ បំភ្លឺទីងងឹត សម្រាប់ទ្រទ្រង់ លើកស្ទួយវប្បធម៌ និងកេតនភ័ណ្ឌរបស់ជាតិ ផ្អែកនៅលើកម្មវិធីសិក្សាតាមប្រព័ន្ធក្រេឌីតច្បាស់លាស់ ដែលឆ្លើយតបទៅនឺងតម្រូវការទីផ្សារការងារនាពេលបច្ចុប្បន្ន និងពេលអនាគត។ជាពិសេស សាកលវិទ្យាល័យខេមរៈ បណ្តុះបណ្តាល និងផ្តល់់ឱកាសដល់មនុស្សជំនាន់ក្រោយដែលមានសមត្ថភាព មានចំណេះដឹង និងចំណេះធ្វើ ក្នុងការអភិវឌ្ឍន៏សង្គមជាតិប្រកបដោយលក្ខណៈវិទ្យាសាស្រ្ត។</p><p>សាកលវិទ្យាល័យខេមរៈ ជាទីប្រមូលផ្តុំបញ្ញាញាណជាន់ខ្ពស់សម្រាប់ ផ្តល់អនុសាសន៏ដល់សង្គមជាតិ និងអ្នកនយោបាយ តែសាកលវិទ្យាល័យខេមរៈ មិនធ្វើនយោបាយ និងមិនប្រើប្រាស់សាកលវិទ្យាល័យជាទីលាននយោបាយទ្យើយ។</p>",
+                        "description_km" => "<p><image src='https://admin.khemarakuniversity.edu.kh/storage/rector.png' class='mx-auto d-block' ></p><p>ការអប់រំជាមាគ៌ាដ៏ត្រឹមត្រូវក្នុងការអភិវឌ្ឍន៏សង្គមជាតិក្នុងសតវត្សរ៏ទី២១ ដើម្បីឱ្យប្រទេសជាតិអាចធ្វើសមាហរណកម្មនៅក្នុងតំបន់និងក្នុងពិភពលោក។គ្មានការអប់រំ គ្មានការអភិវឌ្ឍន៏ ហើយក៏មិនអាចកាត់បន្ថយភាពក្រីក្របានដែរ។</p><p>សាកលវិទ្យាល័យខេមរៈ ជាស្មារតីសុខក្សេមក្សាន្ត និងជាទីប្រមូលផ្តុំបញ្ញវន្តជាន់ខ្ពស់ជាតិ និង អន្តរជាតិក្នុងការបណ្តុះបណ្តាល ថ្នាក់បណ្ឌិត ថ្នាក់បរិញ្ញាជាន់ខ្ពស់ ថ្នាក់បរិញ្ញាបត្រ ថ្នាក់បរិញ្ញាប័ត្ររង និង មធ្យមសិក្សាឯកទេសដោយផ្តល់នូវសេវាបណ្តុះបណ្តាលប្រកបដោយគុណភាព ខាងចំណេះដឹង ជំនាញ និង បច្ចេកវិទ្យាថ្មីៗ ដើម្បីអភិវឌ្ឍន៏បញ្ញាញាណ បំណិនជីវិត កិត្យានុភាព កិត្តិយស តម្លៃខាងសីលធម៌ និងភាពថ្លៃថ្នូរសម្រាប់បុគ្គលគ្រប់រូប ដែលត្រូវបានបណ្តុះបណ្តាលនៅសាកលវិទ្យាល័យខេមរៈ។</p><p>សាកលវិទ្យាល័យខេមរៈ ជាមជ្ឈមណ្ឌលបណ្តុះបណ្តាលធនធានមនុស្សរបស់ជាតិកម្រិតខ្ពស់បង្កើតនៅមូលដ្ឋានបញ្ញាទាំងទ្រឹស្តី ទាំងការអនុវត្តដោយឈរ នៅលើវិជ្ជាជីវៈក្រមសីលធម៌ បង្កើតពន្លឺ បំភ្លឺទីងងឹត សម្រាប់ទ្រទ្រង់ លើកស្ទួយវប្បធម៌ និងកេតនភ័ណ្ឌរបស់ជាតិ ផ្អែកនៅលើកម្មវិធីសិក្សាតាមប្រព័ន្ធក្រេឌីតច្បាស់លាស់ ដែលឆ្លើយតបទៅនឺងតម្រូវការទីផ្សារការងារនាពេលបច្ចុប្បន្ន និងពេលអនាគត។ជាពិសេស សាកលវិទ្យាល័យខេមរៈ បណ្តុះបណ្តាល និងផ្តល់់ឱកាសដល់មនុស្សជំនាន់ក្រោយដែលមានសមត្ថភាព មានចំណេះដឹង និងចំណេះធ្វើ ក្នុងការអភិវឌ្ឍន៏សង្គមជាតិប្រកបដោយលក្ខណៈវិទ្យាសាស្រ្ត។</p><p>សាកលវិទ្យាល័យខេមរៈ ជាទីប្រមូលផ្តុំបញ្ញាញាណជាន់ខ្ពស់សម្រាប់ ផ្តល់អនុសាសន៏ដល់សង្គមជាតិ និងអ្នកនយោបាយ តែសាកលវិទ្យាល័យខេមរៈ មិនធ្វើនយោបាយ និងមិនប្រើប្រាស់សាកលវិទ្យាល័យជាទីលាននយោបាយទ្យើយ។</p>",
                         "description_en" => ""
                     ]
                 ]
@@ -30,7 +30,7 @@ return [
                 "name_km" => "រចនាសម្ព័ន្ធ និងគោលការណ៍គ្រប់គ្រង",
                 "name_en" => "Structure and management principles",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "children" => [
                     [
                         "name_km" => "រចនាសម្ព័ន្ធ និងគោលការណ៍គ្រប់គ្រង",
@@ -47,7 +47,7 @@ return [
                 "name_km" => "គោលដៅ បេសកម្ម និងចក្ខុវិស័យ",
                 "name_en" => "Goal, Mission and Vision",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "children" => [
                     [
                         "name_km" => "គោលដៅ បេសកម្ម និងចក្ខុវិស័យ",
@@ -68,13 +68,13 @@ return [
         "name_km" => "មហាវិទ្យាល័យ",
         "name_en" => "Faculties",
         "highlight_km" => "",
-        "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+        "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
         "sub_menu" => [
             [
                 "name_km" => "មហាវិទ្យាល័យ វិទ្យាសាស្រ្តអប់រំ",
                 "name_en" => "Faculty of Educational Science",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "is_top" => 1,
                 "children" => [
                     [
@@ -125,7 +125,7 @@ return [
                 "name_km" => "មហាវិទ្យាល័យ នីតិសាស្រ្ត និងវិទ្យាសាស្ត្រសេដ្ឋកិច្ច",
                 "name_en" => "Faculty of Law and Economic Science",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "is_top" => 1,
                 "children" => [
                     [
@@ -153,7 +153,7 @@ return [
                 "name_km" => "មហាវិទ្យាល័យ វិទ្យាសាស្ត្រនយោបាយ និងទំនាក់ទំនងអន្តរជាតិ",
                 "name_en" => "Faculty of Political and International Relations",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "children" => [
                     [
                         "name_km" => "វិទ្យាសាស្ត្រនយោបាយ",
@@ -173,7 +173,7 @@ return [
                 "name_km" => "មហាវិទ្យាល័យ គ្រប់គ្រងពាណិជ្ជកម្ម និងទេសចរណ៍",
                 "name_en" => "Faculty of Business Administration and Tourism",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "children" => [
                     [
                         "name_km" => "គ្រប់គ្រងពាណិជ្ជកម្ម",
@@ -217,7 +217,7 @@ return [
                 "name_km" => "មហាវិទ្យាល័យ មនុស្សសាស្រ្ត សិល្បៈ និងភាសាវិទ្យា",
                 "name_en" => "Faculty of Humanities, Arts and Linguistics",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "is_top" => 1,
                 "children" => [
                     [
@@ -233,7 +233,7 @@ return [
                 "name_km" => "មហាវិទ្យាល័យ វិទ្យាសាស្ត្រកសិកម្ម និង អភិវឌ្ឍន៍ជនបទ",
                 "name_en" => "Faculty of Agricultural Science and Rural Development",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "children" => [
                     [
                         "name_km" => "សេដ្ឋកិច្ចកសិកម្ម",
@@ -253,7 +253,7 @@ return [
                 "name_km" => "មហាវិទ្យាល័យ វិទ្យាសាស្ត្រ បច្ចេកវិទ្យា និងព័ត៌មានវិទ្យា",
                 "name_en" => "Faculty of Science, Technology and Informatics",
                 "highlight_km" => "",
-                "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+                "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
                 "is_top" => 1,
                 "children" => [
                     [
@@ -273,7 +273,7 @@ return [
         "name_en" => "Library",
         "highlight_km" => "",
         "is_single_page" => 1,
-        "thumbnail" => "https://test.rithyboth.site/storage/academics/bachelor.png",
+        "thumbnail" => "https://admin.khemarakuniversity.edu.kh/storage/faculty/bachelor.png",
         "sub_menu" => [],
         "children" => [
             [
