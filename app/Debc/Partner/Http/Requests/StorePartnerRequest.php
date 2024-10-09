@@ -22,9 +22,10 @@ class StorePartnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
+            'title_km' => 'required|string',
             'logo' => 'required',
-            'link' => 'nullable'
+            'link' => 'nullable',
+            'is_published' => 'boolean|required'
         ];
     }
 }

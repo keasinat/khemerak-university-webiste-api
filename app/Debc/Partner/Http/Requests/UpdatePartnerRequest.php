@@ -22,7 +22,10 @@ class UpdatePartnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title_km' => 'required|string',
+            'logo' => 'required',
+            'link' => 'nullable',
+            'is_published' => 'boolean|required'
         ];
     }
 }
