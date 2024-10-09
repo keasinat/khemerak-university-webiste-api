@@ -3,10 +3,10 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="" class="col-form-label">Name</label>
-                <input type="text" name="title" id="" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') ?? $partner->title }}">
-                @if($errors->has('title'))
+                <input type="text" name="title_km" id="" class="form-control {{ $errors->has('title_km') ? 'is-invalid' : '' }}" value="{{ old('title_km') ?? $partner->title_km }}">
+                @if($errors->has('title_km'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('title') }}
+                        {{ $errors->first('title_km') }}
                     </div>
                 @endif
             </div>

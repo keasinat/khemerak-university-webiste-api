@@ -30,7 +30,7 @@
                 <tr>
                     <td>{{ ++$k }}</td>
                     <td><img src="{{$partner->logo}}" alt="" width="70"></td>
-                    <td>{{ $partner->title }}</td>
+                    <td>{{ $partner->title_km }}</td>
                     <td>
                         @foreach (pulishedOpt() as $k => $status)
                             @if ($partner->is_published == $k)
@@ -64,5 +64,5 @@
         });
     });
 </script>
-      
+
 @endpush
