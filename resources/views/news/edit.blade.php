@@ -68,6 +68,7 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="description_en" class="col-form-label">Content Khmer</label>
                                     <textarea name="content_km" id="content_km" cols="50" rows="10"
                                         class="form-control {{ $errors->has('content_km') ? 'is-invalid' : '' }}">{{ old('content_km') ?? $news->content_km }}</textarea>
                                     @if ($errors->has('content_km'))
@@ -77,6 +78,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
+                                    <label for="description_en" class="col-form-label">Content English</label>
                                     <textarea name="content_en" id="content_en" cols="50" rows="10"
                                         class="form-control {{ $errors->has('content_en') ? 'is-invalid' : '' }}">{{ old('content_en') ?? $news->content_en }}</textarea>
                                     @if ($errors->has('content_en'))
