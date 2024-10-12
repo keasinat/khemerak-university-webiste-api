@@ -1,6 +1,7 @@
 <?php
 
 use App\Debc\Partner\Http\Controllers\PartnerController;
+use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'partners',
@@ -15,9 +16,6 @@ Route::group([
             ->middleware('permission:partner-create');
         Route::post('/', [PartnerController::class, 'store'])
             ->name('store');
-        Route::delete('/{id}', [PartnerController::class, 'destroy'])
-            ->name('destroy')
-            ->middleware('permission:partner-delete');
         Route::get('edit/{partner}', [PartnerController::class, 'edit'])
             ->name('edit')
             ->middleware('permission:partner-edit');
