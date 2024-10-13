@@ -2,6 +2,7 @@
 
 namespace App\Debc\News\Http\Controllers\API;
 
+use App\Debc\Document\Models\Dcategory;
 use App\Debc\News\Models\Ncategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -41,5 +42,12 @@ class NewsController extends Controller
     {
         $categories = Ncategory::orderBy('id')->get();
         return DcategoryResource::collection($categories);
+    }
+
+    function categoryById(Request $request)
+    {
+        $query = Ncategory::where('id', $request->id)->first();
+
+        return new DcategoryResource($query);
     }
 }

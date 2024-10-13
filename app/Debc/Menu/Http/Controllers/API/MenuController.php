@@ -22,6 +22,13 @@ class MenuController extends Controller
         return MenuResource::collection($data);
     }
 
+    function menuById(Request $request)
+    {
+        $data = Academic::where('id', $request->id)->first();
+
+        return new MenuResource($data);
+    }
+
     public function topAcademics() : ResourceCollection
     {
         $data = Academic::isTop()->isPublished()->get();

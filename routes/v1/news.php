@@ -9,5 +9,6 @@ Route::group([
     Route::get('/', [NewsController::class, 'index']);
     Route::get('category', [NewsController::class, 'categories']);
     Route::get('{id}', [NewsController::class, 'show']);
+    Route::get('category/{id}', [NewsController::class, 'categoryById']);
 
 });

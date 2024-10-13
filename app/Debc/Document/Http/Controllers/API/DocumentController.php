@@ -43,11 +43,6 @@ class DocumentController extends Controller
 
         $query = Dcategory::query();
 
-        if(isset($request->id)){
-            $result = $query->find($request->id);
-            return new DcategoryResource($result);
-        }
-
         $query->when(!empty($keyword), function($q) use ($keyword) {
             $q->where('title_km', 'iLIKE', '%'. $keyword. '%');
         });
@@ -56,21 +51,9 @@ class DocumentController extends Controller
         return DcategoryResource::collection($categories);
     }
 
-    public function categorySlug($slug, Request $request)
+    public function categoryById(Request $request)
     {
-
-        $paginate = $request->per_page ?? 12;
-
-        $categoryId = Dcategory::where('slug', $slug)->pluck('id');
-
-        $documents = Document::whereHas('dcategory', function ($q) use ($categoryId) {
-            $q->whereIn('parent_id', [$categoryId]);
-            $q->orWhereIn('dcategory_id', [$categoryId]);
-        })
-        ->where('is_published', 1)
-        ->orderBy('post_date', 'desc')
-        ->paginate($paginate);
-
-        return DocumentResource::collection($documents);
+        $query = Dcategory::where('id', $request->id)->first();
+        return new DcategoryResource($query);
     }
 }
