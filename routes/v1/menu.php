@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('menus')->group(function () {
     Route::get('/', [MenuController::class, 'index']);
-    Route::get('{id}', [MenuController::class, 'menuById']);
 
     Route::prefix('academics')->group(function () {
         Route::get('/', [MenuController::class, 'academics']);
@@ -20,4 +19,6 @@ Route::prefix('menus')->group(function () {
         Route::get('{id}', [MenuController::class, 'subjectDetail']);
         Route::get('single-page/{menu_id}', [MenuController::class, 'singlePage']);
     });
+
+    Route::get('{id}', [MenuController::class, 'menuById']);
 });
