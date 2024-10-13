@@ -8,6 +8,7 @@ services:
     build: .
     container_name: app_khemerak
     volumes:
+      - .docker/php/khemarak.ini:/usr/local/etc/php/conf.d/khemarak.ini
       - .:/var/www/html
     ports:
       - 9000
