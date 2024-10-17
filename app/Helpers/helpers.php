@@ -54,3 +54,12 @@ if (! function_exists('isSinglePage')) {
         ];
     }
 }
+
+if (! function_exists('radiusList')) {
+    function radiusList() {
+        return [
+            'rounded' => 'Square',
+            'rounded-circle' => 'Circle'
+        ];
+    }
+}

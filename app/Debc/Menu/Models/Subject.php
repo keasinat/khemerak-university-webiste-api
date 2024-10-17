@@ -24,7 +24,8 @@ class Subject extends Model
         'is_published',
         'is_top',
         'highlight_km',
-        'highlight_en'
+        'highlight_en',
+        'radius'
     ];
 
     public $dates = [

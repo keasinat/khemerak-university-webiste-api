@@ -38,7 +38,8 @@ class UpdateSubjectRequest extends FormRequest
             'is_top' => 'nullable|boolean',
             'is_published' => 'nullable|boolean',
             'highlight_km' => 'nullable|string|max:255',
-            'highlight_en' => 'nullable|string|max:255'
+            'highlight_en' => 'nullable|string|max:255',
+            'radius' => 'in:rounded,runded-circle|required'
         ];
     }
 

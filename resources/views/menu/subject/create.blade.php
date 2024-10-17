@@ -75,7 +75,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4 pr-0">
                         <div class="form-group">
                             <label for="thumbnail" class="col-form-label">{{ __('dashboard.select_thumbnail') }}</label>
                             <div class="input-group">
@@ -97,6 +97,21 @@
                             <div id="holder" style="margin-top:15px;max-height:400px;"></div>
                         </div>
                     </div>
+                    <div class="col-sm-2 pl-0">
+                        <div class="form-group">
+                            <label for="radius" class="col-form-label">Radius</label>
+                            <select name="radius" id="radius" class="form-control">
+                                @foreach (radiusList() as $k => $item)
+                                    <option value="{{ $k }}" {{ old('radius') == $k ? 'selected' : '' }}>{{ $item }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('radius'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('radius') }}
+                                    </div>
+                                @endif
+                        </div>
+                    </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="is_published" class="col-form-label">{{ __('dashboard.status') }}</label>
@@ -107,6 +122,7 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="is_top" class="col-form-label">
@@ -114,7 +130,7 @@
                             <div class="mt-3 text-right">
                                 <input type="checkbox" name="is_top" id="is_top"
                                     {{ old('is_top') == 1 ? 'checked' : '' }} value="1"> &nbsp;
-                                {{ __('Show on Home Page') }}
+                                {{ __('Is Top') }}
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,8 @@ class AcademicResource extends JsonResource
             "highlight_km" => $this->highlight_km,
             "highlight_en" => $this->highlight_en,
             "is_single_page" => $this->is_single_page,
-            "children" => self::collection($this->whenLoaded('children'))
+            "children" => self::collection($this->whenLoaded('children')),
+            "radius" => $this->radius ?? 'rounded'
         ];
     }
 }
